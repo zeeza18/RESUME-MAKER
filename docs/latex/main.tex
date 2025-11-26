@@ -1,0 +1,147 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.65in}
+\addtolength{\evensidemargin}{-0.65in}
+\addtolength{\textwidth}{1.3in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.25in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-6pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+
+\pdfgentounicode=1
+\setlist[itemize]{leftmargin=*, topsep=2pt, itemsep=2pt, parsep=0pt, partopsep=0pt}
+\setlength{\parskip}{1pt}
+\renewcommand{\baselinestretch}{0.96}
+
+\newcommand{\resumeItem}[1]{\item\small{{#1 \vspace{-3pt}}}}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-3pt}\item
+    \begin{tabularx}{0.995\textwidth}[t]{Xr}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabularx}\\[-3pt]
+    \vspace{3pt}
+}
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{-3pt}\item
+    \begin{tabularx}{0.995\textwidth}[t]{Xr}
+      \small#1 & #2 \\
+    \end{tabularx}\\[-3pt]
+    \vspace{3pt}
+}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+\newcommand{\resumeSubHeadingListStart}{
+  \begin{itemize}[leftmargin=0.12in, label={}]
+  \setlength{\itemsep}{0pt}
+  \setlength{\parsep}{0pt}
+  \setlength{\parskip}{0pt}
+}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\LARGE \scshape Mohammed Azeezulla} \\ \vspace{1pt}
+    \small Applied AI Engineer $|$ 872-330-2122 $|$
+    \href{mailto:mmoha134@depaul.edu}{\underline{mmoha134@depaul.edu}} $|$
+    \href{https://www.linkedin.com/in/moazeez/}{\underline{linkedin.com/in/moazeez}} $|$
+    \href{https://github.com/zeeza18}{\underline{github.com/zeeza18}}
+\end{center}
+
+\section{Education}
+\vspace{-4pt}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {DePaul University}{Chicago, IL}
+      {Masters in Artificial Intelligence}{Jan 2024 -- Nov 2025}
+    \resumeSubheading
+      {MVJ College of Engineering}{Bengaluru, KA}
+      {Bachelor's in Computer Science Engineering}{Sep 2019 -- Sep 2023}
+  \resumeSubHeadingListEnd
+
+\section{Experience}
+\vspace{-4pt}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Software Artificial Intelligence Engineer}{Jul 2025 -- Present}
+      {TekAnthem}{Chicago, IL}
+      \resumeItemListStart
+        \resumeItem{Collaborated with senior developers to design AI agent components using Python and Flask, employing Git for version control, reducing manual testing by 60\% and enhancing software engineering practices.}
+        \resumeItem{Developed Gemini with deep learning techniques to transform UI screenshots into JSON at 90\% accuracy, writing clean, well-commented, and testable code, demonstrating AI systems architecture expertise.}
+        \resumeItem{Applied Claude with prompt engineering and FAISS embedding-based RAG memory in Python, generating scripts that improved incident recovery by 70\% and reduced costs by 30\% using production-ready deployments.}
+        \resumeItem{Directed end-to-end project leadership for multimodal reporting with OpenAI APIs, integrating asynchronous TypeScript and monitoring dashboards, scaling inference throughput $3\times$ while improving enterprise adoption and reliability by 90\%.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Graduate Research Assistant}{Jan 2025 -- Jun 2025}
+      {DePaul University}{Chicago, IL}
+      \resumeItemListStart
+        \resumeItem{Implemented hierarchical self-attention algorithms in TensorFlow and PyTorch, optimizing LLM memory to \(O(n \log n)\) and computation to \(O(n)\), leveraging advanced data structures techniques, improving generative efficiency by 20\%.}
+        \resumeItem{Built regression and classification workflows using scikit-learn and Pandas, applying statistical feature engineering to improve accuracy by 12\% and accelerate experimental training by approximately $1.5\times$, showcasing data analysis skills.}
+        \resumeItem{Conducted ablation studies and research comparing CNNs, RNNs, and Transformers, validating algorithms that improved accuracy by 4\% while reducing error across generative benchmarks through transparent evaluation frameworks.}
+        \resumeItem{Partnered in code reviews and weekly sessions, documenting results, accelerating timelines by 15\%, and preparing publications with open source, exploring technologies and frameworks for transparency, adoption, and reproducibility.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Associate Generative AI Developer}{Jun 2024 -- Jan 2025}
+      {Soulmi Health}{Lombard, IL}
+      \resumeItemListStart
+        \resumeItem{Automated insurance mail flows using Python to process 1{,}000+ unstructured documents daily, leveraging HTML and CSS to reduce manual review workload by 70\% while ensuring reproducibility and maintainability.}
+        \resumeItem{Crafted multimodal OCR pipelines with Mistral and spaCy preprocessing, removing 90\% HIPAA-sensitive content and deploying scalable, compliant retrieval systems that improved adoption, customer trust, and regulatory confidence.}
+        \resumeItem{Fine-tuned a Llama for categorizing mail, achieving 90\% accuracy and $5\times$ throughput while supporting enterprise expansion by improving customer retention and claim-processing speed, demonstrating LLM development expertise.}
+        \resumeItem{Developed dashboards with async TypeScript, contextualizing telemetry into real-time insights using Python and JavaScript to improve sales forecasting accuracy by 50\% and enhance decision-making for sales stakeholders across enterprises.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+\section{Projects}
+\vspace{-4pt}
+  \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{ATS Scanner -- ScanATS} $|$ \emph{Python, CI/CD, Docker, AWS}}{Jan 2024 -- Present}
+          \resumeItemListStart
+            \resumeItem{Prototyped a production-ready ML platform featuring ATS scoring, chatbot, and portfolio builder, integrating RAG with PG Vector embeddings and chunking, boosting user completion by 65\% and retention outcomes.}
+            \resumeItem{Integrated multimodal systems with Google Vision, OpenAI, and AutoGen, experimenting with voice TTS models for interview simulations, improving engagement and boosting adoption across customer-facing applications by 80\%.}
+            \resumeItem{Configured JWT with MongoDB and deployed CI/CD workflows on AWS with Docker and Git for version control, ensuring 99\% uptime and reducing errors by 40\% through monitoring and evaluation, demonstrating technology management.}
+          \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\section{Technical Skills}
+\vspace{-4pt}
+ \begin{itemize}[leftmargin=0.12in, label={}]\small{
+     \item \textbf{Programming Languages}{: Python, Java, C++, JavaScript, MySQL} \\
+     \textbf{Cloud \& DevOps}{: AWS, Azure, GCP, Docker, Kubernetes, Git, CI/CD} \\
+     \textbf{Databases \& Frameworks}{: MongoDB, PostgreSQL, Django, Flask, Playwright, PyTest, React, TypeScript} \\
+     \textbf{AI/ML Tools}{: PyTorch, TensorFlow, LangChain, AutoGen, CrewAI, OpenAI, Claude, Gemini, RAG, NLTK, TTS}
+ }
+ \end{itemize}
+
+\end{document}
