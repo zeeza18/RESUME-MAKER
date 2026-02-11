@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install:*)",
+      "Bash(pip show:*)",
+      "Bash(npm run build:*)",
+      "Bash(dir:*)",
+      "Bash(find:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx vite build)",
+      "Bash(python:*)",
+      "Bash(findstr:*)"
+    ]
+  }
+}

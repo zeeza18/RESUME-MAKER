@@ -1,4 +1,4 @@
-﻿"""FastAPI server exposing the resume tools for frontend and integrations."""
+"""FastAPI server exposing the resume tools for frontend and integrations."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ import json
 import logging
 import sys
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 SCRIPTS_DIR = BASE_DIR / "scripts"
@@ -17,6 +17,10 @@ for path in (BASE_DIR, SCRIPTS_DIR):
     str_path = str(path)
     if str_path not in sys.path:
         sys.path.insert(0, str_path)
+
+# Load .env from project root
+from dotenv import load_dotenv
+load_dotenv(BASE_DIR / ".env")
 
 import anyio
 from fastapi import FastAPI, HTTPException
@@ -28,9 +32,18 @@ from resume_crew import ResumeCrew
 from tools.tool1 import KeywordExtractor
 from tools.tool2 import ResumeTailor
 from tools.tool3 import ResumeEvaluator
+from apply.job_storage import JobStorage
+from apply.browser_engine import BrowserEngine
+from apply.vision_analyzer import VisionAnalyzer
+from apply.code_generator import CodeGenerator
+from apply.form_filler import FormFiller
+from apply.self_healer import SelfHealer
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
+
+# Initialize job storage
+job_storage = JobStorage()
 
 app = FastAPI(title="Resume Crew API", version="0.1.0")
 
@@ -121,7 +134,7 @@ async def extract_keywords(payload: JobDescriptionRequest) -> Dict[str, Any]:
             payload.job_description,
         )
         return result
-    except Exception as exc:  # pragma: no cover - defensive guard
+    except Exception as exc:
         logger.exception("Keyword extraction failed")
         raise HTTPException(status_code=500, detail=f"Keyword extraction failed: {exc}") from exc
 
@@ -139,7 +152,7 @@ async def tailor_step(payload: TailorStepRequest) -> Dict[str, Any]:
             payload.feedback,
         )
         return result
-    except Exception as exc:  # pragma: no cover - defensive guard
+    except Exception as exc:
         logger.exception("Resume tailoring step failed")
         raise HTTPException(status_code=500, detail=f"Tailoring step failed: {exc}") from exc
 
@@ -157,9 +170,9 @@ async def evaluate_resume(payload: EvaluateRequest) -> Dict[str, Any]:
             payload.keywords,
         )
         return result
-    except Exception as exc:  # pragma: no cover - defensive guard
+    except Exception as exc:
         logger.exception("Resume evaluation failed")
-        raise HTTPException(status_code=500, detail=f"Resume evaluation failed: {exc}") from exc
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
 
 
 @app.post("/api/tailor")
@@ -191,7 +204,7 @@ async def run_full_process(payload: TailorRequest) -> StreamingResponse:
                 send_stream.send,
                 {"event": "error", "message": str(exc)},
             )
-        except Exception as exc:  # pragma: no cover - defensive guard
+        except Exception as exc:
             logger.exception("Full tailoring process failed")
             anyio.from_thread.run(
                 send_stream.send,
@@ -204,31 +217,307 @@ async def run_full_process(payload: TailorRequest) -> StreamingResponse:
     async def start_processing() -> None:
         await anyio.to_thread.run_sync(run_process)
 
-    async def event_stream():
-        processing_task = asyncio.create_task(start_processing())
-        try:
-            # Send an initial heartbeat chunk so the client sees the stream immediately
-            yield b"\n"
-            async with receive_stream:
-                async for event in receive_stream:
-                    try:
-                        payload_str = json.dumps(event, ensure_ascii=False)
-                    except TypeError as exc:
-                        logger.exception("Failed to serialise stream event")
-                        payload = {"event": "error", "message": f"Serialisation error: {exc}"}
-                        payload_str = json.dumps(payload, ensure_ascii=False)
-                    yield (payload_str + "\n").encode("utf-8")
-        except Exception as stream_exc:  # pragma: no cover - defensive guard
-            logger.exception("Stream failed")
-            payload_str = json.dumps({"event": "error", "message": f"Stream failure: {stream_exc}"}, ensure_ascii=False)
-            yield (payload_str + "\n").encode("utf-8")
-        finally:
-            if not processing_task.done():
-                processing_task.cancel()
-            with contextlib.suppress(Exception):
-                await processing_task
-
-    return StreamingResponse(event_stream(), media_type="application/x-ndjson")
+    async def event_stream():
+        processing_task = asyncio.create_task(start_processing())
+        try:
+            yield b"\n"
+            async with receive_stream:
+                async for event in receive_stream:
+                    try:
+                        payload_str = json.dumps(event, ensure_ascii=False)
+                    except TypeError as exc:
+                        logger.exception("Failed to serialise stream event")
+                        payload = {"event": "error", "message": f"Serialisation error: {exc}"}
+                        payload_str = json.dumps(payload, ensure_ascii=False)
+                    yield (payload_str + "\n").encode("utf-8")
+        except Exception as stream_exc:
+            logger.exception("Stream failed")
+            payload_str = json.dumps({"event": "error", "message": f"Stream failure: {stream_exc}"}, ensure_ascii=False)
+            yield (payload_str + "\n").encode("utf-8")
+        finally:
+            if not processing_task.done():
+                processing_task.cancel()
+            with contextlib.suppress(Exception):
+                await processing_task
+
+    return StreamingResponse(event_stream(), media_type="application/x-ndjson")
+
+
+# ============== JOB MANAGEMENT ENDPOINTS ==============
+
+class JobRequest(BaseModel):
+    url: str
+    company: Optional[str] = ""
+    notes: Optional[str] = ""
+
+    class Config:
+        extra = "forbid"
+
+
+class JobUpdateRequest(BaseModel):
+    status: Optional[str] = None
+    notes: Optional[str] = None
+    company: Optional[str] = None
+
+    class Config:
+        extra = "forbid"
+
+
+@app.get("/api/jobs")
+async def list_jobs() -> List[Dict[str, Any]]:
+    """Get all stored jobs."""
+    return job_storage.get_all_jobs()
+
+
+@app.post("/api/jobs")
+async def add_job(payload: JobRequest) -> Dict[str, Any]:
+    """Add a new job link."""
+    try:
+        job = job_storage.add_job(payload.url, payload.company or "", payload.notes or "")
+        return job
+    except Exception as exc:
+        logger.exception("Failed to add job")
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+
+@app.get("/api/jobs/{job_id}")
+async def get_job(job_id: str) -> Dict[str, Any]:
+    """Get a specific job by ID."""
+    job = job_storage.get_job_by_id(job_id)
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+    return job
+
+
+@app.patch("/api/jobs/{job_id}")
+async def update_job(job_id: str, payload: JobUpdateRequest) -> Dict[str, Any]:
+    """Update a job's fields."""
+    updates = {k: v for k, v in payload.dict().items() if v is not None}
+    job = job_storage.update_job(job_id, updates)
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+    return job
+
+
+@app.delete("/api/jobs/{job_id}")
+async def delete_job(job_id: str) -> Dict[str, str]:
+    """Delete a job."""
+    if job_storage.delete_job(job_id):
+        return {"status": "deleted"}
+    raise HTTPException(status_code=404, detail="Job not found")
+
+
+# ============== PDF GENERATION ENDPOINT ==============
+
+@app.get("/api/pdf/download")
+async def download_pdf():
+    """Generate PDF from LaTeX and return for download."""
+    import subprocess
+    from fastapi.responses import FileResponse
+
+    latex_dir = BASE_DIR / "docs" / "latex"
+    tex_file = latex_dir / "main.tex"
+
+    if not tex_file.exists():
+        raise HTTPException(status_code=404, detail="LaTeX file not found. Run tailoring first.")
+
+    try:
+        result = subprocess.run(
+            ["pdflatex", "-interaction=nonstopmode", "-output-directory", str(latex_dir), str(tex_file)],
+            capture_output=True,
+            text=True,
+            timeout=60,
+            cwd=str(latex_dir)
+        )
+
+        pdf_file = latex_dir / "main.pdf"
+        if not pdf_file.exists():
+            logger.error(f"pdflatex output: {result.stdout}\n{result.stderr}")
+            raise HTTPException(status_code=500, detail="PDF generation failed. Check LaTeX syntax.")
+
+        return FileResponse(
+            path=str(pdf_file),
+            media_type="application/pdf",
+            filename="resume.pdf"
+        )
+    except subprocess.TimeoutExpired:
+        raise HTTPException(status_code=500, detail="PDF generation timed out")
+    except FileNotFoundError:
+        raise HTTPException(status_code=500, detail="pdflatex not found. Install TeX distribution.")
+    except Exception as exc:
+        logger.exception("PDF generation failed")
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+
+# ============== ATS CHECK ENDPOINT ==============
+
+class ATSCheckRequest(BaseModel):
+    resume: str = Field(..., alias="resume")
+    job_description: str = Field(..., alias="jobDescription")
+
+    class Config:
+        populate_by_name = True
+        extra = "forbid"
+
+
+@app.post("/api/ats/check")
+async def ats_check(payload: ATSCheckRequest) -> Dict[str, Any]:
+    """Run ATS compatibility check on resume against job description."""
+    extractor = KeywordExtractor()
+    evaluator = ResumeEvaluator()
+
+    try:
+        keywords = await anyio.to_thread.run_sync(
+            extractor.extract_keywords,
+            payload.job_description
+        )
+
+        evaluation = await anyio.to_thread.run_sync(
+            evaluator.evaluate_resume,
+            payload.job_description,
+            payload.resume,
+            keywords
+        )
+
+        return {
+            "keywords": keywords,
+            "evaluation": evaluation,
+            "score": evaluation.get("score", 0),
+            "status": "complete"
+        }
+    except Exception as exc:
+        logger.exception("ATS check failed")
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+
+# ============== APPLICATION AUTOMATION ENDPOINT ==============
+
+class ApplyRequest(BaseModel):
+    job_id: str
+
+    class Config:
+        extra = "forbid"
+
+
+def _create_apply_stream(job: Dict[str, Any]) -> StreamingResponse:
+    """Create a streaming response for the full auto-apply pipeline."""
+    send_stream, receive_stream = anyio.create_memory_object_stream(50)
+
+    async def run_application():
+        try:
+            browser = BrowserEngine()
+            vision = VisionAnalyzer()
+            code_gen = CodeGenerator()
+            form_filler = FormFiller()
+            healer = SelfHealer(browser, vision, code_gen)
+
+            job_storage.update_job(job['id'], {"status": "in_progress"})
+
+            await send_stream.send(
+                {"event": "started", "job_id": job['id'], "url": job['url']}
+            )
+
+            async def _async_send(event_data):
+                await send_stream.send(event_data)
+
+            def detailed_progress(event_data: Dict[str, Any]) -> None:
+                """Send structured event. Works from both async and sync contexts."""
+                try:
+                    # Try async path first (from within event loop)
+                    loop = asyncio.get_running_loop()
+                    asyncio.ensure_future(_async_send(event_data), loop=loop)
+                except RuntimeError:
+                    # We're in a worker thread (e.g. tailoring callback)
+                    try:
+                        anyio.from_thread.run(send_stream.send, event_data)
+                    except RuntimeError:
+                        pass
+
+            def progress_callback(message: str) -> None:
+                detailed_progress({"event": "progress", "message": message})
+
+            state = await healer.run_full_application(
+                job_url=job['url'],
+                job_id=job['id'],
+                company=job.get('company', ''),
+                form_filler=form_filler,
+                on_progress=progress_callback,
+                on_detailed_progress=detailed_progress,
+            )
+
+            if state.success:
+                job_storage.mark_applied(job['id'])
+                await send_stream.send(
+                    {"event": "complete", "success": True, "message": "Application submitted successfully"}
+                )
+            else:
+                job_storage.mark_failed(job['id'], "; ".join(state.errors[-3:]))
+                await send_stream.send(
+                    {"event": "complete", "success": False, "errors": state.errors}
+                )
+        except Exception as exc:
+            logger.exception("Application automation failed")
+            job_storage.mark_failed(job['id'], str(exc))
+            await send_stream.send(
+                {"event": "error", "message": str(exc)}
+            )
+        finally:
+            with contextlib.suppress(Exception):
+                await send_stream.aclose()
+
+    async def event_stream():
+        task = asyncio.create_task(run_application())
+        try:
+            async with receive_stream:
+                async for event in receive_stream:
+                    yield (json.dumps(event) + "\n").encode("utf-8")
+        finally:
+            if not task.done():
+                task.cancel()
+            with contextlib.suppress(Exception):
+                await task
+
+    return StreamingResponse(event_stream(), media_type="application/x-ndjson")
+
+
+@app.post("/api/apply/start")
+async def start_application(payload: ApplyRequest) -> StreamingResponse:
+    """Start automated job application process for an existing job."""
+    job = job_storage.get_job_by_id(payload.job_id)
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+
+    # Verify at least one resume source exists (txt or LaTeX)
+    resume_txt = BASE_DIR / "data" / "resume.txt"
+    resume_tex = BASE_DIR / "docs" / "latex" / "main.tex"
+    if not (resume_txt.exists() and resume_txt.stat().st_size > 0) and not resume_tex.exists():
+        raise HTTPException(
+            status_code=400,
+            detail="No resume found. Place resume at data/resume.txt or ensure docs/latex/main.tex exists.",
+        )
+
+    return _create_apply_stream(job)
+
+
+@app.post("/api/jobs/add-and-apply")
+async def add_and_apply(payload: JobRequest) -> StreamingResponse:
+    """Add a new job and immediately start the full auto-apply pipeline."""
+    # Verify at least one resume source exists (txt or LaTeX)
+    resume_txt = BASE_DIR / "data" / "resume.txt"
+    resume_tex = BASE_DIR / "docs" / "latex" / "main.tex"
+    if not (resume_txt.exists() and resume_txt.stat().st_size > 0) and not resume_tex.exists():
+        raise HTTPException(
+            status_code=400,
+            detail="No resume found. Place resume at data/resume.txt or ensure docs/latex/main.tex exists.",
+        )
+
+    try:
+        job = job_storage.add_job(payload.url, payload.company or "", payload.notes or "")
+    except Exception as exc:
+        logger.exception("Failed to add job")
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+    return _create_apply_stream(job)
 
 
 def start() -> None:

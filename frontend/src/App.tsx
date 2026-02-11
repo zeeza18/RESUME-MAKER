@@ -5,9 +5,12 @@ import KeywordBoard from './components/KeywordBoard';
 import EvaluationTimeline from './components/EvaluationTimeline';
 import ResumePreview from './components/ResumePreview';
 import Loader from './components/Loader';
+import JobTracker from './components/JobTracker';
 import { TailorResponse, ApiError, TailorStreamEvent } from './types';
 import { countWords } from './utils';
 import './App.css';
+
+type AppTab = 'tailor' | 'jobs';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000';
 
@@ -22,6 +25,7 @@ const createInitialResult = (jobDescription: string, currentResume: string): Tai
 });
 
 const App = () => {
+  const [activeTab, setActiveTab] = useState<AppTab>('tailor');
   const [jobDescription, setJobDescription] = useState('');
   const [currentResume, setCurrentResume] = useState('');
   const [loading, setLoading] = useState(false);
@@ -194,72 +198,101 @@ const App = () => {
   return (
     <div className="app">
       <header className="app__hero">
-        <div>
-          <p className="app__eyebrow">Resume Crew</p>
-          <h1>Tailor your resume with three AI-powered passes</h1>
+        <div className="app__hero-content">
+          <span className="app__eyebrow">Resume Crew</span>
+          <h1>AI-Powered Resume Tailoring</h1>
           <p className="app__subtitle">
-            Paste a job description and your resume. The backend runs keyword extraction, tailoring, and iterative evaluation before delivering a polished final resume.
+            Paste your job description and resume. Our AI extracts keywords, tailors your resume through multiple rounds, and delivers a polished final version.
           </p>
         </div>
         <div className="app__cta">
-          <button type="button" onClick={resetForm}>Reset</button>
+          <button type="button" onClick={resetForm}>
+            Start Over
+          </button>
         </div>
       </header>
 
+      <nav className="app__tabs">
+        <button
+          className={`app__tab ${activeTab === 'tailor' ? 'app__tab--active' : ''}`}
+          onClick={() => setActiveTab('tailor')}
+        >
+          Tailor Resume
+        </button>
+        <button
+          className={`app__tab ${activeTab === 'jobs' ? 'app__tab--active' : ''}`}
+          onClick={() => setActiveTab('jobs')}
+        >
+          Job Tracker
+        </button>
+      </nav>
+
       <main>
-        <form className="app__grid" onSubmit={handleSubmit}>
-          <TextPanel
-            label="Job Description"
-            placeholder="Paste the job description here"
-            value={jobDescription}
-            onChange={setJobDescription}
-          />
-          <TextPanel
-            label="Current Resume"
-            placeholder="Paste your current resume here"
-            value={currentResume}
-            onChange={setCurrentResume}
-          />
+        {activeTab === 'tailor' && (
+          <>
+            <form className="app__grid" onSubmit={handleSubmit}>
+              <TextPanel
+                label="Job Description"
+                placeholder="Paste the job description here..."
+                value={jobDescription}
+                onChange={setJobDescription}
+              />
+              <TextPanel
+                label="Your Resume"
+                placeholder="Paste your current resume here..."
+                value={currentResume}
+                onChange={setCurrentResume}
+              />
 
-          <div className="app__actions">
-            <div>
-              <span>{jobWordCount} JD words</span>
-              <span>{resumeWordCount} resume words</span>
-            </div>
-            <button type="submit" disabled={loading || jobWordCount < 50 || resumeWordCount < 50}>
-              {loading ? 'Processing...' : 'Tailor Resume'}
-            </button>
-          </div>
-        </form>
+              <div className="app__actions">
+                <div className="app__word-counts">
+                  <span className="app__word-count">
+                    <strong>{jobWordCount}</strong> JD words
+                  </span>
+                  <span className="app__word-count">
+                    <strong>{resumeWordCount}</strong> resume words
+                  </span>
+                </div>
+                <button type="submit" disabled={loading || jobWordCount < 50 || resumeWordCount < 50}>
+                  {loading ? 'Processing...' : 'Tailor Resume'}
+                </button>
+              </div>
+            </form>
 
-        {error && <p className="app__error">{error}</p>}
+            {error && <p className="app__error">{error}</p>}
 
-        {loading && <Loader />}
+            {loading && <Loader />}
 
-        {result && (
-          <section className="app__results">
-            <SummaryCards
-              finalScore={result.final_score}
-              jobWordCount={countWords(result.job_description)}
-              resumeWordCount={countWords(result.final_resume)}
-              status={result.status}
-              roundsCompleted={result.all_evaluations?.length ?? 0}
-            />
+            {result && (
+              <section className="app__results">
+                <SummaryCards
+                  finalScore={result.final_score}
+                  jobWordCount={countWords(result.job_description)}
+                  resumeWordCount={countWords(result.final_resume)}
+                  status={result.status}
+                  roundsCompleted={result.all_evaluations?.length ?? 0}
+                />
 
-            <div className="app__section">
-              <h2>Keyword Coverage</h2>
-              <KeywordBoard data={result.keyword_analysis} />
-            </div>
+                <div className="app__section">
+                  <h2>Keyword Analysis</h2>
+                  <KeywordBoard data={result.keyword_analysis} />
+                </div>
 
-            <div className="app__section">
-              <h2>Evaluation Timeline</h2>
-              <EvaluationTimeline evaluations={result.all_evaluations} />
-            </div>
+                <div className="app__section">
+                  <h2>Evaluation Rounds</h2>
+                  <EvaluationTimeline evaluations={result.all_evaluations} />
+                </div>
 
-            <div className="app__section">
-              <ResumePreview original={result.original_resume} tailored={result.final_resume} />
-            </div>
-          </section>
+                <div className="app__section">
+                  <ResumePreview original={result.original_resume} tailored={result.final_resume} jobDescription={result.job_description} />
+                </div>
+              </section>
+            )}
+          </>
+        )}
+
+        {activeTab === 'jobs' && (
+          <JobTracker />
         )}
       </main>
     </div>
@@ -267,7 +300,3 @@ const App = () => {
 };
 
 export default App;
-
-
-
-

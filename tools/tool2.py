@@ -1,26 +1,27 @@
 #!/usr/bin/env python3
 """
 Tool 2: Resume Tailor
-Uses OpenAI GPT to tailor resume based on JD keywords and feedback
+Uses Claude API to tailor resume based on JD keywords and feedback
 """
 
 import os
 from pathlib import Path
-import openai
+import anthropic
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
 
 class ResumeTailor:
-    """Tailor resume based on JD keywords using OpenAI"""
-    
+    """Tailor resume based on JD keywords using Claude"""
+
     def __init__(self):
-        """Initialize OpenAI client"""
-        self.client = openai.OpenAI(
-            api_key=os.getenv('OPENAI_API_KEY')
+        """Initialize Claude client"""
+        self.client = anthropic.Anthropic(
+            api_key=os.getenv('CLAUDE_API_KEY')
         )
-        
+        self.model = "claude-opus-4-5-20251101"  # Best Claude model
+
         self.prompts = {
             'round1': self._load_prompt('tool2_prompt.txt'),
             'evaluation': self._load_prompt('tool2_eval_prompt.txt')
@@ -45,8 +46,8 @@ class ResumeTailor:
             dict: Contains tailored resume and change log
         """
         
-        print("🎨 Tailoring Resume with OpenAI...")
-        
+        print("🎨 Tailoring Resume with Claude Opus 4.5...")
+
         # Prepare the user message with full context for this round
         round_label = f"Round {round_number}" if round_number else "Current Round"
         previous_round_label = "original submission" if not round_number or round_number <= 1 else f"Round {round_number - 1} output"
@@ -77,20 +78,19 @@ class ResumeTailor:
         system_prompt = self.prompts[prompt_key]
 
         try:
-            # Make API call to OpenAI
-            response = self.client.chat.completions.create(
-                model="gpt-4o",  # You can change to gpt-4-turbo or other models
+            # Make API call to Claude
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=3000,
+                system=system_prompt,
                 messages=[
-                    {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_message}
-                ],
-                max_tokens=3000,  # Increased for full resume output
-                temperature=0.2 # Lower temperature for more consistent results
+                ]
             )
-            
+
             # Extract the response
-            tailored_content = response.choices[0].message.content
-            
+            tailored_content = response.content[0].text
+
             print("✅ Resume tailoring complete!")
             
             # Parse the response to separate resume and change log
@@ -99,7 +99,7 @@ class ResumeTailor:
             return parsed_result
             
         except Exception as e:
-            print(f"❌ Error calling OpenAI for resume tailoring: {e}")
+            print(f"❌ Error calling Claude for resume tailoring: {e}")
             # Return fallback result
             return {
                 "tailored_resume": original_resume,  # Return original if error

@@ -70,7 +70,7 @@ class ResumeCrew:
         2. Iterate 3 times: Tool 2 (tailor) → Tool 3 (evaluate) → feedback → repeat
         """
         
-        print("🎯 PHASE 1: Keyword Extraction with OpenAI (Tool 1)")
+        print("🎯 PHASE 1: Keyword Extraction with Claude Opus 4.5 (Tool 1)")
         print("=" * 60)
         
         # TOOL 1: Extract keywords from job description (run once)
@@ -267,16 +267,19 @@ class ResumeCrew:
             latex_summary["raw_response_length"] = len(latex_result.get("raw_response", ""))
 
             if latex_document:
-                project_root = Path(__file__).resolve().parent
-                main_tex_path = project_root / "main.tex"
+                project_root = Path(__file__).resolve().parent.parent  # Go up to RESUME-MAKER root
+                docs_latex_path = project_root / "docs" / "latex" / "main.tex"
                 output_tex_path = project_root / "output" / "final_tailored_resume.tex"
 
-                self.latex_formatter.save_latex(latex_document, main_tex_path, create_backup=True)
+                # Ensure docs/latex directory exists
+                docs_latex_path.parent.mkdir(parents=True, exist_ok=True)
+
+                self.latex_formatter.save_latex(latex_document, docs_latex_path, create_backup=True)
                 self.latex_formatter.save_latex(latex_document, output_tex_path, create_backup=False)
 
                 latex_summary.update({
                     "status": "success",
-                    "main_tex_path": str(main_tex_path),
+                    "main_tex_path": str(docs_latex_path),
                     "output_tex_path": str(output_tex_path),
                     "latex_length": len(latex_document.split())
                 })
@@ -331,10 +334,10 @@ class ResumeCrew:
         print("   - evaluation_round_3.txt - Round 3 evaluation")
         print("   - final_tailored_resume.txt - Best final resume")
         if latex_summary.get("status") == "success":
-            print("   - main.tex - Updated LaTeX resume ready for compilation")
-            print("   - output\\final_tailored_resume.tex - LaTeX export copy")
+            print(f"   - docs/latex/main.tex - LaTeX resume from best round (Round {best_round})")
+            print("   - output/final_tailored_resume.tex - LaTeX export copy")
         else:
-            print("   - main.tex - Not updated (Tool 4 encountered an issue)")
+            print("   - docs/latex/main.tex - Not updated (Tool 4 encountered an issue)")
         print("   - process_summary.txt - Complete summary report")
         print("   - process_log.json - Detailed process log")
         

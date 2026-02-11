@@ -1,26 +1,160 @@
-﻿:root {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  line-height: 1.5;
+:root {
+  /* Typography */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
   font-weight: 400;
-  color: #0f172a;
-  background-color: #f1f5f9;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Color System - Light Theme with Color Accents */
+  --color-bg: #f0f4ff;
+  --color-bg-subtle: #e8eeff;
+  --color-bg-gradient: linear-gradient(135deg, #f0f4ff 0%, #e0f2fe 50%, #fce7f3 100%);
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+
+  --color-text: #1e293b;
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+
+  --color-border: #cbd5e1;
+  --color-border-subtle: #e2e8f0;
+
+  /* Primary - Blue */
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-primary-light: #60a5fa;
+  --color-primary-subtle: #dbeafe;
+  --color-primary-bg: #eff6ff;
+
+  /* Success - Emerald */
+  --color-success: #10b981;
+  --color-success-light: #34d399;
+  --color-success-subtle: #d1fae5;
+  --color-success-bg: #ecfdf5;
+
+  /* Warning - Amber */
+  --color-warning: #f59e0b;
+  --color-warning-light: #fbbf24;
+  --color-warning-subtle: #fef3c7;
+  --color-warning-bg: #fffbeb;
+
+  /* Error - Rose */
+  --color-error: #ef4444;
+  --color-error-light: #f87171;
+  --color-error-subtle: #fee2e2;
+  --color-error-bg: #fef2f2;
+
+  /* Accent - Violet */
+  --color-accent: #8b5cf6;
+  --color-accent-light: #a78bfa;
+  --color-accent-subtle: #ede9fe;
+  --color-accent-bg: #f5f3ff;
+
+  /* Secondary Accents */
+  --color-cyan: #06b6d4;
+  --color-cyan-subtle: #cffafe;
+  --color-pink: #ec4899;
+  --color-pink-subtle: #fce7f3;
+  --color-indigo: #6366f1;
+  --color-indigo-subtle: #e0e7ff;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+  --shadow-colored: 0 4px 14px rgba(59, 130, 246, 0.15);
+  --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.15);
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Semantic spacing aliases */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f1f5f9 0%, #c7d2fe 45%, #d4f1f4 100%);
+  background: var(--color-bg-gradient);
+  background-attachment: fixed;
 }
 
 a {
-  color: inherit;
+  color: var(--color-primary);
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 button {
   font-family: inherit;
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-subtle);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-primary-light), var(--color-accent));
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
 }

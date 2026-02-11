@@ -1,26 +1,27 @@
 #!/usr/bin/env python3
 """
 Tool 1: Keyword Extractor
-Uses OpenAI GPT to extract keywords, needs, and results from Job Description
+Uses Claude API to extract keywords, needs, and results from Job Description
 """
 
 import os
 from pathlib import Path
-import openai
+import anthropic
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
 
 class KeywordExtractor:
-    """Extract keywords from Job Description using OpenAI"""
-    
+    """Extract keywords from Job Description using Claude"""
+
     def __init__(self):
-        """Initialize OpenAI client"""
-        self.client = openai.OpenAI(
-            api_key=os.getenv('OPENAI_API_KEY')
+        """Initialize Claude client"""
+        self.client = anthropic.Anthropic(
+            api_key=os.getenv('CLAUDE_API_KEY')
         )
-        
+        self.model = "claude-opus-4-5-20251101"  # Best Claude model
+
         self.system_prompt = self._load_prompt('tool1_prompt.txt')
 
     def _load_prompt(self, filename: str) -> str:
@@ -34,33 +35,32 @@ class KeywordExtractor:
     
     def extract_keywords(self, job_description):
         """
-        Extract keywords from job description using OpenAI
-        
+        Extract keywords from job description using Claude
+
         Args:
             job_description (str): The job description text
-            
+
         Returns:
             dict: Contains keywords, needs, and results
         """
-        
-        print("🤖 Analyzing Job Description with OpenAI...")
-        
+
+        print("🤖 Analyzing Job Description with Claude Opus 4.5...")
+
         try:
-            # Make API call to OpenAI
-            response = self.client.chat.completions.create(
-                model="gpt-4o",  # You can change to gpt-4-turbo or other models
-                messages=[
-                    {"role": "system", "content": self.system_prompt},
-                    {"role": "user", "content": f"Please analyze this Job Description:\n\n{job_description}"}
-                ],
+            # Make API call to Claude
+            response = self.client.messages.create(
+                model=self.model,
                 max_tokens=2000,
-                temperature=0.3  # Lower temperature for more consistent results
+                system=self.system_prompt,
+                messages=[
+                    {"role": "user", "content": f"Please analyze this Job Description:\n\n{job_description}"}
+                ]
             )
-            
+
             # Extract the response
-            analysis = response.choices[0].message.content
-            
-            print("✅ OpenAI analysis complete!")
+            analysis = response.content[0].text
+
+            print("✅ Claude analysis complete!")
             
             # Parse the response (you might want to improve this parsing)
             parsed_result = self._parse_openai_response(analysis)
@@ -68,11 +68,11 @@ class KeywordExtractor:
             return parsed_result
             
         except Exception as e:
-            print(f"❌ Error calling OpenAI: {e}")
+            print(f"❌ Error calling Claude: {e}")
             # Return fallback result
             return {
                 "keywords": ["Error occurred during keyword extraction"],
-                "needs": ["Please check OpenAI API key and connection"],
+                "needs": ["Please check Claude API key and connection"],
                 "results": ["Manual keyword extraction may be needed"],
                 "raw_analysis": f"Error: {str(e)}"
             }
@@ -131,7 +131,7 @@ class KeywordExtractor:
                 result['results'] = ["Manual parsing needed"]
             
         except Exception as e:
-            print(f"⚠️  Warning: Could not parse OpenAI response - {e}")
+            print(f"⚠️  Warning: Could not parse Claude response - {e}")
             # Fallback: use the raw response as keywords
             result['keywords'] = [analysis[:200]]  # First 200 chars as single keyword
             result['needs'] = ["Parsing error occurred"]

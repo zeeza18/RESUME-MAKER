@@ -11,10 +11,10 @@ from pathlib import Path
 from typing import Optional, Dict
 import re
 
-import openai
+import anthropic
 from dotenv import load_dotenv
 
-# Load environment variables so OPENAI_API_KEY is available
+# Load environment variables so CLAUDE_API_KEY is available
 load_dotenv()
 
 
@@ -22,11 +22,12 @@ class LatexResumeFormatter:
     """Generate a LaTeX resume document from the finalized tailored resume."""
 
     def __init__(self) -> None:
-        api_key = os.getenv("OPENAI_API_KEY")
+        api_key = os.getenv("CLAUDE_API_KEY")
         if not api_key:
-            raise ValueError("OPENAI_API_KEY environment variable is not set")
+            raise ValueError("CLAUDE_API_KEY environment variable is not set")
 
-        self.client = openai.OpenAI(api_key=api_key)
+        self.client = anthropic.Anthropic(api_key=api_key)
+        self.model = "claude-opus-4-5-20251101"  # Best Claude model
         self.system_prompt = self._load_prompt("tool4_prompt.txt")
 
         # Preload template example so we can reference it without re-reading on every call
@@ -45,15 +46,22 @@ class LatexResumeFormatter:
 
     def _load_template_example(self) -> Optional[str]:
         """
-        Load the current LaTeX template from main.tex so Tool 4 can mirror the structure.
-        Returns None if the file is missing; Tool 4 prompt already embeds the template skeleton.
+        Load the current LaTeX template from docs/latex/main.tex so Tool 4 can mirror the structure.
+        Falls back to backup template if main.tex doesn't exist.
+        Returns None if no template is found; Tool 4 prompt already embeds the template skeleton.
         """
-        template_path = Path(__file__).resolve().parent.parent / "main.tex"
-        if template_path.exists():
-            try:
-                return template_path.read_text(encoding="utf-8")
-            except Exception:
-                return None
+        project_root = Path(__file__).resolve().parent.parent
+        template_paths = [
+            project_root / "docs" / "latex" / "main.tex",
+            project_root / "backup" / "main_20251015_152107.tex",
+            project_root / "scripts" / "main.tex",
+        ]
+        for template_path in template_paths:
+            if template_path.exists():
+                try:
+                    return template_path.read_text(encoding="utf-8")
+                except Exception:
+                    continue
         return None
 
     def format_to_latex(self, final_resume: str, template_hint: Optional[str] = None) -> Dict[str, str]:
@@ -79,22 +87,21 @@ class LatexResumeFormatter:
             f"{user_template.strip()}"
         )
 
-        print("Generating LaTeX resume with OpenAI (Tool 4)...")
+        print("Generating LaTeX resume with Claude Opus 4.5 (Tool 4)...")
 
         raw_content = ""
 
         try:
-            response = self.client.chat.completions.create(
-                model="gpt-4o",
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=4000,
+                system=self.system_prompt,
                 messages=[
-                    {"role": "system", "content": self.system_prompt},
                     {"role": "user", "content": user_message},
                 ],
-                max_tokens=4000,
-                temperature=0.1,
             )
 
-            raw_content = response.choices[0].message.content or ""
+            raw_content = response.content[0].text or ""
             latex_doc = self._extract_latex_source(raw_content)
             print("LaTeX resume generation complete.")
 
@@ -110,7 +117,7 @@ class LatexResumeFormatter:
             }
 
         except Exception as exc:
-            print(f"Error calling OpenAI for LaTeX formatting: {exc}")
+            print(f"Error calling Claude for LaTeX formatting: {exc}")
             return {
                 "latex_document": "",
                 "raw_response": raw_content or f"Error: {str(exc)}",

@@ -1,44 +1,129 @@
-﻿.summary-cards {
+.summary-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
 }
 
 .summary-cards__item {
-  border-radius: 18px;
-  padding: 18px 20px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.1);
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-3);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
 }
 
-.summary-cards__item span {
-  font-size: 0.85rem;
-  color: #64748b;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
+.summary-cards__item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
 }
 
-.summary-cards__item strong {
-  font-size: 1.6rem;
-  color: #0f172a;
+.summary-cards__item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
+/* Score Card - Blue */
 .summary-cards__item.score {
-  border: 1px solid rgba(59, 130, 246, 0.25);
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-color: var(--color-primary-subtle);
 }
 
+.summary-cards__item.score::before {
+  background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%);
+}
+
+.summary-cards__item.score .summary-cards__value {
+  color: var(--color-primary);
+}
+
+/* JD Card - Green */
 .summary-cards__item.jd {
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border-color: var(--color-success-subtle);
 }
 
+.summary-cards__item.jd::before {
+  background: linear-gradient(90deg, #10b981 0%, #14b8a6 100%);
+}
+
+.summary-cards__item.jd .summary-cards__value {
+  color: var(--color-success);
+}
+
+/* Resume Card - Purple */
 .summary-cards__item.resume {
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  border-color: var(--color-accent-subtle);
 }
 
+.summary-cards__item.resume::before {
+  background: linear-gradient(90deg, #8b5cf6 0%, #a855f7 100%);
+}
+
+.summary-cards__item.resume .summary-cards__value {
+  color: var(--color-accent);
+}
+
+/* Status Card - Amber/Pink */
 .summary-cards__item.status {
-  border: 1px solid rgba(239, 68, 68, 0.25);
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border-color: var(--color-warning-subtle);
+}
+
+.summary-cards__item.status::before {
+  background: linear-gradient(90deg, #f59e0b 0%, #ec4899 100%);
+}
+
+.summary-cards__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.summary-cards__label-icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.summary-cards__item.score .summary-cards__label-icon {
+  background: var(--color-primary);
+}
+
+.summary-cards__item.jd .summary-cards__label-icon {
+  background: var(--color-success);
+}
+
+.summary-cards__item.resume .summary-cards__label-icon {
+  background: var(--color-accent);
+}
+
+.summary-cards__item.status .summary-cards__label-icon {
+  background: var(--color-warning);
+}
+
+.summary-cards__value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.summary-cards__item.status .summary-cards__value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
 }

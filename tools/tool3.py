@@ -8,22 +8,23 @@ from pathlib import Path
 import re
 from typing import Dict, List
 
-import openai
+import anthropic
 from dotenv import load_dotenv
 
 load_dotenv()
 
 
 class ResumeEvaluator:
-    """Evaluate tailored resume against JD requirements using OpenAI"""
-    
-    def __init__(self) -> None:
-        api_key = os.getenv("OPENAI_API_KEY")
-        if not api_key:
-            raise ValueError("OPENAI_API_KEY environment variable is not set")
+    """Evaluate tailored resume against JD requirements using Claude"""
 
-        self.client = openai.OpenAI(api_key=api_key)
-        
+    def __init__(self) -> None:
+        api_key = os.getenv("CLAUDE_API_KEY")
+        if not api_key:
+            raise ValueError("CLAUDE_API_KEY environment variable is not set")
+
+        self.client = anthropic.Anthropic(api_key=api_key)
+        self.model = "claude-opus-4-5-20251101"  # Best Claude model
+
         self.system_prompt = self._load_prompt('tool3_prompt.txt')
 
     def _load_prompt(self, filename: str) -> str:
@@ -41,9 +42,9 @@ class ResumeEvaluator:
         tailored_resume: str,
         keywords: Dict[str, List[str]],
     ) -> Dict[str, object]:
-        """Call OpenAI to evaluate the resume and return structured result"""
+        """Call Claude to evaluate the resume and return structured result"""
 
-        print("Evaluating resume with OpenAI...")
+        print("Evaluating resume with Claude Opus 4.5...")
 
         user_message = f"""Please evaluate this tailored resume against the job description:
 
@@ -61,22 +62,21 @@ Results: {', '.join(keywords.get('results', []))}
 Please provide a comprehensive evaluation with specific feedback for improvement."""
 
         try:
-            response = self.client.chat.completions.create(
-                model="gpt-4o",
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=2500,
+                system=self.system_prompt,
                 messages=[
-                    {"role": "system", "content": self.system_prompt},
                     {"role": "user", "content": user_message},
                 ],
-                max_tokens=2500,
-                temperature=0.3,
             )
-            
-            evaluation_content = response.choices[0].message.content
+
+            evaluation_content = response.content[0].text
             print("Resume evaluation complete.")
             return self._parse_evaluation_response(evaluation_content)
             
         except Exception as exc:
-            print(f"Error calling OpenAI for resume evaluation: {exc}")
+            print(f"Error calling Claude for resume evaluation: {exc}")
             return {
                 "score": 0,
                 "keyword_analysis": {"found": [], "missing": [], "weak": []},
@@ -84,7 +84,7 @@ Please provide a comprehensive evaluation with specific feedback for improvement
                 "ats_optimization": "Could not evaluate due to error",
                 "requirements_check": {"met": [], "missing": [], "partial": []},
                 "feedback": f"Evaluation failed due to error: {str(exc)}",
-                "recommendations": ["Please check OpenAI API connection and try again"],
+                "recommendations": ["Please check Claude API connection and try again"],
                 "raw_evaluation": f"Error: {str(exc)}"
             }
 

@@ -12,27 +12,27 @@ const SummaryCards = ({ finalScore, jobWordCount, resumeWordCount, status, round
   const normalizedStatus = status.replace(/_/g, ' ').trim() || 'Processing';
   const progressLabel =
     typeof roundsCompleted === 'number' && roundsCompleted > 0
-      ? `Round ${roundsCompleted} Complete`
+      ? `Round ${roundsCompleted} of 3`
       : normalizedStatus;
 
   const cards = [
     {
-      title: 'Final Score',
+      label: 'Final Score',
       value: typeof finalScore === 'number' ? `${finalScore}/100` : 'N/A',
       accent: 'score'
     },
     {
-      title: 'JD Words Captured',
-      value: jobWordCount,
+      label: 'JD Words',
+      value: jobWordCount.toLocaleString(),
       accent: 'jd'
     },
     {
-      title: 'Resume Words',
-      value: resumeWordCount,
+      label: 'Resume Words',
+      value: resumeWordCount.toLocaleString(),
       accent: 'resume'
     },
     {
-      title: 'Status',
+      label: 'Progress',
       value: progressLabel,
       accent: 'status'
     }
@@ -41,9 +41,12 @@ const SummaryCards = ({ finalScore, jobWordCount, resumeWordCount, status, round
   return (
     <div className="summary-cards">
       {cards.map((card) => (
-        <div key={card.title} className={`summary-cards__item ${card.accent}`}>
-          <span>{card.title}</span>
-          <strong>{card.value}</strong>
+        <div key={card.label} className={`summary-cards__item ${card.accent}`}>
+          <span className="summary-cards__label">
+            <span className="summary-cards__label-icon" />
+            {card.label}
+          </span>
+          <span className="summary-cards__value">{card.value}</span>
         </div>
       ))}
     </div>
@@ -51,7 +54,3 @@ const SummaryCards = ({ finalScore, jobWordCount, resumeWordCount, status, round
 };
 
 export default SummaryCards;
-
-
-
-
