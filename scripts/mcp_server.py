@@ -321,6 +321,32 @@ async def download_pdf():
     if not tex_file.exists():
         raise HTTPException(status_code=404, detail="LaTeX file not found. Run tailoring first.")
 
+    # Extract company name from keyword analysis - SIMPLIFIED
+    company_name = "UNKNOWN_COMPANY"
+    keyword_analysis_path = BASE_DIR / "output" / "keyword_analysis.txt"
+    if keyword_analysis_path.exists():
+        try:
+            with open(keyword_analysis_path, 'r', encoding='utf-8') as f:
+                lines = f.readlines()
+                # Simple approach: find line with "COMPANY NAME" and get next non-empty line
+                for i, line in enumerate(lines):
+                    if 'COMPANY NAME' in line.upper():
+                        # Look at next few lines for the actual company name
+                        for j in range(i+1, min(i+5, len(lines))):
+                            candidate = lines[j].strip()
+                            # Company name should be UPPERCASE with underscores, not start with special chars
+                            if (candidate and
+                                not candidate.startswith(('#', '-', '=', '*', '(')) and
+                                ('_' in candidate or candidate.isupper()) and
+                                len(candidate) > 2):
+                                company_name = candidate.replace('*', '').strip()
+                                logger.info(f"Extracted company name: {company_name}")
+                                break
+                        break
+        except Exception as e:
+            logger.warning(f"Could not extract company name: {e}")
+            pass  # Use default if extraction fails
+
     try:
         result = subprocess.run(
             ["pdflatex", "-interaction=nonstopmode", "-output-directory", str(latex_dir), str(tex_file)],
@@ -335,10 +361,16 @@ async def download_pdf():
             logger.error(f"pdflatex output: {result.stdout}\n{result.stderr}")
             raise HTTPException(status_code=500, detail="PDF generation failed. Check LaTeX syntax.")
 
+        # Format filename as MOHAMMED_AZEEZULLA_COMPANYNAME.pdf
+        pdf_filename = f"MOHAMMED_AZEEZULLA_{company_name}.pdf"
+
         return FileResponse(
             path=str(pdf_file),
             media_type="application/pdf",
-            filename="resume.pdf"
+            filename=pdf_filename,
+            headers={
+                "Content-Disposition": f'attachment; filename="{pdf_filename}"'
+            }
         )
     except subprocess.TimeoutExpired:
         raise HTTPException(status_code=500, detail="PDF generation timed out")

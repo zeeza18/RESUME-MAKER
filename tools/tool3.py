@@ -8,22 +8,22 @@ from pathlib import Path
 import re
 from typing import Dict, List
 
-import anthropic
+from openai import OpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
 
 
 class ResumeEvaluator:
-    """Evaluate tailored resume against JD requirements using Claude"""
+    """Evaluate tailored resume against JD requirements using OpenAI"""
 
     def __init__(self) -> None:
-        api_key = os.getenv("CLAUDE_API_KEY")
+        api_key = os.getenv("OPENAI_API_KEY")
         if not api_key:
-            raise ValueError("CLAUDE_API_KEY environment variable is not set")
+            raise ValueError("OPENAI_API_KEY environment variable is not set")
 
-        self.client = anthropic.Anthropic(api_key=api_key)
-        self.model = "claude-opus-4-5-20251101"  # Best Claude model
+        self.client = OpenAI(api_key=api_key)
+        self.model = "gpt-4o"  # Best OpenAI model
 
         self.system_prompt = self._load_prompt('tool3_prompt.txt')
 
@@ -42,9 +42,9 @@ class ResumeEvaluator:
         tailored_resume: str,
         keywords: Dict[str, List[str]],
     ) -> Dict[str, object]:
-        """Call Claude to evaluate the resume and return structured result"""
+        """Call OpenAI to evaluate the resume and return structured result"""
 
-        print("Evaluating resume with Claude Opus 4.5...")
+        print("Evaluating resume with GPT-4o...")
 
         user_message = f"""Please evaluate this tailored resume against the job description:
 
@@ -62,21 +62,21 @@ Results: {', '.join(keywords.get('results', []))}
 Please provide a comprehensive evaluation with specific feedback for improvement."""
 
         try:
-            response = self.client.messages.create(
+            response = self.client.chat.completions.create(
                 model=self.model,
                 max_tokens=2500,
-                system=self.system_prompt,
                 messages=[
+                    {"role": "system", "content": self.system_prompt},
                     {"role": "user", "content": user_message},
                 ],
             )
 
-            evaluation_content = response.content[0].text
+            evaluation_content = response.choices[0].message.content
             print("Resume evaluation complete.")
             return self._parse_evaluation_response(evaluation_content)
-            
+
         except Exception as exc:
-            print(f"Error calling Claude for resume evaluation: {exc}")
+            print(f"Error calling OpenAI for resume evaluation: {exc}")
             return {
                 "score": 0,
                 "keyword_analysis": {"found": [], "missing": [], "weak": []},

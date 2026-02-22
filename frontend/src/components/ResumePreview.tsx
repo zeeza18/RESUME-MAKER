@@ -60,11 +60,22 @@ const ResumePreview = ({ original: _original, tailored, jobDescription }: Resume
         const data = await response.json().catch(() => ({ detail: 'Download failed' }));
         throw new Error(data.detail ?? 'PDF download failed');
       }
+
+      // Extract filename from Content-Disposition header (server sends MOHAMMED_AZEEZULLA_COMPANYNAME.pdf)
+      const contentDisposition = response.headers.get('Content-Disposition');
+      let filename = 'MOHAMMED_AZEEZULLA_RESUME.pdf'; // Default fallback
+      if (contentDisposition) {
+        const filenameMatch = contentDisposition.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/);
+        if (filenameMatch && filenameMatch[1]) {
+          filename = filenameMatch[1].replace(/['"]/g, '');
+        }
+      }
+
       const blob = await response.blob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'resume.pdf';
+      a.download = filename; // Use dynamic filename from server
       a.click();
       URL.revokeObjectURL(url);
     } catch (err) {

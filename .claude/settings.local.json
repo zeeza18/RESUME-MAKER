@@ -9,7 +9,8 @@
       "Bash(npx tsc:*)",
       "Bash(npx vite build)",
       "Bash(python:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(copy:*)"
     ]
   }
 }

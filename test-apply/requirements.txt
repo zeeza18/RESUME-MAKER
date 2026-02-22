@@ -1,0 +1,7 @@
+playwright>=1.40.0
+pyyaml>=6.0
+python-dotenv>=1.0.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+openai>=1.12.0
+twocaptcha-python

@@ -1,26 +1,26 @@
 #!/usr/bin/env python3
 """
 Tool 2: Resume Tailor
-Uses Claude API to tailor resume based on JD keywords and feedback
+Uses OpenAI API to tailor resume based on JD keywords and feedback
 """
 
 import os
 from pathlib import Path
-import anthropic
+from openai import OpenAI
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
 
 class ResumeTailor:
-    """Tailor resume based on JD keywords using Claude"""
+    """Tailor resume based on JD keywords using OpenAI"""
 
     def __init__(self):
-        """Initialize Claude client"""
-        self.client = anthropic.Anthropic(
-            api_key=os.getenv('CLAUDE_API_KEY')
+        """Initialize OpenAI client"""
+        self.client = OpenAI(
+            api_key=os.getenv('OPENAI_API_KEY')
         )
-        self.model = "claude-opus-4-5-20251101"  # Best Claude model
+        self.model = "gpt-4o"  # Best OpenAI model
 
         self.prompts = {
             'round1': self._load_prompt('tool2_prompt.txt'),
@@ -46,7 +46,7 @@ class ResumeTailor:
             dict: Contains tailored resume and change log
         """
         
-        print("🎨 Tailoring Resume with Claude Opus 4.5...")
+        print("🎨 Tailoring Resume with GPT-4o...")
 
         # Prepare the user message with full context for this round
         round_label = f"Round {round_number}" if round_number else "Current Round"
@@ -78,18 +78,18 @@ class ResumeTailor:
         system_prompt = self.prompts[prompt_key]
 
         try:
-            # Make API call to Claude
-            response = self.client.messages.create(
+            # Make API call to OpenAI
+            response = self.client.chat.completions.create(
                 model=self.model,
                 max_tokens=3000,
-                system=system_prompt,
                 messages=[
+                    {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_message}
                 ]
             )
 
             # Extract the response
-            tailored_content = response.content[0].text
+            tailored_content = response.choices[0].message.content
 
             print("✅ Resume tailoring complete!")
             
@@ -99,7 +99,7 @@ class ResumeTailor:
             return parsed_result
             
         except Exception as e:
-            print(f"❌ Error calling Claude for resume tailoring: {e}")
+            print(f"❌ Error calling OpenAI for resume tailoring: {e}")
             # Return fallback result
             return {
                 "tailored_resume": original_resume,  # Return original if error

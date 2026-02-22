@@ -1,0 +1,61 @@
+test-apply/
+│
+├── apply/                              # Main Python package
+│   ├── __init__.py                    # Package initialization
+│   ├── __main__.py                    # CLI entry point (main orchestrator)
+│   ├── actor.py                       # Action execution (click, fill, upload)
+│   ├── browser.py                     # Playwright browser management
+│   ├── config.py                      # Configuration loader with security
+│   ├── detect.py                      # CAPTCHA and success detection
+│   ├── logger.py                      # Logging and artifact management
+│   ├── planner.py                     # State machine and action planning
+│   │
+│   └── extractors/                    # Content extraction modules
+│       ├── __init__.py
+│       ├── dom.py                     # DOM element inventory
+│       ├── network.py                 # Network response capture
+│       └── text.py                    # Visible text analysis
+│
+├── runs/                              # Output directory (auto-created)
+│   └── YYYYMMDD_HHMMSS/              # Timestamped run folders
+│       ├── actions.log                # Detailed action log
+│       ├── network.jsonl              # Captured API responses
+│       ├── page_iter1_*.html          # HTML snapshots per iteration
+│       ├── elements_iter1_*.json      # Element inventories per iteration
+│       └── final_status.json          # Final run status
+│
+├── config.example.yaml                # Example configuration file
+├── .env.example                       # Example environment variables
+├── .gitignore                         # Git ignore rules (secrets, runs)
+├── requirements.txt                   # Python dependencies
+├── pyproject.toml                     # Python package metadata
+├── LICENSE                            # MIT License + ethical usage clause
+│
+├── README.md                          # Main user documentation (400+ lines)
+├── SETUP_GUIDE.md                     # Quick setup instructions
+├── ARCHITECTURE.md                    # Technical architecture (500+ lines)
+├── PROJECT_SUMMARY.md                 # Project overview and features
+├── STRUCTURE.txt                      # This file - project structure
+│
+├── example_usage.py                   # Programmatic usage example
+└── verify_setup.py                    # Setup verification script
+
+
+TOTAL FILES: 22
+TOTAL PYTHON MODULES: 12
+TOTAL DOCUMENTATION: 5
+TOTAL LINES OF CODE: ~2,500
+
+KEY DIRECTORIES:
+- apply/: Core automation logic
+- apply/extractors/: Content extraction strategies
+- runs/: Generated artifacts and logs
+
+CONFIGURATION FILES:
+- config.yaml: Your personal config (create from example)
+- .env: Environment variables for secrets (create from example)
+
+ENTRY POINTS:
+- python -m apply <URL>         # Run automation
+- python verify_setup.py         # Verify installation
+- python example_usage.py        # See example usage

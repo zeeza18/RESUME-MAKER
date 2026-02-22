@@ -1,26 +1,26 @@
 #!/usr/bin/env python3
 """
 Tool 1: Keyword Extractor
-Uses Claude API to extract keywords, needs, and results from Job Description
+Uses OpenAI API to extract keywords, needs, and results from Job Description
 """
 
 import os
 from pathlib import Path
-import anthropic
+from openai import OpenAI
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
 
 class KeywordExtractor:
-    """Extract keywords from Job Description using Claude"""
+    """Extract keywords from Job Description using OpenAI"""
 
     def __init__(self):
-        """Initialize Claude client"""
-        self.client = anthropic.Anthropic(
-            api_key=os.getenv('CLAUDE_API_KEY')
+        """Initialize OpenAI client"""
+        self.client = OpenAI(
+            api_key=os.getenv('OPENAI_API_KEY')
         )
-        self.model = "claude-opus-4-5-20251101"  # Best Claude model
+        self.model = "gpt-4o"  # Best OpenAI model
 
         self.system_prompt = self._load_prompt('tool1_prompt.txt')
 
@@ -44,23 +44,23 @@ class KeywordExtractor:
             dict: Contains keywords, needs, and results
         """
 
-        print("🤖 Analyzing Job Description with Claude Opus 4.5...")
+        print("🤖 Analyzing Job Description with GPT-4o...")
 
         try:
-            # Make API call to Claude
-            response = self.client.messages.create(
+            # Make API call to OpenAI
+            response = self.client.chat.completions.create(
                 model=self.model,
                 max_tokens=2000,
-                system=self.system_prompt,
                 messages=[
+                    {"role": "system", "content": self.system_prompt},
                     {"role": "user", "content": f"Please analyze this Job Description:\n\n{job_description}"}
                 ]
             )
 
             # Extract the response
-            analysis = response.content[0].text
+            analysis = response.choices[0].message.content
 
-            print("✅ Claude analysis complete!")
+            print("✅ GPT-4o analysis complete!")
             
             # Parse the response (you might want to improve this parsing)
             parsed_result = self._parse_openai_response(analysis)
@@ -68,11 +68,12 @@ class KeywordExtractor:
             return parsed_result
             
         except Exception as e:
-            print(f"❌ Error calling Claude: {e}")
+            print(f"❌ Error calling OpenAI: {e}")
             # Return fallback result
             return {
+                "company_name": "UNKNOWN_COMPANY",
                 "keywords": ["Error occurred during keyword extraction"],
-                "needs": ["Please check Claude API key and connection"],
+                "needs": ["Please check OpenAI API key and connection"],
                 "results": ["Manual keyword extraction may be needed"],
                 "raw_analysis": f"Error: {str(e)}"
             }
@@ -90,20 +91,31 @@ class KeywordExtractor:
         
         # Initialize default structure
         result = {
+            "company_name": "UNKNOWN_COMPANY",  # Default
             "keywords": [],
             "needs": [],
             "results": [],
             "raw_analysis": analysis
         }
-        
+
         try:
             # Split response into sections
             lines = analysis.split('\n')
             current_section = None
-            
+
             for line in lines:
                 line = line.strip()
-                
+
+                # Extract company name
+                if line.lower().startswith('company name:') or '**company name:**' in line.lower():
+                    # Next line or same line should have company name
+                    company_match = line.split(':', 1)
+                    if len(company_match) > 1:
+                        company_name = company_match[1].strip().strip('*').strip()
+                        if company_name:
+                            result['company_name'] = company_name.upper().replace(' ', '_').replace('.', '').replace(',', '')
+                    continue
+
                 # Detect section headers
                 if line.lower().startswith('keywords:') or 'keywords' in line.lower():
                     current_section = 'keywords'
@@ -114,7 +126,7 @@ class KeywordExtractor:
                 elif line.lower().startswith('results:') or 'results' in line.lower():
                     current_section = 'results'
                     continue
-                
+
                 # Add content to current section
                 if line and current_section and not line.startswith('#'):
                     # Remove bullet points and clean up
@@ -148,19 +160,22 @@ class KeywordExtractor:
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write("KEYWORD EXTRACTION ANALYSIS\n")
                 f.write("=" * 50 + "\n\n")
-                
+
+                f.write(f"COMPANY NAME: {analysis.get('company_name', 'UNKNOWN_COMPANY')}\n")
+                f.write("=" * 50 + "\n\n")
+
                 f.write("KEYWORDS:\n")
                 for keyword in analysis.get('keywords', []):
                     f.write(f"• {keyword}\n")
-                
+
                 f.write("\nNEEDS:\n")
                 for need in analysis.get('needs', []):
                     f.write(f"• {need}\n")
-                
+
                 f.write("\nRESULTS:\n")
                 for result in analysis.get('results', []):
                     f.write(f"• {result}\n")
-                
+
                 f.write("\n" + "=" * 50 + "\n")
                 f.write("RAW ANALYSIS:\n")
                 f.write(analysis.get('raw_analysis', ''))

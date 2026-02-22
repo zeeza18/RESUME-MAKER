@@ -1,0 +1,79 @@
+# Example configuration file for the job application automation tool
+# Copy this to config.yaml and fill in your details
+# IMPORTANT: Do NOT commit config.yaml with real credentials!
+
+# User profile information
+profile:
+  email: "your.email@example.com"
+  first_name: "John"
+  last_name: "Doe"
+  phone: "+1234567890"
+  linkedin_url: "https://linkedin.com/in/yourprofile"
+  portfolio_url: "https://yourportfolio.com"
+  github_url: "https://github.com/yourusername"
+
+  # Resume file path (absolute or relative to project root)
+  resume_path: "./resume.pdf"
+
+  # Cover letter (optional)
+  cover_letter_path: "./cover_letter.pdf"
+
+  # Additional profile fields
+  location: "San Francisco, CA"
+  years_experience: "5"
+  current_company: "Tech Corp"
+  current_title: "Software Engineer"
+
+# Browser settings
+browser:
+  # headless: false to see the browser, true for background
+  headless: false
+
+  # Browser type: chromium, firefox, webkit
+  browser_type: "chromium"
+
+  # Slow down operations for debugging (milliseconds)
+  slow_mo: 100
+
+  # Viewport size
+  viewport:
+    width: 1280
+    height: 720
+
+# Automation settings
+automation:
+  # Maximum number of action loops before giving up
+  max_iterations: 50
+
+  # Maximum scrolls to trigger lazy loading
+  max_scroll_attempts: 10
+
+  # Wait time after each action (milliseconds)
+  action_delay: 1000
+
+  # Timeout for page loads (milliseconds)
+  page_timeout: 30000
+
+  # Timeout for element waits (milliseconds)
+  element_timeout: 10000
+
+# Logging settings
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR
+  level: "INFO"
+
+  # Save HTML snapshots
+  save_snapshots: true
+
+  # Save network responses
+  save_network: true
+
+  # Mask sensitive data in logs
+  mask_secrets: true
+
+# Credentials (NEVER hardcode passwords here!)
+# Set PASSWORD environment variable or will be prompted at runtime
+credentials:
+  # Email is loaded from profile.email above
+  # Password should be set via PASSWORD environment variable
+  password_env_var: "JOB_APP_PASSWORD"

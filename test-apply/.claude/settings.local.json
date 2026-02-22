@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(python -c:*)",
+      "Bash(python -m apply:*)",
+      "Bash(echo:*)",
+      "Bash(timeout:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(python3:*)"
+    ]
+  }
+}

@@ -1,0 +1,1337 @@
+<html id="PageHtml" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths no-ipad no-iphone no-ipod no-appleios ukg-focus-visible hydrated" data-ukg-focus-visible="" lang="en-US" data-useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" style="--vsc-domain: &quot;recruiting.ultipro.com&quot;;" data-qb-installed="true"><plasmo-csui></plasmo-csui><head><style data-emotion="css" data-s=""></style><style>@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7lujVj9w.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro Light';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ft calendar customization */
+.fc-cal-date-normal-fusion {
+  color: #5F5F5F;
+  font-family: 'Source Sans Pro';
+  font-size: 11px;
+}
+
+.fc-cal-date-selected-fusion {
+  color: #FEFEFE;
+  font-family: 'Source Sans Pro SemiBold';
+  font-size: 11px;
+}</style><style>@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7lujVj9w.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro Light';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ft calendar customization */
+.fc-cal-date-normal-fusion {
+  color: #5F5F5F;
+  font-family: 'Source Sans Pro';
+  font-size: 11px;
+}
+
+.fc-cal-date-selected-fusion {
+  color: #FEFEFE;
+  font-family: 'Source Sans Pro SemiBold';
+  font-size: 11px;
+}</style><style>@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7lujVj9w.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro Light';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ft calendar customization */
+.fc-cal-date-normal-fusion {
+  color: #5F5F5F;
+  font-family: 'Source Sans Pro';
+  font-size: 11px;
+}
+
+.fc-cal-date-selected-fusion {
+  color: #FEFEFE;
+  font-family: 'Source Sans Pro SemiBold';
+  font-size: 11px;
+}</style><style>@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7lujVj9w.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro Light';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ft calendar customization */
+.fc-cal-date-normal-fusion {
+  color: #5F5F5F;
+  font-family: 'Source Sans Pro';
+  font-size: 11px;
+}
+
+.fc-cal-date-selected-fusion {
+  color: #FEFEFE;
+  font-family: 'Source Sans Pro SemiBold';
+  font-size: 11px;
+}</style>
+    <title data-bind="text: title()">AI / ML Engineer | HomeServe</title>
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8"><style data-styles="">slot-fb{display:contents}slot-fb[hidden]{display:none}ukg-accent-icon,ukg-accordion,ukg-accordion-panel,ukg-activity-card,ukg-ai-adjuster,ukg-ai-button,ukg-ai-card-insight,ukg-ai-drawer,ukg-ai-fab,ukg-ai-instant-insight-banner,ukg-ai-logo,ukg-ai-message-bubble,ukg-ai-nav-header,ukg-ai-progress-indicator,ukg-ai-response,ukg-ai-search-input,ukg-ai-signature,ukg-ai-transparency-notice,ukg-assistive-message,ukg-autocomplete,ukg-avatar,ukg-avatar-group,ukg-backdrop,ukg-badge,ukg-banner,ukg-button,ukg-button-group,ukg-button-toggle,ukg-calendar,ukg-calendar-day,ukg-calendar-grid,ukg-calendar-grid-cell,ukg-card,ukg-card-content,ukg-card-footer,ukg-card-header,ukg-card-subtitle,ukg-card-title,ukg-carousel,ukg-chat,ukg-chat-box,ukg-chat-input,ukg-chat-quick-links,ukg-checkbox,ukg-checkbox-group,ukg-checkbox-icon,ukg-checkbox-parent,ukg-chip,ukg-chip-group,ukg-chip-input,ukg-color-input,ukg-column-order-group,ukg-column-order-item,ukg-combobox,ukg-critical-banner,ukg-data-driven-table,ukg-data-select,ukg-data-table,ukg-data-table-container,ukg-data-table-header,ukg-date-input-text,ukg-date-picker,ukg-date-picker-controller,ukg-date-range-picker,ukg-date-range-selector,ukg-dialog,ukg-dialog-header,ukg-divider,ukg-document-viewer,ukg-document-viewer-display,ukg-drawer,ukg-drawer-container,ukg-dropzone,ukg-expansion-content,ukg-expansion-panel,ukg-expansion-trigger,ukg-field,ukg-footer-bar,ukg-form-group,ukg-grid,ukg-grid-container,ukg-http-error-message,ukg-hub-header,ukg-icon,ukg-ignite-shell,ukg-illustrative-message,ukg-image-button,ukg-img,ukg-input,ukg-input-container,ukg-input-group,ukg-input-mask,ukg-interactive-popover,ukg-item,ukg-label,ukg-label-group,ukg-layout-container,ukg-layout-section,ukg-link,ukg-list,ukg-list-item,ukg-list-section,ukg-live-code,ukg-live-region,ukg-logo,ukg-menu,ukg-menu-container,ukg-menu-item,ukg-modal,ukg-nav-drawer,ukg-nav-header,ukg-nav-item,ukg-nav-item-group,ukg-nav-menu,ukg-nav-menu-button,ukg-page-content-nav-item,ukg-page-content-navigation,ukg-paginator,ukg-palette-select,ukg-popover,ukg-process,ukg-process-item,ukg-process-menu,ukg-progress-circular,ukg-progress-linear,ukg-progress-minimal,ukg-radio-button,ukg-radio-group,ukg-radio-icon,ukg-ratings-footer,ukg-search,ukg-searchbar,ukg-section-header,ukg-select,ukg-select-custom,ukg-select-item,ukg-select-item-group,ukg-select-option,ukg-side-nav,ukg-skip-to-main,ukg-slide,ukg-slider,ukg-snackbar,ukg-step,ukg-step-button,ukg-stepper,ukg-swatch-list,ukg-swatch-picker,ukg-switch,ukg-tab,ukg-tab-bar,ukg-tab-bar-panel,ukg-task-drawer,ukg-task-drawer-container,ukg-textarea,ukg-th,ukg-thumbnail,ukg-time-picker,ukg-toolbar,ukg-tooltip,ukg-tree,ukg-tree-branch,ukg-tree-item,ukg-tree-menu-container,ukg-upload,ukg-upload-file{visibility:hidden}.hydrated{visibility:inherit}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate, no-store">
+<meta http-equiv="Expires" content="Sun, 11 Jan 2026 23:25:16 GMT">
+<meta http-equiv="Pragma" content="no-cache">
+
+<style>.sc-ukg-menu-h{height:0;width:0;overflow:hidden;display:block;position:absolute}slot-fb{display:contents}slot-fb[hidden]{display:none}</style><style>[data-tag-name=menu-item]{height:0;width:0;overflow:hidden;display:none}</style><link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+        <style>.AR{--black: #000000;--white: #ffffff;--grey: #6f6f6f;--greyMid: #999999;--greyLight: #e4ebf2;--availableHover: #c0e992;--availableActive: #7ed321}.AR .AR__timezone-selector--option,.AR .AR__timezone-selector--listbox,.AR .AR__timezone-selector--listbox-wrapper{padding:unset;margin-top:unset;margin-bottom:unset;margin-left:unset;margin-right:unset;border:unset;background:unset;border-spacing:0;font-style:unset;list-style:unset}.AR .AR__button,.AR .AR__timezone-selector--button{-webkit-appearance:none;-moz-appearance:none;appearance:none;background:none;border:none;border-radius:0;font-family:inherit;position:relative;display:block;cursor:pointer;font-size:1em;border:.1em solid var(--greyMid);background-color:var(--white)}.AR .AR__button:focus,.AR .AR__timezone-selector--button:focus{border-color:var(--availableActive);box-shadow:inset var(--availableActive) 0 0 0 .1em;box-shadow:inset var(--availableActive) 0 0 0 .1em;outline:none}.AR .AR__button:hover,.AR .AR__timezone-selector--button:hover{border-color:var(--availableActive);box-shadow:inset var(--availableActive) 0 0 0 .1em;background-color:var(--availableHover);color:var(--black);outline:none}.AR .AR__button:active,.AR .AR__timezone-selector--button:active{background-color:var(--availableActive);color:var(--black);outline:none}.AR .AR__disabled-button{pointer-events:none;border:unset;background-color:unset}.AR .AR__disabled-button:focus{border-color:unset;box-shadow:unset;outline:none;background-color:unset}.AR .AR__disabled-button:hover{border-color:unset;box-shadow:unset;outline:none}.AR .AR__disabled-button:active{border-color:unset;box-shadow:unset;outline:none;background-color:unset}.AR .AR__timezone-selector{position:relative;flex-grow:1;max-width:16rem}.AR .AR__timezone-selector--button{display:flex;justify-content:space-between;border:.1em solid var(--greyMid);background:var(--white);padding:.3em 1em;text-align:left;width:100%;border-radius:.4em;z-index:4}.AR .AR__timezone-selector--icon{width:1em;height:1em;margin-top:.2em;fill:var(--grey);float:right}.AR .AR__timezone-selector--icon-open{transform:scaleY(-1)}.AR .AR__timezone-selector--listbox-wrapper{position:absolute;width:100%;border:.1em solid var(--greyMid);background-color:var(--white);border-top:0;padding-top:1.15em;top:1em;z-index:3;border-radius:0 0 .4em .4em}.AR .AR__timezone-selector--listbox{width:100%;max-height:15em;overflow-y:auto}.AR .AR__timezone-selector--option{display:block;cursor:pointer;padding:.5em 1em;position:relative;line-height:1.8em}.AR .AR__timezone-selector--option:hover{background-color:var(--availableHover);color:var(--black)}.AR .AR__timezone-selector--focused{border-color:var(--availableActive);box-shadow:inset var(--availableActive) 0 0 0 .1em;outline:none}.AR .AR__timezone-selector--selected{background-color:var(--availableHover);color:var(--black)}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9qcy9jb21wb25lbnRzL0F2YWlsYWJpbGl0eVJ1bGVzL3Njc3MvX3NldHRpbmdzLmNvbG91cnMuc2NzcyIsIndlYnBhY2s6Ly8uL3NyYy9qcy9jb21wb25lbnRzL0F2YWlsYWJpbGl0eVJ1bGVzL3Njc3MvX2dlbmVyaWMucmVzZXQuc2NzcyIsIndlYnBhY2s6Ly8uL3NyYy9qcy9jb21wb25lbnRzL0F2YWlsYWJpbGl0eVJ1bGVzL3Njc3MvX2Jhc2UuYnV0dG9ucy5zY3NzIiwid2VicGFjazovLy4vc3JjL2pzL2NvbXBvbmVudHMvQXZhaWxhYmlsaXR5UnVsZXMvc2Nzcy9fY29tcG9uZW50cy50aW1lem9uZXNlbGVjdG9yLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsSUFFSSxnQkFBQSxDQUNBLGdCQUFBLENBRUEsZUFBQSxDQUNBLGtCQUFBLENBQ0Esb0JBQUEsQ0FFQSx5QkFBQSxDQUNBLDBCQUFBLENDVEosbUhBQ0ksYUFBQSxDQUNBLGdCQUFBLENBQ0EsbUJBQUEsQ0FDQSxpQkFBQSxDQUNBLGtCQUFBLENBQ0EsWUFBQSxDQUNBLGdCQUFBLENBQ0EsZ0JBQUEsQ0FDQSxnQkFBQSxDQUNBLGdCQUFBLENDWEosbURBQ0ksdUJBQUEsQ0FBQSxvQkFBQSxDQUFBLGVBQUEsQ0FDQSxlQUFBLENBQ0EsV0FBQSxDQUNBLGVBQUEsQ0FDQSxtQkFBQSxDQUNBLGlCQUFBLENBQ0EsYUFBQSxDQUNBLGNBQUEsQ0FDQSxhQUFBLENBQ0EsZ0NBQUEsQ0FDQSw2QkFBQSxDQUVBLCtEQUNJLG1DQUFBLENBQ0Esa0RBQUEsQ0FDQSxrREFBQSxDQUNBLFlBQUEsQ0FFSiwrREFDSSxtQ0FBQSxDQUNBLGtEQUFBLENBQ0Esc0NBQUEsQ0FDQSxrQkFBQSxDQUNBLFlBQUEsQ0FHSixpRUFDSSx1Q0FBQSxDQUNBLGtCQUFBLENBQ0EsWUFBQSxDQUlSLHlCQUNJLG1CQUFBLENBQ0EsWUFBQSxDQUNBLHNCQUFBLENBRUEsK0JBQ0ksa0JBQUEsQ0FDQSxnQkFBQSxDQUNBLFlBQUEsQ0FDQSxzQkFBQSxDQUVKLCtCQUNJLGtCQUFBLENBQ0EsZ0JBQUEsQ0FDQSxZQUFBLENBR0osZ0NBQ0ksa0JBQUEsQ0FDQSxnQkFBQSxDQUNBLFlBQUEsQ0FDQSxzQkFBQSxDQ3ZEUiwyQkFDSSxpQkFBQSxDQUNBLFdBQUEsQ0FDQSxlQUFBLENBR0osbUNBRUksWUFBQSxDQUNBLDZCQUFBLENBQ0EsZ0NBQUEsQ0FDQSx1QkFBQSxDQUNBLGdCQUFBLENBQ0EsZUFBQSxDQUNBLFVBQUEsQ0FDQSxrQkFBQSxDQUNBLFNBQUEsQ0FHSixpQ0FDSSxTQUFBLENBQ0EsVUFBQSxDQUNBLGVBQUEsQ0FDQSxnQkFBQSxDQUNBLFdBQUEsQ0FHSixzQ0FDSSxvQkFBQSxDQUdKLDRDQUVJLGlCQUFBLENBQ0EsVUFBQSxDQUNBLGdDQUFBLENBQ0EsNkJBQUEsQ0FDQSxZQUFBLENBQ0Esa0JBQUEsQ0FDQSxPQUFBLENBQ0EsU0FBQSxDQUNBLDJCQUFBLENBR0osb0NBRUksVUFBQSxDQUNBLGVBQUEsQ0FDQSxlQUFBLENBR0osbUNBRUksYUFBQSxDQUNBLGNBQUEsQ0FDQSxnQkFBQSxDQUNBLGlCQUFBLENBQ0EsaUJBQUEsQ0FFQSx5Q0FDSSxzQ0FBQSxDQUNBLGtCQUFBLENBSVIsb0NBQ0ksbUNBQUEsQ0FDQSxrREFBQSxDQUNBLFlBQUEsQ0FHSixxQ0FDSSxzQ0FBQSxDQUNBLGtCQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLkFSIHtcbiAgICAvLyBGYWxsYmFja3NcbiAgICAtLWJsYWNrOiAjMDAwMDAwO1xuICAgIC0td2hpdGU6ICNmZmZmZmY7XG5cbiAgICAtLWdyZXk6ICM2ZjZmNmY7XG4gICAgLS1ncmV5TWlkOiAjOTk5OTk5O1xuICAgIC0tZ3JleUxpZ2h0OiAjZTRlYmYyO1xuXG4gICAgLS1hdmFpbGFibGVIb3ZlcjogI2MwZTk5MjtcbiAgICAtLWF2YWlsYWJsZUFjdGl2ZTogIzdlZDMyMTtcbn1cbiIsIi8vVW5zZXR0aW5nIHN0eWxlcyB0byBhdm9pZCBjbGFzaGVzIHdpdGggc3R5bGVzIG91dHNpZGUgdGhlIGNvbXBvbmVudFxuJXVuc2V0IHtcbiAgICBwYWRkaW5nOiB1bnNldDtcbiAgICBtYXJnaW4tdG9wOiB1bnNldDtcbiAgICBtYXJnaW4tYm90dG9tOiB1bnNldDtcbiAgICBtYXJnaW4tbGVmdDogdW5zZXQ7XG4gICAgbWFyZ2luLXJpZ2h0OiB1bnNldDtcbiAgICBib3JkZXI6IHVuc2V0O1xuICAgIGJhY2tncm91bmQ6IHVuc2V0O1xuICAgIGJvcmRlci1zcGFjaW5nOiAwO1xuICAgIGZvbnQtc3R5bGU6IHVuc2V0O1xuICAgIGxpc3Qtc3R5bGU6IHVuc2V0O1xufVxuIiwiLkFSX19idXR0b24ge1xuICAgIGFwcGVhcmFuY2U6IG5vbmU7XG4gICAgYmFja2dyb3VuZDogbm9uZTtcbiAgICBib3JkZXI6IG5vbmU7XG4gICAgYm9yZGVyLXJhZGl1czogMDtcbiAgICBmb250LWZhbWlseTogaW5oZXJpdDtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGZvbnQtc2l6ZTogMWVtO1xuICAgIGJvcmRlcjogMC4xZW0gc29saWQgdmFyKC0tZ3JleU1pZCk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0td2hpdGUpO1xuXG4gICAgJjpmb2N1cyB7XG4gICAgICAgIGJvcmRlci1jb2xvcjogdmFyKC0tYXZhaWxhYmxlQWN0aXZlKTtcbiAgICAgICAgYm94LXNoYWRvdzogaW5zZXQgdmFyKC0tYXZhaWxhYmxlQWN0aXZlKSAwIDAgMCAwLjFlbTtcbiAgICAgICAgYm94LXNoYWRvdzogaW5zZXQgdmFyKC0tYXZhaWxhYmxlQWN0aXZlKSAwIDAgMCAwLjFlbTtcbiAgICAgICAgb3V0bGluZTogbm9uZTtcbiAgICB9XG4gICAgJjpob3ZlciB7XG4gICAgICAgIGJvcmRlci1jb2xvcjogdmFyKC0tYXZhaWxhYmxlQWN0aXZlKTtcbiAgICAgICAgYm94LXNoYWRvdzogaW5zZXQgdmFyKC0tYXZhaWxhYmxlQWN0aXZlKSAwIDAgMCAwLjFlbTtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tYXZhaWxhYmxlSG92ZXIpO1xuICAgICAgICBjb2xvcjogdmFyKC0tYmxhY2spO1xuICAgICAgICBvdXRsaW5lOiBub25lO1xuICAgIH1cblxuICAgICY6YWN0aXZlIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tYXZhaWxhYmxlQWN0aXZlKTtcbiAgICAgICAgY29sb3I6IHZhcigtLWJsYWNrKTtcbiAgICAgICAgb3V0bGluZTogbm9uZTtcbiAgICB9XG59XG5cbi5BUl9fZGlzYWJsZWQtYnV0dG9uIHtcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgICBib3JkZXI6IHVuc2V0O1xuICAgIGJhY2tncm91bmQtY29sb3I6IHVuc2V0O1xuXG4gICAgJjpmb2N1cyB7XG4gICAgICAgIGJvcmRlci1jb2xvcjogdW5zZXQ7XG4gICAgICAgIGJveC1zaGFkb3c6IHVuc2V0O1xuICAgICAgICBvdXRsaW5lOiBub25lO1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB1bnNldDtcbiAgICB9XG4gICAgJjpob3ZlciB7XG4gICAgICAgIGJvcmRlci1jb2xvcjogdW5zZXQ7XG4gICAgICAgIGJveC1zaGFkb3c6IHVuc2V0O1xuICAgICAgICBvdXRsaW5lOiBub25lO1xuICAgIH1cblxuICAgICY6YWN0aXZlIHtcbiAgICAgICAgYm9yZGVyLWNvbG9yOiB1bnNldDtcbiAgICAgICAgYm94LXNoYWRvdzogdW5zZXQ7XG4gICAgICAgIG91dGxpbmU6IG5vbmU7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6IHVuc2V0O1xuICAgIH1cbn1cbiIsIi5BUl9fdGltZXpvbmUtc2VsZWN0b3Ige1xuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICBmbGV4LWdyb3c6IDE7XG4gICAgbWF4LXdpZHRoOiAxNnJlbTtcbn1cblxuLkFSX190aW1lem9uZS1zZWxlY3Rvci0tYnV0dG9uIHtcbiAgICBAZXh0ZW5kIC5BUl9fYnV0dG9uO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICAgIGJvcmRlcjogMC4xZW0gc29saWQgdmFyKC0tZ3JleU1pZCk7XG4gICAgYmFja2dyb3VuZDogdmFyKC0td2hpdGUpO1xuICAgIHBhZGRpbmc6IDAuM2VtIDFlbTtcbiAgICB0ZXh0LWFsaWduOiBsZWZ0O1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGJvcmRlci1yYWRpdXM6IDAuNGVtO1xuICAgIHotaW5kZXg6IDQ7XG59XG5cbi5BUl9fdGltZXpvbmUtc2VsZWN0b3ItLWljb24ge1xuICAgIHdpZHRoOiAxZW07XG4gICAgaGVpZ2h0OiAxZW07XG4gICAgbWFyZ2luLXRvcDogMC4yZW07XG4gICAgZmlsbDogdmFyKC0tZ3JleSk7XG4gICAgZmxvYXQ6IHJpZ2h0O1xufVxuXG4uQVJfX3RpbWV6b25lLXNlbGVjdG9yLS1pY29uLW9wZW4ge1xuICAgIHRyYW5zZm9ybTogc2NhbGVZKC0xKTtcbn1cblxuLkFSX190aW1lem9uZS1zZWxlY3Rvci0tbGlzdGJveC13cmFwcGVyIHtcbiAgICBAZXh0ZW5kICV1bnNldDtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgYm9yZGVyOiAwLjFlbSBzb2xpZCB2YXIoLS1ncmV5TWlkKTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS13aGl0ZSk7XG4gICAgYm9yZGVyLXRvcDogMDtcbiAgICBwYWRkaW5nLXRvcDogMS4xNWVtO1xuICAgIHRvcDogMWVtO1xuICAgIHotaW5kZXg6IDM7XG4gICAgYm9yZGVyLXJhZGl1czogMCAwIDAuNGVtIDAuNGVtO1xufVxuXG4uQVJfX3RpbWV6b25lLXNlbGVjdG9yLS1saXN0Ym94IHtcbiAgICBAZXh0ZW5kICV1bnNldDtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBtYXgtaGVpZ2h0OiAxNWVtO1xuICAgIG92ZXJmbG93LXk6IGF1dG87XG59XG5cbi5BUl9fdGltZXpvbmUtc2VsZWN0b3ItLW9wdGlvbiB7XG4gICAgQGV4dGVuZCAldW5zZXQ7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIHBhZGRpbmc6IDAuNWVtIDFlbTtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgbGluZS1oZWlnaHQ6IDEuOGVtO1xuXG4gICAgJjpob3ZlciB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWF2YWlsYWJsZUhvdmVyKTtcbiAgICAgICAgY29sb3I6IHZhcigtLWJsYWNrKTtcbiAgICB9XG59XG5cbi5BUl9fdGltZXpvbmUtc2VsZWN0b3ItLWZvY3VzZWQge1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tYXZhaWxhYmxlQWN0aXZlKTtcbiAgICBib3gtc2hhZG93OiBpbnNldCB2YXIoLS1hdmFpbGFibGVBY3RpdmUpIDAgMCAwIDAuMWVtO1xuICAgIG91dGxpbmU6IG5vbmU7XG59XG5cbi5BUl9fdGltZXpvbmUtc2VsZWN0b3ItLXNlbGVjdGVkIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1hdmFpbGFibGVIb3Zlcik7XG4gICAgY29sb3I6IHZhcigtLWJsYWNrKTtcbn1cbiJdLCJzb3VyY2VSb290IjoiIn0= */</style><style>.DTP button{-webkit-appearance:none;-moz-appearance:none;appearance:none;background:none;display:inline-block;border:none;border-radius:0;font-family:inherit;font-size:1em}.DTP{box-sizing:border-box;font-size:16px}.DTP *,.DTP *:before,.DTP *:after{box-sizing:inherit}.DTP a{text-decoration:none;transition:color .2s}.DTP h1,.DTP h2,.DTP h3,.DTP h4,.DTP h5,.DTP h6,.DTP p{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}.DTP li{padding:0;margin:0}.DTP{--black: #000000;--white: #ffffff;--neutralDark: #6f6f6f;--neutral: #999999;--neutralLight: #e4ebf2;--button: var(--white);--buttonConfirm: #e2fac8;--buttonConfirmText: var(--black);--buttonHover: #c0e992;--buttonText: var(--black);--buttonTextHover: var(--black);--buttonActive: #7ed321;--buttonActiveText: var(--black)}.DTP .DTP__timezone-selector--option,.DTP .DTP__timezone-selector--listbox,.DTP .DTP__timezone-selector--listbox-wrapper,.DTP .DTP__detailed-slot-list,.DTP .DTP__detailed-slot-list--item,.DTP .DTP__slot-list,.DTP .DTP__slot-list--item,.DTP .DTP__calendar-grid--day,.DTP .DTP__calendar-grid--row,.DTP .DTP__calendar-grid--week-day,.DTP .DTP__calendar-grid--week-day:first-child,.DTP .DTP__calendar-grid,.DTP .DTP__calendar-header--title{padding:unset;margin-top:unset;margin-bottom:unset;margin-left:unset;margin-right:unset;border:unset;background:unset;border-spacing:0;font-style:unset;list-style:unset}.DTP{position:relative;width:100%;max-width:850px;border-radius:.4em}.DTP .DTP__wrapper{display:flex;flex-wrap:wrap}.DTP .DTP__column--left{position:relative;flex:1 1 21em;width:100%;padding:0 1em}.DTP .DTP__column--right{position:relative;flex:1 1 20em;width:100%;padding:0 1em}.DTP .DTP__visually-hidden{clip:rect(0 0 0 0);-webkit-clip-path:inset(50%);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px}.DTP .DTP__button,.DTP .DTP__timezone-selector--button,.DTP .DTP__time-slot--selected,.DTP .DTP__time-slot,.DTP .DTP__cancel-button,.DTP .DTP__confirm-button,.DTP .DTP__calendar-grid--button,.DTP .DTP__calendar-header-button{-webkit-appearance:none;-moz-appearance:none;appearance:none;background:none;border:none;border-radius:0;font-family:inherit;position:relative;display:block;cursor:pointer;font-size:1em;border:.1em solid var(--neutral);background-color:var(--button)}.DTP .DTP__button:focus,.DTP .DTP__timezone-selector--button:focus,.DTP .DTP__time-slot--selected:focus,.DTP .DTP__time-slot:focus,.DTP .DTP__cancel-button:focus,.DTP .DTP__confirm-button:focus,.DTP .DTP__calendar-grid--button:focus,.DTP .DTP__calendar-header-button:focus{border-color:var(--buttonActive);box-shadow:inset var(--buttonActive) 0 0 0 .1em;box-shadow:inset var(--buttonActive) 0 0 0 .1em;outline:none}.DTP .DTP__button:hover,.DTP .DTP__timezone-selector--button:hover,.DTP .DTP__time-slot--selected:hover,.DTP .DTP__time-slot:hover,.DTP .DTP__cancel-button:hover,.DTP .DTP__confirm-button:hover,.DTP .DTP__calendar-grid--button:hover,.DTP .DTP__calendar-header-button:hover{border-color:var(--buttonActive);box-shadow:inset var(--buttonActive) 0 0 0 .1em;background-color:var(--buttonHover);color:var(--buttonTextHover);outline:none}.DTP .DTP__button:active,.DTP .DTP__timezone-selector--button:active,.DTP .DTP__time-slot--selected:active,.DTP .DTP__time-slot:active,.DTP .DTP__cancel-button:active,.DTP .DTP__confirm-button:active,.DTP .DTP__calendar-grid--button:active,.DTP .DTP__calendar-header-button:active{background-color:var(--buttonActive);color:var(--buttonActiveText);outline:none}.DTP .DTP__disabled-button,.DTP .DTP__calendar-grid--button:disabled,.DTP .DTP__calendar-header-button:disabled{pointer-events:none;border:unset;background-color:unset}.DTP .DTP__disabled-button:focus,.DTP .DTP__calendar-grid--button:focus:disabled,.DTP .DTP__calendar-header-button:focus:disabled{border-color:unset;box-shadow:unset;outline:none;background-color:unset}.DTP .DTP__disabled-button:hover,.DTP .DTP__calendar-grid--button:hover:disabled,.DTP .DTP__calendar-header-button:hover:disabled{border-color:unset;box-shadow:unset;outline:none}.DTP .DTP__disabled-button:active,.DTP .DTP__calendar-grid--button:active:disabled,.DTP .DTP__calendar-header-button:active:disabled{border-color:unset;box-shadow:unset;outline:none;background-color:unset}.DTP .DTP__column--calendar-header{padding:1em 2em;margin:0}.DTP .DTP__calendar-header{display:grid;grid-template-columns:3em 1fr 3em;margin-bottom:1em;height:3em}.DTP .DTP__calendar-header--title{margin:.5em 0;font-size:1.5em;text-align:center}.DTP .DTP__calendar-header-button{width:100%;padding:.1rem 0 0 0;border:unset;background-color:unset}.DTP .DTP__calendar-header-button:focus{box-shadow:inset var(--buttonActive) 0 0 0 .1rem;background-color:unset}.DTP .DTP__calendar-header-button:hover{background-color:unset}.DTP .DTP__calendar-header-button:active{background-color:unset}[dir=rtl].DTP .DTP__calendar-header-button{transform:rotate(180deg)}.DTP .DTP__calendar-header-button--icon{width:1.5em;height:1.5em;fill:var(--neutralDark)}.DTP .DTP__calendar-header-button--icon:focus{fill:var(--buttonActive)}.DTP .DTP__calendar-header-button--icon:hover{fill:var(--buttonActive)}.DTP .DTP__calendar-header-button--icon:active{fill:var(--buttonActive)}.DTP .DTP__calendar-header-button--prev{transform:rotate(90deg)}.DTP .DTP__calendar-header-button--next{transform:rotate(-90deg)}.DTP .DTP__calendar-header-button:disabled svg{fill:var(--neutralLight)}.DTP .DTP__calendar-grid{table-layout:fixed;width:100%}.DTP .DTP__calendar-grid--week-day,.DTP .DTP__calendar-grid--week-day:first-child{text-align:center;font-weight:bold;font-size:1em;padding:1em 0}.DTP .DTP__calendar-grid--day{padding:.1em}.DTP .DTP__calendar-grid--button{padding:1em 0;width:100%;overflow:hidden;border-radius:.4em;color:var(--black)}.DTP .DTP__calendar-grid--prevnext{font-weight:normal;color:var(--neutral)}.DTP .DTP__calendar-grid--available{border-color:var(--neutralDark);color:var(--buttonText)}.DTP .DTP__calendar-grid--available:hover{border-color:var(--buttonActive);box-shadow:inset var(--buttonActive) 0 0 0 .1em;background-color:var(--buttonHover);color:var(--buttonTextHover)}.DTP .DTP__calendar-grid--available:active{border-color:var(--buttonActive);box-shadow:inset var(--buttonActive) 0 0 0 .1em;background-color:var(--buttonHover);color:var(--buttonTextHover)}.DTP .DTP__calendar-grid--focused{border-color:var(--buttonActive);box-shadow:inset var(--buttonActive) 0 0 0 .1em;background-color:var(--buttonHover);color:var(--buttonTextHover)}.DTP .DTP__calendar-grid--selected{font-weight:bold;background-color:var(--buttonActive);color:var(--buttonActiveText);border-radius:.4em}.DTP .DTP__calendar-grid--selected:hover{background-color:var(--buttonActive)}.DTP .DTP__confirm-details{text-align:center}.DTP .DTP__confirm-details>*+*{margin-top:1em}.DTP .DTP__confirm-details--info{font-size:1.5em}.DTP .DTP__confirm-details--sequence-title{display:inline-block;font-weight:bold}.DTP .DTP__confirm-details--sequence-time{display:inline-block;margin-left:.5rem}[dir=rtl].DTP .DTP__confirm-details--sequence-time{margin-left:0rem;margin-right:.5rem}.DTP .DTP__confirm-button{background-color:var(--buttonConfirm);color:var(--buttonConfirmText);border-radius:.4em;min-width:60%;height:3em;margin:1em auto;padding:0 .75em}.DTP .DTP__cancel-button{border-radius:.4em;height:3em;margin:1em auto;padding:0 1em}.DTP .DTP__details{display:flex;flex-wrap:wrap;padding:1em 0}.DTP .DTP__details--tz{display:flex;flex:1 1 21em;padding:0 1em;gap:.3em;align-items:center}.DTP .DTP__details--duration{flex:1 1 20em;padding:.3em 1em}.DTP .DTP__error{position:absolute;top:0;left:0;z-index:10;width:100%;height:100%;padding:10px;display:flex;flex-direction:column;justify-content:center;align-items:center}.DTP .DTP__error-icon{width:2em;height:2em;fill:var(--black)}.DTP .DTP__error-text-wrapper{font-weight:bold;display:block;text-align:center;margin-top:1em;color:var(--black)}.DTP .DTP__error-text{display:block;text-align:center;margin-top:1em;max-width:36em;color:var(--black)}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.DTP .DTP__loading-wrapper{position:absolute;top:0;left:0;z-index:10;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center}.DTP .DTP__loading-wrapper svg{width:1em;height:1em;animation:spin infinite linear 1s}.DTP .DTP__calendar-loading{margin-top:1rem;display:flex;gap:1rem;align-items:center}.DTP .DTP__calendar-loading svg{width:1em;height:1em;animation:spin infinite linear 1s}.DTP .DTP__time-slots-list>*+*,.DTP .DTP__slot-list>*+*{margin-top:1em}.DTP .DTP__time-slots-list--header{font-size:1.5em;margin:.5em 0;text-align:center}.DTP .DTP__slot-list,.DTP .DTP__slot-list--item{list-style:none}.DTP .DTP__time-slot{border:.1em solid var(--neutral);background:var(--white);padding:.75em 0;width:100%;height:3em;border-radius:.4em}.DTP .DTP__time-slot--detailed{height:unset}.DTP .DTP__detailed-slot-list,.DTP .DTP__detailed-slot-list--item{list-style:none}.DTP .DTP__time-slot--selected{background-color:var(--buttonActive);color:var(--buttonActiveText);outline:none}.DTP .DTP__timezone-selector{position:relative;flex-grow:1}.DTP .DTP__timezone-selector--button{display:flex;justify-content:space-between;border:.1em solid var(--neutral);background:var(--white);padding:.3em 1em;text-align:left;width:100%;border-radius:.4em;z-index:2}.DTP .DTP__timezone-selector--icon{width:1em;height:1em;margin-top:.2em;fill:var(--neutralDark);float:right}.DTP .DTP__timezone-selector--icon-open{transform:scaleY(-1)}.DTP .DTP__timezone-selector--listbox-wrapper{position:absolute;width:100%;border:.1em solid var(--neutral);background-color:var(--white);border-top:0;padding-top:1.15em;top:1em;z-index:1;border-radius:0 0 .4em .4em}.DTP .DTP__timezone-selector--listbox{width:100%;max-height:15em;overflow-y:auto}.DTP .DTP__timezone-selector--option{display:block;cursor:pointer;padding:.5em 1em;position:relative;line-height:1.8em}.DTP .DTP__timezone-selector--option:hover{background-color:var(--buttonHover);color:var(--buttonTextHover)}.DTP .DTP__timezone-selector--focused{border-color:var(--buttonActive);box-shadow:inset var(--buttonActive) 0 0 0 .1em;outline:none}.DTP .DTP__timezone-selector--selected{background-color:var(--buttonHover);color:var(--buttonTextHover)}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9qcy9zdHlsZXMvX3NldHRpbmdzLnV0aWxzLnNjc3MiLCJ3ZWJwYWNrOi8vLi9zcmMvanMvY29tcG9uZW50cy9EYXRlVGltZVBpY2tlci9zY3NzL19zZXR0aW5ncy5jb2xvdXJzLnNjc3MiLCJ3ZWJwYWNrOi8vLi9zcmMvanMvY29tcG9uZW50cy9EYXRlVGltZVBpY2tlci9zY3NzL19nZW5lcmljLnJlc2V0LnNjc3MiLCJ3ZWJwYWNrOi8vLi9zcmMvanMvY29tcG9uZW50cy9EYXRlVGltZVBpY2tlci9zY3NzL19iYXNlLnRoZW1lLnNjc3MiLCJ3ZWJwYWNrOi8vLi9zcmMvanMvY29tcG9uZW50cy9EYXRlVGltZVBpY2tlci9zY3NzL19iYXNlLmxheW91dC5zY3NzIiwid2VicGFjazovLy4vc3JjL2pzL2NvbXBvbmVudHMvRGF0ZVRpbWVQaWNrZXIvc2Nzcy9fYmFzZS5idXR0b25zLnNjc3MiLCJ3ZWJwYWNrOi8vLi9zcmMvanMvY29tcG9uZW50cy9EYXRlVGltZVBpY2tlci9zY3NzL19jb21wb25lbnRzLmNhbGVuZGFyaGVhZGVyLnNjc3MiLCJ3ZWJwYWNrOi8vLi9zcmMvanMvY29tcG9uZW50cy9EYXRlVGltZVBpY2tlci9zY3NzL19jb21wb25lbnRzLmNhbGVuZGFyZ3JpZC5zY3NzIiwid2VicGFjazovLy4vc3JjL2pzL2NvbXBvbmVudHMvRGF0ZVRpbWVQaWNrZXIvc2Nzcy9fY29tcG9uZW50cy5jb25maXJtLnNjc3MiLCJ3ZWJwYWNrOi8vLi9zcmMvanMvY29tcG9uZW50cy9EYXRlVGltZVBpY2tlci9zY3NzL19jb21wb25lbnRzLmRldGFpbHMuc2NzcyIsIndlYnBhY2s6Ly8uL3NyYy9qcy9jb21wb25lbnRzL0RhdGVUaW1lUGlja2VyL3Njc3MvX2NvbXBvbmVudHMuZXJyb3Iuc2NzcyIsIndlYnBhY2s6Ly8uL3NyYy9qcy9jb21wb25lbnRzL0RhdGVUaW1lUGlja2VyL3Njc3MvX2NvbXBvbmVudHMubG9hZGluZy5zY3NzIiwid2VicGFjazovLy4vc3JjL2pzL2NvbXBvbmVudHMvRGF0ZVRpbWVQaWNrZXIvc2Nzcy9fY29tcG9uZW50cy5zbG90c2xpc3Quc2NzcyIsIndlYnBhY2s6Ly8uL3NyYy9qcy9jb21wb25lbnRzL0RhdGVUaW1lUGlja2VyL3Njc3MvX2NvbXBvbmVudHMudGltZXpvbmVzZWxlY3Rvci5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLFlBQ0ksdUJBQUEsQ0FBQSxvQkFBQSxDQUFBLGVBQUEsQ0FDQSxlQUFBLENBQ0Esb0JBQUEsQ0FDQSxXQUFBLENBQ0EsZUFBQSxDQUNBLG1CQUFBLENBQ0EsYUFBQSxDQUdKLEtBQ0kscUJBQUEsQ0FPQSxjQUFBLENBTkEsa0NBR0ksa0JBQUEsQ0FTSixPQUNJLG9CQUFBLENBQ0Esb0JBQUEsQ0FHSix1REFPSSxRQUFBLENBQ0EsU0FBQSxDQUNBLFFBQUEsQ0FDQSxjQUFBLENBQ0EsWUFBQSxDQUNBLHVCQUFBLENBR0osUUFDSSxTQUFBLENBQ0EsUUFBQSxDQzlDUixLQUVJLGdCQUFBLENBQ0EsZ0JBQUEsQ0FFQSxzQkFBQSxDQUNBLGtCQUFBLENBQ0EsdUJBQUEsQ0FFQSxzQkFBQSxDQUNBLHdCQUFBLENBQ0EsaUNBQUEsQ0FDQSxzQkFBQSxDQUNBLDBCQUFBLENBQ0EsK0JBQUEsQ0FDQSx1QkFBQSxDQUNBLGdDQUFBLENDVkosb2JBQ0ksYUFBQSxDQUNBLGdCQUFBLENBQ0EsbUJBQUEsQ0FDQSxpQkFBQSxDQUNBLGtCQUFBLENBQ0EsWUFBQSxDQUNBLGdCQUFBLENBQ0EsZ0JBQUEsQ0FDQSxnQkFBQSxDQUNBLGdCQUFBLENDaEJKLEtBWUksaUJBQUEsQ0FDQSxVQUFBLENBQ0EsZUFBQSxDQUNBLGtCQUFBLENDZkosbUJBQ0ksWUFBQSxDQUNBLGNBQUEsQ0FHSix3QkFDSSxpQkFBQSxDQUNBLGFBQUEsQ0FDQSxVQUFBLENBQ0EsYUFBQSxDQUdKLHlCQUNJLGlCQUFBLENBQ0EsYUFBQSxDQUNBLFVBQUEsQ0FDQSxhQUFBLENBR0osMkJBQ0ksa0JBQUEsQ0FDQSw0QkFBQSxDQUFBLG9CQUFBLENBQ0EsVUFBQSxDQUNBLGVBQUEsQ0FDQSxpQkFBQSxDQUNBLGtCQUFBLENBQ0EsU0FBQSxDQzFCSixpT0FDSSx1QkFBQSxDQUFBLG9CQUFBLENBQUEsZUFBQSxDQUNBLGVBQUEsQ0FDQSxXQUFBLENBQ0EsZUFBQSxDQUNBLG1CQUFBLENBQ0EsaUJBQUEsQ0FDQSxhQUFBLENBQ0EsY0FBQSxDQUNBLGFBQUEsQ0FDQSxnQ0FBQSxDQUNBLDhCQUFBLENBRUEsaVJBQ0ksZ0NBQUEsQ0FDQSwrQ0FBQSxDQUNBLCtDQUFBLENBQ0EsWUFBQSxDQUVKLGlSQUNJLGdDQUFBLENBQ0EsK0NBQUEsQ0FDQSxtQ0FBQSxDQUNBLDRCQUFBLENBQ0EsWUFBQSxDQUdKLHlSQUNJLG9DQUFBLENBQ0EsNkJBQUEsQ0FDQSxZQUFBLENBSVIsZ0hBQ0ksbUJBQUEsQ0FDQSxZQUFBLENBQ0Esc0JBQUEsQ0FFQSxrSUFDSSxrQkFBQSxDQUNBLGdCQUFBLENBQ0EsWUFBQSxDQUNBLHNCQUFBLENBRUosa0lBQ0ksa0JBQUEsQ0FDQSxnQkFBQSxDQUNBLFlBQUEsQ0FHSixxSUFDSSxrQkFBQSxDQUNBLGdCQUFBLENBQ0EsWUFBQSxDQUNBLHNCQUFBLENDdkRSLG1DQUNJLGVBQUEsQ0FDQSxRQUFBLENBR0osMkJBQ0ksWUFBQSxDQUNBLGlDQUFBLENBQ0EsaUJBQUEsQ0FDQSxVQUFBLENBR0osa0NBRUksYUFBQSxDQUNBLGVBQUEsQ0FDQSxpQkFBQSxDQUdKLGtDQUVJLFVBQUEsQ0FDQSxtQkFBQSxDQUNBLFlBQUEsQ0FDQSxzQkFBQSxDQUVBLHdDQUNJLGdEQUFBLENBQ0Esc0JBQUEsQ0FFSix3Q0FDSSxzQkFBQSxDQUdKLHlDQUNJLHNCQUFBLENBR0ssMkNBQ0wsd0JBQUEsQ0FJUix3Q0FDSSxXQUFBLENBQ0EsWUFBQSxDQUNBLHVCQUFBLENBRUEsOENBQ0ksd0JBQUEsQ0FFSiw4Q0FDSSx3QkFBQSxDQUdKLCtDQUNJLHdCQUFBLENBSVIsd0NBQ0ksdUJBQUEsQ0FHSix3Q0FDSSx3QkFBQSxDQU9KLCtDQUNJLHdCQUFBLENDekVKLHlCQUVJLGtCQUFBLENBQ0EsVUFBQSxDQUdKLGtGQUdJLGlCQUFBLENBQ0EsZ0JBQUEsQ0FDQSxhQUFBLENBQ0EsYUFBQSxDQU9KLDhCQUVJLFlBQUEsQ0FHSixpQ0FFSSxhQUFBLENBQ0EsVUFBQSxDQUNBLGVBQUEsQ0FDQSxrQkFBQSxDQUNBLGtCQUFBLENBT0osbUNBQ0ksa0JBQUEsQ0FDQSxvQkFBQSxDQUdKLG9DQUNJLCtCQUFBLENBQ0EsdUJBQUEsQ0FFQSwwQ0FDSSxnQ0FBQSxDQUNBLCtDQUFBLENBQ0EsbUNBQUEsQ0FDQSw0QkFBQSxDQUdKLDJDQUNJLGdDQUFBLENBQ0EsK0NBQUEsQ0FDQSxtQ0FBQSxDQUNBLDRCQUFBLENBSVIsa0NBQ0ksZ0NBQUEsQ0FDQSwrQ0FBQSxDQUNBLG1DQUFBLENBQ0EsNEJBQUEsQ0FHSixtQ0FDSSxnQkFBQSxDQUNBLG9DQUFBLENBQ0EsNkJBQUEsQ0FDQSxrQkFBQSxDQUVBLHlDQUNJLG9DQUFBLENDM0VSLDJCQUNJLGlCQUFBLENBR0osK0JBQ0ksY0FBQSxDQUdKLGlDQUNJLGVBQUEsQ0FHSiwyQ0FDSSxvQkFBQSxDQUNBLGdCQUFBLENBR0osMENBQ0ksb0JBQUEsQ0FDQSxpQkFBQSxDQUVTLG1EQUNMLGdCQUFBLENBQ0Esa0JBQUEsQ0FJUiwwQkFFSSxxQ0FBQSxDQUNBLDhCQUFBLENBQ0Esa0JBQUEsQ0FDQSxhQUFBLENBQ0EsVUFBQSxDQUNBLGVBQUEsQ0FDQSxlQUFBLENBR0oseUJBRUksa0JBQUEsQ0FDQSxVQUFBLENBQ0EsZUFBQSxDQUNBLGFBQUEsQ0MzQ0osbUJBQ0ksWUFBQSxDQUNBLGNBQUEsQ0FDQSxhQUFBLENBR0osdUJBQ0ksWUFBQSxDQUNBLGFBQUEsQ0FDQSxhQUFBLENBQ0EsUUFBQSxDQUNBLGtCQUFBLENBT0osNkJBQ0ksYUFBQSxDQUNBLGdCQUFBLENDcEJKLGlCQUNJLGlCQUFBLENBQ0EsS0FBQSxDQUNBLE1BQUEsQ0FDQSxVQUFBLENBQ0EsVUFBQSxDQUNBLFdBQUEsQ0FDQSxZQUFBLENBQ0EsWUFBQSxDQUNBLHFCQUFBLENBQ0Esc0JBQUEsQ0FDQSxrQkFBQSxDQUdKLHNCQUNJLFNBQUEsQ0FDQSxVQUFBLENBQ0EsaUJBQUEsQ0FHSiw4QkFDSSxnQkFBQSxDQUNBLGFBQUEsQ0FDQSxpQkFBQSxDQUNBLGNBQUEsQ0FDQSxrQkFBQSxDQUVKLHNCQUNJLGFBQUEsQ0FDQSxpQkFBQSxDQUNBLGNBQUEsQ0FDQSxjQUFBLENBQ0Esa0JBQUEsQ0NoQ0osZ0JBQ0ksR0FDSSxzQkFBQSxDQUVKLEtBQ0ksd0JBQUEsQ0FBQSxDQUlSLDJCQUNJLGlCQUFBLENBQ0EsS0FBQSxDQUNBLE1BQUEsQ0FDQSxVQUFBLENBQ0EsVUFBQSxDQUNBLFdBQUEsQ0FDQSxZQUFBLENBQ0EscUJBQUEsQ0FDQSxzQkFBQSxDQUNBLGtCQUFBLENBQ0EsK0JBQ0ksU0FBQSxDQUNBLFVBQUEsQ0FDQSxpQ0FBQSxDQUlSLDRCQUNFLGVBQUEsQ0FDQSxZQUFBLENBQ0EsUUFBQSxDQUNBLGtCQUFBLENBQ0EsZ0NBQ0UsU0FBQSxDQUNBLFVBQUEsQ0FDQSxpQ0FBQSxDQ25DSix3REFFSSxjQUFBLENBR0osbUNBQ0ksZUFBQSxDQUNBLGFBQUEsQ0FDQSxpQkFBQSxDQUdKLGdEQUdJLGVBQUEsQ0FHSixxQkFFSSxnQ0FBQSxDQUNBLHVCQUFBLENBQ0EsZUFBQSxDQUNBLFVBQUEsQ0FDQSxVQUFBLENBQ0Esa0JBQUEsQ0FHSiwrQkFDRSxZQUFBLENBR0Ysa0VBR0ksZUFBQSxDQUdKLCtCQUVJLG9DQUFBLENBQ0EsNkJBQUEsQ0FDQSxZQUFBLENDekNKLDZCQUNJLGlCQUFBLENBQ0EsV0FBQSxDQUdKLHFDQUVJLFlBQUEsQ0FDQSw2QkFBQSxDQUNBLGdDQUFBLENBQ0EsdUJBQUEsQ0FDQSxnQkFBQSxDQUNBLGVBQUEsQ0FDQSxVQUFBLENBQ0Esa0JBQUEsQ0FDQSxTQUFBLENBR0osbUNBQ0ksU0FBQSxDQUNBLFVBQUEsQ0FDQSxlQUFBLENBQ0EsdUJBQUEsQ0FDQSxXQUFBLENBR0osd0NBQ0ksb0JBQUEsQ0FHSiw4Q0FFSSxpQkFBQSxDQUNBLFVBQUEsQ0FDQSxnQ0FBQSxDQUNBLDZCQUFBLENBQ0EsWUFBQSxDQUNBLGtCQUFBLENBQ0EsT0FBQSxDQUNBLFNBQUEsQ0FDQSwyQkFBQSxDQUdKLHNDQUVJLFVBQUEsQ0FDQSxlQUFBLENBQ0EsZUFBQSxDQUdKLHFDQUVJLGFBQUEsQ0FDQSxjQUFBLENBQ0EsZ0JBQUEsQ0FDQSxpQkFBQSxDQUNBLGlCQUFBLENBRUEsMkNBQ0ksbUNBQUEsQ0FDQSw0QkFBQSxDQUlSLHNDQUNJLGdDQUFBLENBQ0EsK0NBQUEsQ0FDQSxZQUFBLENBR0osdUNBQ0ksbUNBQUEsQ0FDQSw0QkFBQSIsInNvdXJjZXNDb250ZW50IjpbIiVidXR0b25SZXNldCB7XG4gICAgYXBwZWFyYW5jZTogbm9uZTtcbiAgICBiYWNrZ3JvdW5kOiBub25lO1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgICBib3JkZXI6IG5vbmU7XG4gICAgYm9yZGVyLXJhZGl1czogMDtcbiAgICBmb250LWZhbWlseTogaW5oZXJpdDtcbiAgICBmb250LXNpemU6IDFlbTtcbn1cblxuJWdsb2JhbHMge1xuICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gICAgKixcbiAgICAqOmJlZm9yZSxcbiAgICAqOmFmdGVyIHtcbiAgICAgICAgYm94LXNpemluZzogaW5oZXJpdDtcbiAgICB9XG5cbiAgICBmb250LXNpemU6IDE2cHg7XG5cbiAgICBidXR0b24ge1xuICAgICAgICBAZXh0ZW5kICVidXR0b25SZXNldDtcbiAgICB9XG5cbiAgICBhIHtcbiAgICAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICAgICAgICB0cmFuc2l0aW9uOiBjb2xvciAwLjJzO1xuICAgIH1cblxuICAgIGgxLFxuICAgIGgyLFxuICAgIGgzLFxuICAgIGg0LFxuICAgIGg1LFxuICAgIGg2LFxuICAgIHAge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMDtcbiAgICAgICAgZm9udC1zaXplOiAxMDAlO1xuICAgICAgICBmb250OiBpbmhlcml0O1xuICAgICAgICB2ZXJ0aWNhbC1hbGlnbjogYmFzZWxpbmU7XG4gICAgfVxuXG4gICAgbGkge1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgfVxufVxuXG4vLyBIaWRpbmcgdGhpbmdzIHNlbnNpYmx5XG4vLyBIaWRlIGZyb20gYm90aCBzY3JlZW5yZWFkZXJzIGFuZCBicm93c2Vyc1xuJWhpZGRlbiB7XG4gICAgZGlzcGxheTogbm9uZSAhaW1wb3J0YW50O1xuICAgIHZpc2liaWxpdHk6IGhpZGRlbjtcbn1cbi8vIEhpZGUgb25seSB2aXN1YWxseSwgYnV0IGhhdmUgaXQgYXZhaWxhYmxlIGZvciBzY3JlZW5yZWFkZXJzXG4laGlkZGVuLS12aXN1YWxseSB7XG4gICAgYm9yZGVyOiAwO1xuICAgIGNsaXA6IHJlY3QoMCAwIDAgMCk7XG4gICAgaGVpZ2h0OiAxcHg7XG4gICAgbWFyZ2luOiAtMXB4O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG4gICAgcGFkZGluZzogMDtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgd2lkdGg6IDFweDtcbiAgICAvLyBFeHRlbmRzIHRoZSAuaGlkZGVuLS12aXN1YWxseSBjbGFzcyB0byBhbGxvdyB0aGUgZWxlbWVudCB0byBiZSBmb2N1c2FibGVcbiAgICAvLyB3aGVuIG5hdmlnYXRlZCB0byB2aWEgdGhlIGtleWJvYXJkXG4gICAgJi5mb2N1c2FibGU6YWN0aXZlLFxuICAgICYuZm9jdXNhYmxlOmZvY3VzIHtcbiAgICAgICAgY2xpcDogYXV0bztcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgICBwb3NpdGlvbjogc3RhdGljO1xuICAgICAgICB3aWR0aDogYXV0bztcbiAgICB9XG59XG4vLyBIaWRlIHZpc3VhbGx5IGFuZCBmcm9tIHNjcmVlbnJlYWRlcnMsIGJ1dCBtYWludGFpbiBsYXlvdXRcbiVpbnZpc2libGUge1xuICAgIHZpc2liaWxpdHk6IGhpZGRlbjtcbn1cbiIsIi5EVFAge1xuICAgIC8vIEZhbGxiYWNrc1xuICAgIC0tYmxhY2s6ICMwMDAwMDA7XG4gICAgLS13aGl0ZTogI2ZmZmZmZjtcblxuICAgIC0tbmV1dHJhbERhcms6ICM2ZjZmNmY7XG4gICAgLS1uZXV0cmFsOiAjOTk5OTk5O1xuICAgIC0tbmV1dHJhbExpZ2h0OiAjZTRlYmYyO1xuXG4gICAgLS1idXR0b246IHZhcigtLXdoaXRlKTtcbiAgICAtLWJ1dHRvbkNvbmZpcm06ICNlMmZhYzg7XG4gICAgLS1idXR0b25Db25maXJtVGV4dDogdmFyKC0tYmxhY2spO1xuICAgIC0tYnV0dG9uSG92ZXI6ICNjMGU5OTI7XG4gICAgLS1idXR0b25UZXh0OiB2YXIoLS1ibGFjayk7XG4gICAgLS1idXR0b25UZXh0SG92ZXI6IHZhcigtLWJsYWNrKTtcbiAgICAtLWJ1dHRvbkFjdGl2ZTogIzdlZDMyMTtcbiAgICAtLWJ1dHRvbkFjdGl2ZVRleHQ6IHZhcigtLWJsYWNrKTtcbn1cbiIsIi5EVFAge1xuICAgIC8vIEdlbmVyYWwgc3R5bGUgcmVzZXQ7XG4gICAgQGV4dGVuZCAlZ2xvYmFscztcbn1cblxuLy9VbnNldHRpbmcgc3R5bGVzIHRvIGF2b2lkIGNsYXNoZXMgd2l0aCBzdHlsZXMgb3V0c2lkZSB0aGUgY29tcG9uZW50XG4ldW5zZXQge1xuICAgIHBhZGRpbmc6IHVuc2V0O1xuICAgIG1hcmdpbi10b3A6IHVuc2V0O1xuICAgIG1hcmdpbi1ib3R0b206IHVuc2V0O1xuICAgIG1hcmdpbi1sZWZ0OiB1bnNldDtcbiAgICBtYXJnaW4tcmlnaHQ6IHVuc2V0O1xuICAgIGJvcmRlcjogdW5zZXQ7XG4gICAgYmFja2dyb3VuZDogdW5zZXQ7XG4gICAgYm9yZGVyLXNwYWNpbmc6IDA7XG4gICAgZm9udC1zdHlsZTogdW5zZXQ7XG4gICAgbGlzdC1zdHlsZTogdW5zZXQ7XG59XG4iLCIuRFRQIHtcbiAgICBAaW1wb3J0IFwiYmFzZS5sYXlvdXRcIjtcbiAgICBAaW1wb3J0IFwiYmFzZS5idXR0b25zXCI7XG4gICAgQGltcG9ydCBcImNvbXBvbmVudHMuY2FsZW5kYXJoZWFkZXJcIjtcbiAgICBAaW1wb3J0IFwiY29tcG9uZW50cy5jYWxlbmRhcmdyaWRcIjtcbiAgICBAaW1wb3J0IFwiY29tcG9uZW50cy5jb25maXJtXCI7XG4gICAgQGltcG9ydCBcImNvbXBvbmVudHMuZGV0YWlsc1wiO1xuICAgIEBpbXBvcnQgXCJjb21wb25lbnRzLmVycm9yXCI7XG4gICAgQGltcG9ydCBcImNvbXBvbmVudHMubG9hZGluZ1wiO1xuICAgIEBpbXBvcnQgXCJjb21wb25lbnRzLnNsb3RzbGlzdFwiO1xuICAgIEBpbXBvcnQgXCJjb21wb25lbnRzLnRpbWV6b25lc2VsZWN0b3JcIjtcblxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBtYXgtd2lkdGg6IDg1MHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDAuNGVtO1xufVxuIiwiLkRUUF9fd3JhcHBlciB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LXdyYXA6IHdyYXA7XG59XG5cbi5EVFBfX2NvbHVtbi0tbGVmdCB7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIGZsZXg6IDEgMSAyMWVtO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIHBhZGRpbmc6IDAgMWVtO1xufVxuXG4uRFRQX19jb2x1bW4tLXJpZ2h0IHtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgZmxleDogMSAxIDIwZW07XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgcGFkZGluZzogMCAxZW07XG59XG5cbi5EVFBfX3Zpc3VhbGx5LWhpZGRlbiB7XG4gICAgY2xpcDogcmVjdCgwIDAgMCAwKTtcbiAgICBjbGlwLXBhdGg6IGluc2V0KDUwJSk7XG4gICAgaGVpZ2h0OiAxcHg7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICB3aWR0aDogMXB4O1xufVxuIiwiLkRUUF9fYnV0dG9uIHtcbiAgICBhcHBlYXJhbmNlOiBub25lO1xuICAgIGJhY2tncm91bmQ6IG5vbmU7XG4gICAgYm9yZGVyOiBub25lO1xuICAgIGJvcmRlci1yYWRpdXM6IDA7XG4gICAgZm9udC1mYW1pbHk6IGluaGVyaXQ7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBmb250LXNpemU6IDFlbTtcbiAgICBib3JkZXI6IDAuMWVtIHNvbGlkIHZhcigtLW5ldXRyYWwpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWJ1dHRvbik7XG5cbiAgICAmOmZvY3VzIHtcbiAgICAgICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1idXR0b25BY3RpdmUpO1xuICAgICAgICBib3gtc2hhZG93OiBpbnNldCB2YXIoLS1idXR0b25BY3RpdmUpIDAgMCAwIDAuMWVtO1xuICAgICAgICBib3gtc2hhZG93OiBpbnNldCB2YXIoLS1idXR0b25BY3RpdmUpIDAgMCAwIDAuMWVtO1xuICAgICAgICBvdXRsaW5lOiBub25lO1xuICAgIH1cbiAgICAmOmhvdmVyIHtcbiAgICAgICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1idXR0b25BY3RpdmUpO1xuICAgICAgICBib3gtc2hhZG93OiBpbnNldCB2YXIoLS1idXR0b25BY3RpdmUpIDAgMCAwIDAuMWVtO1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1idXR0b25Ib3Zlcik7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1idXR0b25UZXh0SG92ZXIpO1xuICAgICAgICBvdXRsaW5lOiBub25lO1xuICAgIH1cblxuICAgICY6YWN0aXZlIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tYnV0dG9uQWN0aXZlKTtcbiAgICAgICAgY29sb3I6IHZhcigtLWJ1dHRvbkFjdGl2ZVRleHQpO1xuICAgICAgICBvdXRsaW5lOiBub25lO1xuICAgIH1cbn1cblxuLkRUUF9fZGlzYWJsZWQtYnV0dG9uIHtcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgICBib3JkZXI6IHVuc2V0O1xuICAgIGJhY2tncm91bmQtY29sb3I6IHVuc2V0O1xuXG4gICAgJjpmb2N1cyB7XG4gICAgICAgIGJvcmRlci1jb2xvcjogdW5zZXQ7XG4gICAgICAgIGJveC1zaGFkb3c6IHVuc2V0O1xuICAgICAgICBvdXRsaW5lOiBub25lO1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB1bnNldDtcbiAgICB9XG4gICAgJjpob3ZlciB7XG4gICAgICAgIGJvcmRlci1jb2xvcjogdW5zZXQ7XG4gICAgICAgIGJveC1zaGFkb3c6IHVuc2V0O1xuICAgICAgICBvdXRsaW5lOiBub25lO1xuICAgIH1cblxuICAgICY6YWN0aXZlIHtcbiAgICAgICAgYm9yZGVyLWNvbG9yOiB1bnNldDtcbiAgICAgICAgYm94LXNoYWRvdzogdW5zZXQ7XG4gICAgICAgIG91dGxpbmU6IG5vbmU7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6IHVuc2V0O1xuICAgIH1cbn1cbiIsIi5EVFBfX2NvbHVtbi0tY2FsZW5kYXItaGVhZGVyIHtcbiAgICBwYWRkaW5nOiAxZW0gMmVtO1xuICAgIG1hcmdpbjogMDtcbn1cblxuLkRUUF9fY2FsZW5kYXItaGVhZGVyIHtcbiAgICBkaXNwbGF5OiBncmlkO1xuICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogM2VtIDFmciAzZW07XG4gICAgbWFyZ2luLWJvdHRvbTogMWVtO1xuICAgIGhlaWdodDogM2VtO1xufVxuXG4uRFRQX19jYWxlbmRhci1oZWFkZXItLXRpdGxlIHtcbiAgICBAZXh0ZW5kICV1bnNldDtcbiAgICBtYXJnaW46IDAuNWVtIDA7XG4gICAgZm9udC1zaXplOiAxLjVlbTtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5EVFBfX2NhbGVuZGFyLWhlYWRlci1idXR0b24ge1xuICAgIEBleHRlbmQgLkRUUF9fYnV0dG9uO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIHBhZGRpbmc6IDAuMXJlbSAwIDAgMDtcbiAgICBib3JkZXI6IHVuc2V0O1xuICAgIGJhY2tncm91bmQtY29sb3I6IHVuc2V0O1xuXG4gICAgJjpmb2N1cyB7XG4gICAgICAgIGJveC1zaGFkb3c6IGluc2V0IHZhcigtLWJ1dHRvbkFjdGl2ZSkgMCAwIDAgMC4xcmVtO1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB1bnNldDtcbiAgICB9XG4gICAgJjpob3ZlciB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6IHVuc2V0O1xuICAgIH1cblxuICAgICY6YWN0aXZlIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdW5zZXQ7XG4gICAgfVxuXG4gICAgQGF0LXJvb3QgW2Rpcj1ydGxdI3smfSB7XG4gICAgICAgIHRyYW5zZm9ybTogcm90YXRlKDE4MGRlZyk7XG4gICAgfVxufVxuXG4uRFRQX19jYWxlbmRhci1oZWFkZXItYnV0dG9uLS1pY29uIHtcbiAgICB3aWR0aDogMS41ZW07XG4gICAgaGVpZ2h0OiAxLjVlbTtcbiAgICBmaWxsOiB2YXIoLS1uZXV0cmFsRGFyayk7XG5cbiAgICAmOmZvY3VzIHtcbiAgICAgICAgZmlsbDogdmFyKC0tYnV0dG9uQWN0aXZlKTtcbiAgICB9XG4gICAgJjpob3ZlciB7XG4gICAgICAgIGZpbGw6IHZhcigtLWJ1dHRvbkFjdGl2ZSk7XG4gICAgfVxuXG4gICAgJjphY3RpdmUge1xuICAgICAgICBmaWxsOiB2YXIoLS1idXR0b25BY3RpdmUpO1xuICAgIH1cbn1cblxuLkRUUF9fY2FsZW5kYXItaGVhZGVyLWJ1dHRvbi0tcHJldiB7XG4gICAgdHJhbnNmb3JtOiByb3RhdGUoOTBkZWcpO1xufVxuXG4uRFRQX19jYWxlbmRhci1oZWFkZXItYnV0dG9uLS1uZXh0IHtcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSgtOTBkZWcpO1xufVxuXG4uRFRQX19jYWxlbmRhci1oZWFkZXItYnV0dG9uOmRpc2FibGVkIHtcbiAgICBAZXh0ZW5kIC5EVFBfX2Rpc2FibGVkLWJ1dHRvbjtcbn1cblxuLkRUUF9fY2FsZW5kYXItaGVhZGVyLWJ1dHRvbjpkaXNhYmxlZCBzdmcge1xuICAgIGZpbGw6IHZhcigtLW5ldXRyYWxMaWdodCk7XG59XG4iLCIuRFRQX19jYWxlbmRhci1ncmlkIHtcbiAgICBAZXh0ZW5kICV1bnNldDtcbiAgICB0YWJsZS1sYXlvdXQ6IGZpeGVkO1xuICAgIHdpZHRoOiAxMDAlO1xufVxuXG4uRFRQX19jYWxlbmRhci1ncmlkLS13ZWVrLWRheSxcbi5EVFBfX2NhbGVuZGFyLWdyaWQtLXdlZWstZGF5OmZpcnN0LWNoaWxkIHtcbiAgICBAZXh0ZW5kICV1bnNldDtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgZm9udC1zaXplOiAxZW07XG4gICAgcGFkZGluZzogMWVtIDA7XG59XG5cbi5EVFBfX2NhbGVuZGFyLWdyaWQtLXJvdyB7XG4gICAgQGV4dGVuZCAldW5zZXQ7XG59XG5cbi5EVFBfX2NhbGVuZGFyLWdyaWQtLWRheSB7XG4gICAgQGV4dGVuZCAldW5zZXQ7XG4gICAgcGFkZGluZzogMC4xZW07XG59XG5cbi5EVFBfX2NhbGVuZGFyLWdyaWQtLWJ1dHRvbiB7XG4gICAgQGV4dGVuZCAuRFRQX19idXR0b247XG4gICAgcGFkZGluZzogMWVtIDA7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICBib3JkZXItcmFkaXVzOiAwLjRlbTtcbiAgICBjb2xvcjogdmFyKC0tYmxhY2spO1xufVxuXG4uRFRQX19jYWxlbmRhci1ncmlkLS1idXR0b246ZGlzYWJsZWQge1xuICAgIEBleHRlbmQgLkRUUF9fZGlzYWJsZWQtYnV0dG9uO1xufVxuXG4uRFRQX19jYWxlbmRhci1ncmlkLS1wcmV2bmV4dCB7XG4gICAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgICBjb2xvcjogdmFyKC0tbmV1dHJhbCk7XG59XG5cbi5EVFBfX2NhbGVuZGFyLWdyaWQtLWF2YWlsYWJsZSB7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1uZXV0cmFsRGFyayk7XG4gICAgY29sb3I6IHZhcigtLWJ1dHRvblRleHQpO1xuXG4gICAgJjpob3ZlciB7XG4gICAgICAgIGJvcmRlci1jb2xvcjogdmFyKC0tYnV0dG9uQWN0aXZlKTtcbiAgICAgICAgYm94LXNoYWRvdzogaW5zZXQgdmFyKC0tYnV0dG9uQWN0aXZlKSAwIDAgMCAwLjFlbTtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tYnV0dG9uSG92ZXIpO1xuICAgICAgICBjb2xvcjogdmFyKC0tYnV0dG9uVGV4dEhvdmVyKTtcbiAgICB9XG5cbiAgICAmOmFjdGl2ZSB7XG4gICAgICAgIGJvcmRlci1jb2xvcjogdmFyKC0tYnV0dG9uQWN0aXZlKTtcbiAgICAgICAgYm94LXNoYWRvdzogaW5zZXQgdmFyKC0tYnV0dG9uQWN0aXZlKSAwIDAgMCAwLjFlbTtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tYnV0dG9uSG92ZXIpO1xuICAgICAgICBjb2xvcjogdmFyKC0tYnV0dG9uVGV4dEhvdmVyKTtcbiAgICB9XG59XG5cbi5EVFBfX2NhbGVuZGFyLWdyaWQtLWZvY3VzZWQge1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tYnV0dG9uQWN0aXZlKTtcbiAgICBib3gtc2hhZG93OiBpbnNldCB2YXIoLS1idXR0b25BY3RpdmUpIDAgMCAwIDAuMWVtO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWJ1dHRvbkhvdmVyKTtcbiAgICBjb2xvcjogdmFyKC0tYnV0dG9uVGV4dEhvdmVyKTtcbn1cblxuLkRUUF9fY2FsZW5kYXItZ3JpZC0tc2VsZWN0ZWQge1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWJ1dHRvbkFjdGl2ZSk7XG4gICAgY29sb3I6IHZhcigtLWJ1dHRvbkFjdGl2ZVRleHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDAuNGVtO1xuXG4gICAgJjpob3ZlciB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWJ1dHRvbkFjdGl2ZSk7XG4gICAgfVxufVxuIiwiLkRUUF9fY29uZmlybS1kZXRhaWxzIHtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5EVFBfX2NvbmZpcm0tZGV0YWlscyA+ICogKyAqIHtcbiAgICBtYXJnaW4tdG9wOiAxZW07XG59XG5cbi5EVFBfX2NvbmZpcm0tZGV0YWlscy0taW5mbyB7XG4gICAgZm9udC1zaXplOiAxLjVlbTtcbn1cblxuLkRUUF9fY29uZmlybS1kZXRhaWxzLS1zZXF1ZW5jZS10aXRsZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4uRFRQX19jb25maXJtLWRldGFpbHMtLXNlcXVlbmNlLXRpbWUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgICBtYXJnaW4tbGVmdDogMC41cmVtO1xuXG4gICAgQGF0LXJvb3QgW2Rpcj1ydGxdI3smfSB7XG4gICAgICAgIG1hcmdpbi1sZWZ0OiAwcmVtO1xuICAgICAgICBtYXJnaW4tcmlnaHQ6IDAuNXJlbTtcbiAgICB9XG59XG5cbi5EVFBfX2NvbmZpcm0tYnV0dG9uIHtcbiAgICBAZXh0ZW5kIC5EVFBfX2J1dHRvbjtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1idXR0b25Db25maXJtKTtcbiAgICBjb2xvcjogdmFyKC0tYnV0dG9uQ29uZmlybVRleHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDAuNGVtO1xuICAgIG1pbi13aWR0aDogNjAlO1xuICAgIGhlaWdodDogM2VtO1xuICAgIG1hcmdpbjogMWVtIGF1dG87XG4gICAgcGFkZGluZzogMCAwLjc1ZW07XG59XG5cbi5EVFBfX2NhbmNlbC1idXR0b24ge1xuICAgIEBleHRlbmQgLkRUUF9fYnV0dG9uO1xuICAgIGJvcmRlci1yYWRpdXM6IDAuNGVtO1xuICAgIGhlaWdodDogM2VtO1xuICAgIG1hcmdpbjogMWVtIGF1dG87XG4gICAgcGFkZGluZzogMCAxZW07XG59XG4iLCIuRFRQX19kZXRhaWxzIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtd3JhcDogd3JhcDtcbiAgICBwYWRkaW5nOiAxZW0gMDtcbn1cblxuLkRUUF9fZGV0YWlscy0tdHoge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleDogMSAxIDIxZW07XG4gICAgcGFkZGluZzogMCAxZW07XG4gICAgZ2FwOiAwLjNlbTtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG4uRFRQX19kZXRhaWxzLS10ei1sYWJlbCB7XG5cbn1cblxuLkRUUF9fZGV0YWlscy0tZHVyYXRpb24ge1xuICAgIGZsZXg6IDEgMSAyMGVtO1xuICAgIHBhZGRpbmc6IDAuM2VtIDFlbTtcbn1cbiIsIi5EVFBfX2Vycm9yIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgdG9wOiAwO1xuICAgIGxlZnQ6IDA7XG4gICAgei1pbmRleDogMTA7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIHBhZGRpbmc6IDEwcHg7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5EVFBfX2Vycm9yLWljb24ge1xuICAgIHdpZHRoOiAyZW07XG4gICAgaGVpZ2h0OiAyZW07XG4gICAgZmlsbDogdmFyKC0tYmxhY2spO1xufVxuXG4uRFRQX19lcnJvci10ZXh0LXdyYXBwZXIge1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBtYXJnaW4tdG9wOiAxZW07XG4gICAgY29sb3I6IHZhcigtLWJsYWNrKTtcbn1cbi5EVFBfX2Vycm9yLXRleHQge1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBtYXJnaW4tdG9wOiAxZW07XG4gICAgbWF4LXdpZHRoOiAzNmVtO1xuICAgIGNvbG9yOiB2YXIoLS1ibGFjayk7XG59XG4iLCJAa2V5ZnJhbWVzIHNwaW4ge1xuICAgIDAlIHtcbiAgICAgICAgdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7XG4gICAgfVxuICAgIDEwMCUge1xuICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZSgzNjBkZWcpO1xuICAgIH1cbn1cblxuLkRUUF9fbG9hZGluZy13cmFwcGVyIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgdG9wOiAwO1xuICAgIGxlZnQ6IDA7XG4gICAgei1pbmRleDogMTA7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIHN2ZyB7XG4gICAgICAgIHdpZHRoOiAxZW07XG4gICAgICAgIGhlaWdodDogMWVtO1xuICAgICAgICBhbmltYXRpb246IHNwaW4gaW5maW5pdGUgbGluZWFyIDFzO1xuICAgIH1cbn1cblxuLkRUUF9fY2FsZW5kYXItbG9hZGluZyB7XG4gIG1hcmdpbi10b3A6IDFyZW07XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGdhcDogMXJlbTtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgc3ZnIHtcbiAgICB3aWR0aDogMWVtO1xuICAgIGhlaWdodDogMWVtO1xuICAgIGFuaW1hdGlvbjogc3BpbiBpbmZpbml0ZSBsaW5lYXIgMXM7XG4gIH1cbn1cbiIsIi5EVFBfX3RpbWUtc2xvdHMtbGlzdCA+ICogKyAqLFxuLkRUUF9fc2xvdC1saXN0ID4gKiArICoge1xuICAgIG1hcmdpbi10b3A6IDFlbTtcbn1cblxuLkRUUF9fdGltZS1zbG90cy1saXN0LS1oZWFkZXIge1xuICAgIGZvbnQtc2l6ZTogMS41ZW07XG4gICAgbWFyZ2luOiAwLjVlbSAwO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLkRUUF9fc2xvdC1saXN0LFxuLkRUUF9fc2xvdC1saXN0LS1pdGVtIHtcbiAgICBAZXh0ZW5kICV1bnNldDtcbiAgICBsaXN0LXN0eWxlOiBub25lO1xufVxuXG4uRFRQX190aW1lLXNsb3Qge1xuICAgIEBleHRlbmQgLkRUUF9fYnV0dG9uO1xuICAgIGJvcmRlcjogMC4xZW0gc29saWQgdmFyKC0tbmV1dHJhbCk7XG4gICAgYmFja2dyb3VuZDogdmFyKC0td2hpdGUpO1xuICAgIHBhZGRpbmc6IDAuNzVlbSAwO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogM2VtO1xuICAgIGJvcmRlci1yYWRpdXM6IDAuNGVtO1xufVxuXG4uRFRQX190aW1lLXNsb3QtLWRldGFpbGVkIHtcbiAgaGVpZ2h0OiB1bnNldDtcbn1cblxuLkRUUF9fZGV0YWlsZWQtc2xvdC1saXN0LFxuLkRUUF9fZGV0YWlsZWQtc2xvdC1saXN0LS1pdGVtIHtcbiAgICBAZXh0ZW5kICV1bnNldDtcbiAgICBsaXN0LXN0eWxlOiBub25lO1xufVxuXG4uRFRQX190aW1lLXNsb3QtLXNlbGVjdGVkIHtcbiAgICBAZXh0ZW5kIC5EVFBfX2J1dHRvbjtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1idXR0b25BY3RpdmUpO1xuICAgIGNvbG9yOiB2YXIoLS1idXR0b25BY3RpdmVUZXh0KTtcbiAgICBvdXRsaW5lOiBub25lO1xufVxuIiwiLkRUUF9fdGltZXpvbmUtc2VsZWN0b3Ige1xuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICBmbGV4LWdyb3c6IDE7XG59XG5cbi5EVFBfX3RpbWV6b25lLXNlbGVjdG9yLS1idXR0b24ge1xuICAgIEBleHRlbmQgLkRUUF9fYnV0dG9uO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICAgIGJvcmRlcjogMC4xZW0gc29saWQgdmFyKC0tbmV1dHJhbCk7XG4gICAgYmFja2dyb3VuZDogdmFyKC0td2hpdGUpO1xuICAgIHBhZGRpbmc6IDAuM2VtIDFlbTtcbiAgICB0ZXh0LWFsaWduOiBsZWZ0O1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGJvcmRlci1yYWRpdXM6IDAuNGVtO1xuICAgIHotaW5kZXg6IDI7XG59XG5cbi5EVFBfX3RpbWV6b25lLXNlbGVjdG9yLS1pY29uIHtcbiAgICB3aWR0aDogMWVtO1xuICAgIGhlaWdodDogMWVtO1xuICAgIG1hcmdpbi10b3A6IDAuMmVtO1xuICAgIGZpbGw6IHZhcigtLW5ldXRyYWxEYXJrKTtcbiAgICBmbG9hdDogcmlnaHQ7XG59XG5cbi5EVFBfX3RpbWV6b25lLXNlbGVjdG9yLS1pY29uLW9wZW4ge1xuICAgIHRyYW5zZm9ybTogc2NhbGVZKC0xKTtcbn1cblxuLkRUUF9fdGltZXpvbmUtc2VsZWN0b3ItLWxpc3Rib3gtd3JhcHBlciB7XG4gICAgQGV4dGVuZCAldW5zZXQ7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGJvcmRlcjogMC4xZW0gc29saWQgdmFyKC0tbmV1dHJhbCk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0td2hpdGUpO1xuICAgIGJvcmRlci10b3A6IDA7XG4gICAgcGFkZGluZy10b3A6IDEuMTVlbTtcbiAgICB0b3A6IDFlbTtcbiAgICB6LWluZGV4OiAxO1xuICAgIGJvcmRlci1yYWRpdXM6IDAgMCAwLjRlbSAwLjRlbTtcbn1cblxuLkRUUF9fdGltZXpvbmUtc2VsZWN0b3ItLWxpc3Rib3gge1xuICAgIEBleHRlbmQgJXVuc2V0O1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1heC1oZWlnaHQ6IDE1ZW07XG4gICAgb3ZlcmZsb3cteTogYXV0bztcbn1cblxuLkRUUF9fdGltZXpvbmUtc2VsZWN0b3ItLW9wdGlvbiB7XG4gICAgQGV4dGVuZCAldW5zZXQ7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIHBhZGRpbmc6IDAuNWVtIDFlbTtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgbGluZS1oZWlnaHQ6IDEuOGVtO1xuXG4gICAgJjpob3ZlciB7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWJ1dHRvbkhvdmVyKTtcbiAgICAgICAgY29sb3I6IHZhcigtLWJ1dHRvblRleHRIb3Zlcik7XG4gICAgfVxufVxuXG4uRFRQX190aW1lem9uZS1zZWxlY3Rvci0tZm9jdXNlZCB7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1idXR0b25BY3RpdmUpO1xuICAgIGJveC1zaGFkb3c6IGluc2V0IHZhcigtLWJ1dHRvbkFjdGl2ZSkgMCAwIDAgMC4xZW07XG4gICAgb3V0bGluZTogbm9uZTtcbn1cblxuLkRUUF9fdGltZXpvbmUtc2VsZWN0b3ItLXNlbGVjdGVkIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1idXR0b25Ib3Zlcik7XG4gICAgY29sb3I6IHZhcigtLWJ1dHRvblRleHRIb3Zlcik7XG59XG4iXSwic291cmNlUm9vdCI6IiJ9 */</style><style>@font-face {
+              font-family: 'Open Sans Regular';
+              font-style: normal;
+              font-weight: 400;
+              src: url('chrome-extension://gkkdmjjodidppndkbkhhknakbeflbomf/fonts/open_sans/open-sans-v18-latin-regular.woff');
+          }</style><style>@font-face {
+              font-family: 'Open Sans Bold';
+              font-style: normal;
+              font-weight: 800;
+              src: url('chrome-extension://gkkdmjjodidppndkbkhhknakbeflbomf/fonts/open_sans/OpenSans-Bold.woff');
+          }</style><style>@font-face {
+              font-family: 'Open Sans ExtraBold';
+              font-style: normal;
+              font-weight: 800;
+              src: url('chrome-extension://gkkdmjjodidppndkbkhhknakbeflbomf/fonts/open_sans/open-sans-v18-latin-800.woff');
+          }</style><style data-styled="active" data-styled-version="5.3.11"></style><style type="text/css">.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q{display:block!important;border:1px solid #cdcfd2!important;background-color:#fff!important;color:#373a3d!important;width:100vw!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q .IN-e146f606-483d-4824-a598-79a778fddfb4-24GeGuJgk9LrMLp7qVvlyz{background:#6a7e89!important;color:#fff!important;padding:10px!important;font-size:18px!important;font-family:sans-serif!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q .IN-e146f606-483d-4824-a598-79a778fddfb4-KVjdulkCFfUZps29EbgAC{background:#f3f6f8!important;border-bottom:1px solid #cdcfd2!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q .IN-e146f606-483d-4824-a598-79a778fddfb4-KVjdulkCFfUZps29EbgAC>*{margin-right:10px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q .IN-e146f606-483d-4824-a598-79a778fddfb4-1OeZ2PQ98oAp6Vc5mMc6V5{list-style:none!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q .IN-e146f606-483d-4824-a598-79a778fddfb4-vCwYmWF_l83ScZBrGnRoi,.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q .IN-e146f606-483d-4824-a598-79a778fddfb4-1OeZ2PQ98oAp6Vc5mMc6V5{margin:0!important;padding:0!important;width:100%!important;display:block!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q .IN-e146f606-483d-4824-a598-79a778fddfb4-vCwYmWF_l83ScZBrGnRoi:not(:last-child){border-bottom:1px solid #cdcfd2!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q .IN-e146f606-483d-4824-a598-79a778fddfb4-1XQZkb-FlHWABUp4_uShaZ{color:inherit!important;cursor:pointer!important;width:100%!important;display:inline-block!important;margin:10px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q .IN-e146f606-483d-4824-a598-79a778fddfb4-1XTzMvb2XKitWz0mFLlyyp{margin:5px!important;display:block!important;width:auto!important;white-space:pre!important;overflow-x:scroll!important;background:inherit!important;color:inherit!important;font-family:monospace}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q .IN-e146f606-483d-4824-a598-79a778fddfb4-1XTzMvb2XKitWz0mFLlyyp:not(.IN-e146f606-483d-4824-a598-79a778fddfb4-39QUvFFn5B7GMcqMQkOXZ3){display:none!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q .IN-e146f606-483d-4824-a598-79a778fddfb4-295DY3nO0DbJWMsOqmjCli{background:#f5f5f5!important;color:#5a5a5a!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q.IN-e146f606-483d-4824-a598-79a778fddfb4-1aQZwu6CUzAf2zUcI7tg0Q .IN-e146f606-483d-4824-a598-79a778fddfb4-295DY3nO0DbJWMsOqmjCli{display:none!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q .IN-e146f606-483d-4824-a598-79a778fddfb4-38EPFyKXMtoP12rPlmrHxs{background:#e6f7ff!important;color:#006097!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q.IN-e146f606-483d-4824-a598-79a778fddfb4-3W4ZnQjhoGfT1gTNcqRXdi .IN-e146f606-483d-4824-a598-79a778fddfb4-38EPFyKXMtoP12rPlmrHxs{display:none!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q .IN-e146f606-483d-4824-a598-79a778fddfb4-HGYnfzlmgOZ-l7eANhQe_{background:#fff3ea!important;color:#993a00!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q.IN-e146f606-483d-4824-a598-79a778fddfb4-24e52A11B1UIErbKHtBmqc .IN-e146f606-483d-4824-a598-79a778fddfb4-HGYnfzlmgOZ-l7eANhQe_{display:none!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q .IN-e146f606-483d-4824-a598-79a778fddfb4-jji74ZzulHScD0OAD_G7h{background:#fef2f1!important;color:#b10823!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-3npS60y-EvfF7G_lioSx2Q.IN-e146f606-483d-4824-a598-79a778fddfb4-28jAOA7cDee-95LvwGsOP- .IN-e146f606-483d-4824-a598-79a778fddfb4-jji74ZzulHScD0OAD_G7h{display:none!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu{background-color:#0073b1!important;border:0!important;border-radius:2px!important;box-sizing:border-box!important;color:#fff!important;cursor:pointer!important;display:inline-block!important;font-family:-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif!important;font-weight:600!important;overflow:hidden!important;outline-width:2px!important;position:relative!important;text-align:center!important;text-decoration:none!important;vertical-align:middle!important;white-space:nowrap!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu:disabled{cursor:not-allowed!important;opacity:.7!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu:not(:disabled):not(.IN-e146f606-483d-4824-a598-79a778fddfb4-1zhzkayakwEXovVYUbq5Gy):hover{background-color:#006097!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu:not(:disabled):not(.IN-e146f606-483d-4824-a598-79a778fddfb4-1zhzkayakwEXovVYUbq5Gy):active{background-color:#004b7c!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-1zhzkayakwEXovVYUbq5Gy{background-color:#fff!important;color:#0073b1!important;box-shadow:inset 0 0 0 1px rgba(0,0,0,.3)!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-1zhzkayakwEXovVYUbq5Gy:not(:disabled):hover{color:#006097!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-1zhzkayakwEXovVYUbq5Gy:not(:disabled):active{color:#004b7c!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu>xdoor-icon{display:inline-block!important;height:100%!important;vertical-align:top!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu>xdoor-icon>svg{pointer-events:none!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-7inSbaAsvG5bf7w6lJTEr{font-size:10px!important;height:16px!important;line-height:16px!important;padding:0 6px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-7inSbaAsvG5bf7w6lJTEr>xdoor-icon{margin-left:-6px!important;margin-right:3px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-7inSbaAsvG5bf7w6lJTEr>xdoor-icon>svg{height:16px!important;width:16px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-7inSbaAsvG5bf7w6lJTEr.IN-e146f606-483d-4824-a598-79a778fddfb4-2lrEjt4SOTxqrYsv1piG4c>xdoor-icon{margin-right:-6px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu,.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-3uCBSbQNVNf2QjqHe1rfb6{font-size:11px!important;height:20px!important;line-height:20px!important;padding:0 7px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-3uCBSbQNVNf2QjqHe1rfb6>xdoor-icon,.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu>xdoor-icon{margin-left:-7px!important;margin-right:3.5px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-3uCBSbQNVNf2QjqHe1rfb6>xdoor-icon>svg,.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu>xdoor-icon>svg{height:20px!important;width:20px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-3uCBSbQNVNf2QjqHe1rfb6.IN-e146f606-483d-4824-a598-79a778fddfb4-2lrEjt4SOTxqrYsv1piG4c>xdoor-icon,.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-2lrEjt4SOTxqrYsv1piG4c>xdoor-icon{margin-right:-7px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-21Smv9YG-5V6M6KP-5v2WG{font-size:14px!important;height:24px!important;line-height:24px!important;padding:0 12px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-21Smv9YG-5V6M6KP-5v2WG>xdoor-icon{margin-left:-12px!important;margin-right:6px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-21Smv9YG-5V6M6KP-5v2WG>xdoor-icon>svg{height:24px!important;width:24px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-21Smv9YG-5V6M6KP-5v2WG.IN-e146f606-483d-4824-a598-79a778fddfb4-2lrEjt4SOTxqrYsv1piG4c>xdoor-icon{margin-right:-12px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-1TGdQUTLZdNG4R87OfAB-q{font-size:16px!important;height:32px!important;line-height:32px!important;padding:0 16px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-1TGdQUTLZdNG4R87OfAB-q>xdoor-icon{margin-left:-16px!important;margin-right:8px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-1TGdQUTLZdNG4R87OfAB-q>xdoor-icon>svg{height:32px!important;width:32px!important}.IN-e146f606-483d-4824-a598-79a778fddfb4-1G9ISYhSF8XoOmdcl0yKDu.IN-e146f606-483d-4824-a598-79a778fddfb4-1TGdQUTLZdNG4R87OfAB-q.IN-e146f606-483d-4824-a598-79a778fddfb4-2lrEjt4SOTxqrYsv1piG4c>xdoor-icon{margin-right:-16px!important}</style></head><body class="opportunitydetail-controller candidate-layout" data-new-gr-c-s-check-loaded="14.1272.0" data-gr-ext-installed=""><iframe id="_as" style="display: none" src="/HOM1007HSUC/JobBoard/04366c17-7ee4-499a-a9e9-38ae46d03ef6/AnonymousSessionCheck"></iframe>
+
+    
+
+<link rel="stylesheet" href="https://rec-cdn-prod.cdn.ultipro.com/rec-web/f707927c2a4b056cec77de55fb695d3f42ef382d/site.css">
+<link rel="stylesheet" href="https://rec-cdn-prod.cdn.ultipro.com/rec-web/f707927c2a4b056cec77de55fb695d3f42ef382d/bootstrap-extensions.min.css">
+
+
+    <link href="/HOM1007HSUC/JobBoard/04366c17-7ee4-499a-a9e9-38ae46d03ef6/Styles/BrandingSettings?brandId=03649e58-f98e-452f-bfc2-7ced5e48e9cd&amp;m=638146757645580000" rel="stylesheet">
+
+<script id="twitter-wjs" src="//platform.twitter.com/widgets.js"></script><script async="" src="https://www.datadoghq-browser-agent.com/eu1/v5/datadog-rum.js"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-TRJP8TD"></script><script async="" src="https://cdn.pendo.io/agent/static/cfb570dc-23df-45bd-5089-5be6acfaa92b/pendo.js"></script><script src="https://rec-cdn-prod.cdn.ultipro.com/rec-web/f707927c2a4b056cec77de55fb695d3f42ef382d/jqueryBundle.min.js"></script>
+<script src="https://rec-cdn-prod.cdn.ultipro.com/rec-web/f707927c2a4b056cec77de55fb695d3f42ef382d/tinymceBundle.js"></script>
+<script src="https://rec-cdn-prod.cdn.ultipro.com/rec-web/f707927c2a4b056cec77de55fb695d3f42ef382d/reactBundle.js"></script>
+<script src="https://rec-cdn-prod.cdn.ultipro.com/rec-web/f707927c2a4b056cec77de55fb695d3f42ef382d/jslib.min.js"></script>
+<script src="https://rec-cdn-prod.cdn.ultipro.com/rec-web/f707927c2a4b056cec77de55fb695d3f42ef382d/react-components.min.js"></script>
+<script src="https://rec-cdn-prod.cdn.ultipro.com/rec-web/f707927c2a4b056cec77de55fb695d3f42ef382d/bootstrapBundle.min.js"></script>
+
+
+        <link rel="stylesheet" href="https://ignite.cdn.ultipro.com/dls-cdn/ignite/v7.13.3/tokens/fonts/noto/ignite-fonts-noto-hinted-cdn.css">
+        <link rel="stylesheet" href="https://ignite.cdn.ultipro.com/dls-cdn/ignite/v7.13.3/tokens/fonts/volte/ignite-fonts-volte-cdn.css">
+        <link rel="stylesheet" href="https://ignite.cdn.ultipro.com/dls-cdn/ignite/v7.13.3/tokens/css/ignite-tokens.css">
+        <script type="module" src="https://ignite.cdn.ultipro.com/dls-cdn/ignite/v7.13.3/web-components/ignite/ignite.esm.js"></script>
+        <script type="module" src="https://ignite.cdn.ultipro.com/dls-cdn/ignite/v7.13.3/web-components/ignite/ignite.js"></script>
+    <script type="module" src="https://rec-cdn-prod.cdn.ultipro.com/rec-web/f707927c2a4b056cec77de55fb695d3f42ef382d/npm-imports.js"></script>
+
+
+<script src="https://rec-cdn-prod.cdn.ultipro.com/rec-web/f707927c2a4b056cec77de55fb695d3f42ef382d/site.min.js"></script>
+<script src="https://rec-cdn-prod.cdn.ultipro.com/rec-web/f707927c2a4b056cec77de55fb695d3f42ef382d/siteBundle.js" type="module"></script>
+
+    
+
+    <script>
+    (function() {
+        Recruiting.TenantFeatureToggle.setFeatureToggles(["FrenchGoToOfferLetterMergeTag","SmsCandidateSync","ExternalApplyId","BulkDisposition","ReplaceTenantSeasonedGuids","PositionAutomationSyncOnFutureDates","EnableLaunchDarkly","ReindexCandidateTags","PostToLinkedInWidget","BatchRejectApplications","UkgAuthNEntitlementOutbound","UkgAuthNInternalForArcGisOutbound","ResumeColumn","ReferenceDataUniqueCacheKey","CandidateDetailsActions","EditEmail","ViewMoreJobLocationFilter","ProfessionalExperienceDate","OldPostToLinkedInDeprecated","TwitterSwitch","SortApplicationsByAssessmentStatus","ReindexForSortApplicationsByAssessmentStatus","ResumeEnhancements2025","OfferEditsWithApproval","CandidateMatchScoreVisibility","ShowAllLocationsInOpportunityList","CandidateEngagementAugust","SendGlobalHiresToOnboarding","SendRehiresToOnboarding","OpportunityScoreIncrease","PostCandAPILookupBeforeSave","MxDispositionModal","EducationDates","FilterGroup","CompanyNameForAutoFeed","CandidateEngagementMay","EnableFrFrLocale","FilterApplicationsByAssessmentScore","CandidateDetailRank","CandidateSearchFullNameMatch","OpportunityTranslationEnhancements","PhysicalLocationSyncEnhancements","OfferMergeTagsEnhancements","EditAssessmentPackagesOnPublishedOpps","ArcGisWithAuth","ScheduleInterviewOnUnpostedOpportunity","PositionAutomationSync","RecruitmentFireLocationSync","HireFromOffer","UpdateAssessmentEmail2025","OppAuthNIdentity","JobLocationType","CalendarNameInInterviewNotes","IncreaseOfferLetterMaxLength","SalaryRangeFields","ScreeningQuestionLastUpdatedReindex","TinyMCEValidateExtraTags","OpportunityJustificationCommentsFix","SyncZipCodeForTaxLocations","SmsWebPhoneRelease","OfferContactPhoneNumberDefault","ScreeningQuestionHashFilter","EnableCsrSessionManagement","ProjectAndShiftFields","DmpUpload","RecruitmentFireJobSync","OfferMergeTagsTinyMce","CandidateStatusAtTimeOfHire","SyncPositionAutomationOnRecEnable","AssessmentIntegration","ConfigurableCountryQuestions","ApplicationSubmittedFilterReindex","ShowOnbLinkForGlobalHiresOnJobBoard","EnableNlNlLocale","JobsFromSearch","SkipScreeningQuestionsDraftValidations","EnableAotJsBundling","OfferContactMergeTags","CandidateMatchGA","IndeedResumeFields","JobBoardSettingsUpdate","IndeedApplyFixDupEmail","DiagnosticsServiceAccountReset","EnableSvSeLocale","EnableRecCdn","SmsWebPhoneReassign","LocalizationEnabled","MxEmailScheduleModal","EnableItItLocale","LatestReference","CopyApplicants","PreferredName","EnableDaDkLocale","CandidateMatchHideScoreWarningMessage","EnableEnCALocale","SupportRelayStateInSso","OfferActivityFilter","RehireIndicator","CurrencySymbolFormatOnOpportunityNotificationMessage","BulkDispositionCandidateApps","DelayNotificationViewToggle","SyncActivatedPosition","AssessmentLinkRequestOpp","TenantSpecificMailgunDomain","MXExperience","HireDetailsLink","ApplicationSubmittedFilter","EnablePeopleFabricStateEvents","UkgAuthNInternal","AddToIdentities","LongerRequisitionNumber","LatestOFCCPForm","ReindexForSearchableApplicationQuestionHash","IndeedQuestionsAcceptMultipleSchemaVersions","SmsWelcomeMessage","ScreeningQuestionGroups","IndeedQuestionsFormatVersion1","ValidateInactiveLocationsInHireDetails","GlobalDate","OfferAttachments","ApplicationIncorrectNameTextChanges","EWSMigration","USFedContractorUpdates2024","SharedPools","PersonFireSyncUsersAndLogins","RecHMAllowManageDocumentsForInternalCandidates","MergeCandidates","WelcomeEmail","PositionAutomation","ScreeningQuestionTranslations","enable-recruiting-candidate-preferred-locale-notification-tokens","enable-recruiting-manage-client-ukg-authn","enable-recruiting-indeed-job-sync-error-messages","enable-recruiting-leave-of-absence","enable-recruiting-indeed-job-sync-location-type-fix","enable-recruiting-sovren-retry","enable-wait-for-search-refresh","enable-recruiting-check-before-linkedin-cleanup","enable-recruiting-email-translations","enable-recruiting-check-before-linkedin-publish","enable-recruiting-position-automation-diagnostics","enable-recruiting-bgc-integration-names-sanitization","enable-recruiting-position-automation-people-fabric-api","enable-recruiting-optimized-easy-apply-applications-query","enable-recruiting-remove-hireright-duplicate-security-headers","enable-recruiting-launch-darkly-demo","enable-recruiting-indeed-job-sync-api","enable-recruiting-improved-opportunity-close-performance","enable-recruiting-offer-mergetag-employeetype","enable-recruiting-apply-number-validate","disable-recruiting-duplicate-hire-processing","enable-recruiting-job-board-integration-settings-warning-modal","enable-recruiting-ucc-toggle-deprecation","enable-recruiting-project-search-full-name-match","enable-recruiting-email-translations-phase2","disable-recruiting-send-automated-emails-on-closed-opportunity","enable-recruiting-opportunity-status-audits","enable-recruiting-application-question-status","SyncJobsFromOdata","SyncCoreEmployeeRolesIndependentOfCandidateSync","EnableMetricsLogging","OfflineTokenIntrospection","EnableArcGisProxy","ReportsForSupport","StrictSecondaryReads","ManageClientOppRealm","TenantSecondaryReads","CallerMemberForMongoTraceLogs","EnableSnapshotReadConcern","UltiProServiceClientCircuitBreaker","PreventDuplicateSynchedReferenceData","SearchQueryTelemetry","DmpUploadMigration","ReduceDbFullDocumentReplace","EESyncSkipFailedPages","DisableEntityReferences","DisableV1Api","ThirdPartyIntegrationApiOptimized","ConsumeCoreMergeEvents","TrsEnabled","DmpCorrelationSync","TmsDepreciation"]);
+    })();
+</script>
+
+    <script>
+    (function() {
+        var featureSettings = [{"Name":"Recruitment.Offers","EnabledFeatures":["Approvals","Edits","UserLocale"]},{"Name":"Recruitment.OpportunityManagement.PageFeatures","EnabledFeatures":["JobSearchAgent","ShareOnTwitter"]},{"Name":"Recruitment.CandidateInformation","EnabledFeatures":["CandidateReferences","TextMessaging","CandidateMerge","EditCandidateEmailAddress"]},{"Name":"Recruitment.OpportunityManagement.PublishingAndJobBoards","EnabledFeatures":["FeaturedOpportunities","Approvals","Evergreen","FTE","IncludeHiringManagersInOnboardingOwnerField"]},{"Name":"Recruitment.CandidateConsent","EnabledFeatures":["CandidateConsent"]},{"Name":"Recruitment.Interviews","EnabledFeatures":["ScheduleMeeting"]},{"Name":"Recruitment.Organization","EnabledFeatures":["OrgLevels","DefaultOpportunityOrgLevelsFromUser","RestrictOpportunityAccessByOrgLevels","AuditSearchingForCandidates","SendRehiresToOnboarding"]},{"Name":"Recruitment.Accessibility","EnabledFeatures":["Accessibility"]}];
+
+        var featureSettingsConfigurationGroups = featureSettings.map(function(g) {
+            return new Recruiting.FeatureSettingsConfigurationGroup(g.Name, g.EnabledFeatures);
+        });
+
+        Recruiting.FeatureSettings.init(featureSettingsConfigurationGroups);
+    })();
+</script>
+
+    
+
+
+        <script>
+            let data = {
+                visitor: {
+                    id: "External-Rec-User",
+                    rec_isRecruitmentAdministrator: false,
+                    rec_isRecruiter: false,
+                    rec_isHiringManager: false,
+                    rec_environment: "recruiting.ultipro.com",
+                    locale: "en-US"
+},
+                account: {
+                    id: US.utils.po.getFirstSevenChars("HOM1007HSUC"),
+                    tenantAlias: "HOM1007HSUC"
+                            },
+                excludeAllText: true,
+                disableGuides: false
+            }
+            US.utils.po.init("cfb570dc-23df-45bd-5089-5be6acfaa92b");
+            pendo.initialize(data);
+
+            function updatePendoUrl() {
+                pendo.location.addTransforms([
+                    {
+                        attr: 'search',
+                        action: 'AllowOnlyKeys',
+                        data: US.utils.ga.whiteListedUrlTerms
+                    },
+                    {
+                        attr: 'search',
+                        action: 'AddTo',
+                        data: function () {
+                            const url = new URL(window.location.href);
+                            if ((false && url.pathname.includes('OpportunityApplicants'))
+                                || (false && url.pathname.includes('Pools'))
+                                || (false && (url.pathname.includes('Recruiter/Candidates') || url.pathname.includes('CandidateAdd')))
+                                || (false && url.pathname.includes('CandidateDetail'))
+                                || (false && url.pathname.includes('OfferList'))
+                                || (false && (url.pathname.includes('OfferDetail') || url.pathname.includes('OfferCreate')))
+                                || (false && url.pathname.includes('OpportunityList'))
+                                || (false && (/JobBoard\/[^\/]*\/Candidate\/ViewPresence[^\/]*$/.test(url.pathname)
+                                     || /JobBoard\/[^\/]*\/ApplicationAssessments[^\/]*$/.test(url.pathname) || /JobBoard\/[^\/]*\/CandidateOffer[^\/]*$/.test(url.pathname)
+                                     || /JobBoard\/[^\/]*\/References\/ViewReferences[^\/]*$/.test(url.pathname)  || /JobBoard\/[^\/]*\/CandidateInterviewScheduling\/SelfSchedule[^\/]*$/.test(url.pathname)))
+                                || (false &&
+                                        (/JobBoard\/[^\/]*\/?$/.test(url.pathname) ||
+                                            /JobBoard\/[^\/]*\/OpportunityDetail[^\/]*$/.test(url.pathname) || url.pathname.includes('Accessibility')
+                                            || url.pathname.includes('Dashboard') || /JobBoard\/[^\/]*\/JobSearchAgent[^\/]*$/.test(url.pathname)
+                                   ))) {
+                                            return { 'mx': '1' };
+                                       }
+                                },
+                    }
+                ]);
+            }
+
+            $(window).on('load', function () {
+                setTimeout(updatePendoUrl, 10);
+            });
+        </script>
+    
+    
+
+
+
+    <!-- Google Tag Manager -->
+<script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer', 'GTM-TRJP8TD');
+</script>
+<!-- End Google Tag Manager -->
+
+    <script>
+     $(function() {
+         $('<input name="__RequestVerificationToken" type="hidden" value="CfDJ8O4ZvE4Tv89MjzNHVkcaDLLTKWNuEwlFRDPOE4jDpN848ZVAJMohgZGp0ODidZ8LctVzW483f8XVx_-zSUZDuDmrnjHLjTFXvnAhKPK2m9_JHqb8zB-0ccw75KCVZWIclJzDmcPu02pymzGdyo52Tyg" />').appendTo("body");
+     });
+     
+     $(document).ajaxSend(function (event, xhr, options) {
+         if (['GET', 'HEAD'].indexOf(options.type) === -1) {
+             xhr.setRequestHeader('X-RequestVerificationToken', $('input[name="__RequestVerificationToken"]').val());
+         }
+     });
+ </script>
+
+        <script type="text/javascript">
+        (function (h, o, u, n, d) {
+            h = h[d] = h[d] || { q: [], onReady: function (c) { h.q.push(c) } }
+            d = o.createElement(u); d.async = 1; d.src = n
+            n = o.getElementsByTagName(u)[0]; n.parentNode.insertBefore(d, n);
+        })
+        (window, document, 'script', 'https://www.datadoghq-browser-agent.com/eu1/v5/datadog-rum.js', 'DD_RUM');
+        /**
+         * Checks if currentUrl matches any pattern in the whitelist (supports '*' as wildcard)
+         * param {string[]} whitelist - Array of patterns (may include '*')
+         * param {string} currentUrl - URL to check
+         * returns {boolean}
+         */
+        function isUrlWhitelisted(whitelist, currentUrl) {
+            return whitelist.some(function(pattern) {
+                // Escape regex special chars except *
+                var regexPattern = pattern.replace(/[.+?^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*');
+                var regex = new RegExp(regexPattern);
+                return regex.test(currentUrl);
+            });
+        }
+
+        var rumReplaySessionEnabled = false;
+        var rumReplayWhiteList = [];
+            rumReplayWhiteList.push("JobBoard/*/OpportunityApply");
+        var isReplayAllowed = rumReplaySessionEnabled ? isUrlWhitelisted(rumReplayWhiteList, window.location.pathname) : false;
+        var rumSessionRate = rumReplaySessionEnabled ? 100 : 50;
+        var rumReplayRate = isReplayAllowed ? 100 : 0;
+
+        window.DD_RUM.onReady(function () {
+            if (!isReplayAllowed) {
+                window.DD_RUM.stopSessionReplayRecording();
+            }
+            
+            window.DD_RUM.init({
+                clientToken: 'pub49cc788d96f6d1f8f20c5d6f19aa242c',
+                applicationId: '0d864a82-3281-41ce-bbf9-801162b05695',
+                site: 'datadoghq.eu',
+                service: 'rec-prod-atl',
+                env: 'prod',
+                version: 'f707927c2a4b056cec77de55fb695d3f42ef382d',
+                sessionSampleRate: rumSessionRate,
+                sessionReplaySampleRate: rumReplayRate,
+                startSessionReplayRecordingManually: true,
+                trackUserInteractions: true,
+                trackResources: true,
+                trackLongTasks: true,
+                defaultPrivacyLevel: 'mask-user-input',
+                // https://docs.datadoghq.com/real_user_monitoring/connect_rum_and_traces/?tab=w3ctracecontext#how-are-rum-resources-linked-to-traces
+                allowedTracingUrls: [{ match: (url) => 'arcgis,cronofy,campaign-management'.split(',').map(t => t.trim()).every(t => !url.includes(t)), propagatorTypes: ["tracecontext"] }],
+                beforeSend: (event, context) => {
+                    //https://docs.datadoghq.com/real_user_monitoring/browser/modifying_data_and_context#enrich-and-control-rum-data
+                    event.view.url = event.view.url.replace("/CandidateSearch=[^&]*/", "CandidateSearch=REDACTED"); //candidate search may contain PII
+                    event.view.url = event.view.url.replace("/as=[^&]*/", "as=REDACTED"); //application search may contain PII
+                }
+            });
+
+            //set user context
+            window.DD_RUM.setUser({
+                id: "",
+                featureToggles: "FrenchGoToOfferLetterMergeTag,SmsCandidateSync,ExternalApplyId,BulkDisposition,ReplaceTenantSeasonedGuids,PositionAutomationSyncOnFutureDates,EnableLaunchDarkly,ReindexCandidateTags,PostToLinkedInWidget,BatchRejectApplications,UkgAuthNEntitlementOutbound,UkgAuthNInternalForArcGisOutbound,ResumeColumn,ReferenceDataUniqueCacheKey,CandidateDetailsActions,EditEmail,ViewMoreJobLocationFilter,ProfessionalExperienceDate,OldPostToLinkedInDeprecated,TwitterSwitch,SortApplicationsByAssessmentStatus,ReindexForSortApplicationsByAssessmentStatus,ResumeEnhancements2025,OfferEditsWithApproval,CandidateMatchScoreVisibility,ShowAllLocationsInOpportunityList,CandidateEngagementAugust,SendGlobalHiresToOnboarding,SendRehiresToOnboarding,OpportunityScoreIncrease,PostCandAPILookupBeforeSave,MxDispositionModal,EducationDates,FilterGroup,CompanyNameForAutoFeed,CandidateEngagementMay,EnableFrFrLocale,FilterApplicationsByAssessmentScore,CandidateDetailRank,CandidateSearchFullNameMatch,OpportunityTranslationEnhancements,PhysicalLocationSyncEnhancements,OfferMergeTagsEnhancements,EditAssessmentPackagesOnPublishedOpps,ArcGisWithAuth,ScheduleInterviewOnUnpostedOpportunity,PositionAutomationSync,RecruitmentFireLocationSync,HireFromOffer,UpdateAssessmentEmail2025,OppAuthNIdentity,JobLocationType,CalendarNameInInterviewNotes,IncreaseOfferLetterMaxLength,SalaryRangeFields,ScreeningQuestionLastUpdatedReindex,TinyMCEValidateExtraTags,OpportunityJustificationCommentsFix,SyncZipCodeForTaxLocations,SmsWebPhoneRelease,OfferContactPhoneNumberDefault,ScreeningQuestionHashFilter,EnableCsrSessionManagement,ProjectAndShiftFields,DmpUpload,RecruitmentFireJobSync,OfferMergeTagsTinyMce,CandidateStatusAtTimeOfHire,SyncPositionAutomationOnRecEnable,AssessmentIntegration,ConfigurableCountryQuestions,ApplicationSubmittedFilterReindex,ShowOnbLinkForGlobalHiresOnJobBoard,EnableNlNlLocale,JobsFromSearch,SkipScreeningQuestionsDraftValidations,EnableAotJsBundling,OfferContactMergeTags,CandidateMatchGA,IndeedResumeFields,JobBoardSettingsUpdate,IndeedApplyFixDupEmail,DiagnosticsServiceAccountReset,EnableSvSeLocale,EnableRecCdn,SmsWebPhoneReassign,LocalizationEnabled,MxEmailScheduleModal,EnableItItLocale,LatestReference,CopyApplicants,PreferredName,EnableDaDkLocale,CandidateMatchHideScoreWarningMessage,EnableEnCALocale,SupportRelayStateInSso,OfferActivityFilter,RehireIndicator,CurrencySymbolFormatOnOpportunityNotificationMessage,BulkDispositionCandidateApps,DelayNotificationViewToggle,SyncActivatedPosition,AssessmentLinkRequestOpp,TenantSpecificMailgunDomain,MXExperience,HireDetailsLink,ApplicationSubmittedFilter,EnablePeopleFabricStateEvents,UkgAuthNInternal,AddToIdentities,LongerRequisitionNumber,LatestOFCCPForm,ReindexForSearchableApplicationQuestionHash,IndeedQuestionsAcceptMultipleSchemaVersions,SmsWelcomeMessage,ScreeningQuestionGroups,IndeedQuestionsFormatVersion1,ValidateInactiveLocationsInHireDetails,GlobalDate,OfferAttachments,ApplicationIncorrectNameTextChanges,EWSMigration,USFedContractorUpdates2024,SharedPools,PersonFireSyncUsersAndLogins,RecHMAllowManageDocumentsForInternalCandidates,MergeCandidates,WelcomeEmail,PositionAutomation,ScreeningQuestionTranslations,enable-recruiting-candidate-preferred-locale-notification-tokens,enable-recruiting-manage-client-ukg-authn,enable-recruiting-indeed-job-sync-error-messages,enable-recruiting-leave-of-absence,enable-recruiting-indeed-job-sync-location-type-fix,enable-recruiting-sovren-retry,enable-wait-for-search-refresh,enable-recruiting-check-before-linkedin-cleanup,enable-recruiting-email-translations,enable-recruiting-check-before-linkedin-publish,enable-recruiting-position-automation-diagnostics,enable-recruiting-bgc-integration-names-sanitization,enable-recruiting-position-automation-people-fabric-api,enable-recruiting-optimized-easy-apply-applications-query,enable-recruiting-remove-hireright-duplicate-security-headers,enable-recruiting-launch-darkly-demo,enable-recruiting-indeed-job-sync-api,enable-recruiting-improved-opportunity-close-performance,enable-recruiting-offer-mergetag-employeetype,enable-recruiting-apply-number-validate,disable-recruiting-duplicate-hire-processing,enable-recruiting-job-board-integration-settings-warning-modal,enable-recruiting-ucc-toggle-deprecation,enable-recruiting-project-search-full-name-match,enable-recruiting-email-translations-phase2,disable-recruiting-send-automated-emails-on-closed-opportunity,enable-recruiting-opportunity-status-audits,enable-recruiting-application-question-status",
+                roles: "",
+                tenantAlias: "HOM1007HSUC"
+            });
+            window.DD_RUM.startSessionReplayRecording({ force: !!isReplayAllowed });
+        });
+    </script>
+
+
+
+    <ukg-ignite-shell theme="classic" class="branded-layout hydrated" default-translation-path="" enable-cdn-path="" use-latest-cdn="" language="en-US" data-tag-name="ignite-shell" data-ignite-version="7.13.3">
+    <!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRJP8TD"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+        <a class="sr-only sr-only-focusable" id="skipLink" tabindex="0" data-i18n="Common.SkipLink">Skip to main content</a>
+            <div id="PageContent" style="">
+                <header role="banner">
+                        <div id="AccessibilityBannerWrapper">
+                            <react-ko-bridge params="component: 'Recruiting.Rct.Containers.Candidate.AccessibilityBanner',
+                    props: {
+                        'fetchCookieFunc': $.cookie,
+                        'setCookieFunc': $.cookie,
+                        'removeCookieFunc': $.removeCookie,
+                        'accessibilityUrl': accessibilityUrl,
+                        'resetCookie': resetCookie,
+                        'isModernStyleEnabled': isModernStyleEnabled
+                             }"><div><div id="AccessibilityBanner" class="notification-banner"><div class="container" id="AccessibilityBannerDisplay"><h3 data-automation="accessibility-banner-header">Accessibility Note:</h3><p data-automation="accessibility-banner-message">If you are a job seeker with a disability and require a reasonable accommodation to apply for one of our jobs, you will find the contact information to request the appropriate accommodation by visiting the following page:</p><p class="link-container"><a data-automation="accessibility-banner-link" href="/HOM1007HSUC/JobBoard/04366c17-7ee4-499a-a9e9-38ae46d03ef6/Accessibility">Accessibility Accommodation for Applicants</a></p><button data-automation="accessibility-banner-dismiss" class="pull-right btn btn-link dismiss-link">Dismiss Note</button></div></div></div></react-ko-bridge>
+                        </div>
+
+
+
+<nav class="navbar navbar-candidate navbar-static-top" data-automation="navbar" data-i18n="[aria-label]Layout.NavigationAriaLabel" aria-label="Global">
+    <div class="container">
+        <div class="navbar-header">
+            <a target="_blank" class="navbar-brand">
+                    <img class="small-logo logo" src="/HOM1007HSUC/JobBoard/04366c17-7ee4-499a-a9e9-38ae46d03ef6/Styles/GetSmallHeaderLogo?brandId=03649e58-f98e-452f-bfc2-7ced5e48e9cd&amp;m=638146757645580000" alt="HomeServe" data-automation="navbar-small-logo">
+                    <img class="large-logo logo" src="/HOM1007HSUC/JobBoard/04366c17-7ee4-499a-a9e9-38ae46d03ef6/Styles/GetLargeHeaderLogo?brandId=03649e58-f98e-452f-bfc2-7ced5e48e9cd&amp;m=638146757645580000" alt="HomeServe" data-automation="navbar-large-logo">
+            </a>
+            
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse" aria-labelledby="navbar-menu-label">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span id="navbar-menu-label" class="sr-only" data-i18n="Layout.Menu.MenuLabel">Toggle Navigation</span>
+        </div>
+        
+        <div id="navbar-collapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+
+
+                    <li class="find-opps-link ">
+                        <ukg-button manual-color="true" class="brandingbutton ukg-color ukg-button-medium ukg-button-low-emphasis ukg-on-light ukg-no-min-width hydrated" id="OpportunitiesMenuButton" data-automation="opportunities-menu-button" onclick="window.location='/HOM1007HSUC/JobBoard/04366c17-7ee4-499a-a9e9-38ae46d03ef6'" emphasis="low" data-i18n="Layout.Menu.Opportunities" data-bind="attr: {'aria-label': $.t('Layout.Menu.Opportunities') }" data-tag-name="button" size="medium" data-ukg-focus-visible="">Find Opportunities</ukg-button>
+                    </li>
+
+
+<li id="LanguagePicker">
+    <ukg-button manual-color="true" class="brandingbutton ukg-color ukg-button-medium ukg-button-low-emphasis ukg-on-light ukg-no-min-width ukg-has-icons hydrated" id="languageMenubutton" data-bind="menudropdownListener: { targetId: 'languageMenuContainer' }" data-automation="selected-language-picker-link" emphasis="low" child-icon="menu-caret-down" data-i18n="[tooltip-text]Layout.LanguageLabel" parent-icon="language" tooltip-text="Language" data-tag-name="button" size="medium" data-ukg-focus-visible="">
+        <span class="brandingbutton" data-bind="text: selectedLanguage().Name">U.S. English</span>
+    </ukg-button>
+    <ukg-menu fixed-height="large" id="languageMenuContainer" data-bind="foreach: languages" selectable="" class="sc-ukg-menu-h sc-ukg-menu-s hydrated" data-tag-name="menu"><!---->
+        <!-- ko if: $data.Code=='zh-CN'--><!-- /ko --> 
+        <!-- ko ifnot: $data.Code=='zh-CN'-->
+        <ukg-menu-item data-automation="language-picker-link" data-bind="click: $parent.selected, attr: {value: $data.Code, selected: $parent.selectedLanguage() == $data, 'lang': $data.Code}, text: $data.Name" value="en-GB" lang="en-GB" data-tag-name="menu-item" class="hydrated">British English</ukg-menu-item>
+        <!--/ko-->
+    <!---->
+        <!-- ko if: $data.Code=='zh-CN'--><!-- /ko --> 
+        <!-- ko ifnot: $data.Code=='zh-CN'-->
+        <ukg-menu-item data-automation="language-picker-link" data-bind="click: $parent.selected, attr: {value: $data.Code, selected: $parent.selectedLanguage() == $data, 'lang': $data.Code}, text: $data.Name" value="en-CA" lang="en-CA" data-tag-name="menu-item" class="hydrated">CA English</ukg-menu-item>
+        <!--/ko-->
+    <!---->
+        <!-- ko if: $data.Code=='zh-CN'--><!-- /ko --> 
+        <!-- ko ifnot: $data.Code=='zh-CN'-->
+        <ukg-menu-item data-automation="language-picker-link" data-bind="click: $parent.selected, attr: {value: $data.Code, selected: $parent.selectedLanguage() == $data, 'lang': $data.Code}, text: $data.Name" value="da-DK" lang="da-DK" data-tag-name="menu-item" class="hydrated">Danish</ukg-menu-item>
+        <!--/ko-->
+    <!---->
+        <!-- ko if: $data.Code=='zh-CN'--><!-- /ko --> 
+        <!-- ko ifnot: $data.Code=='zh-CN'-->
+        <ukg-menu-item data-automation="language-picker-link" data-bind="click: $parent.selected, attr: {value: $data.Code, selected: $parent.selectedLanguage() == $data, 'lang': $data.Code}, text: $data.Name" value="de-DE" lang="de-DE" data-tag-name="menu-item" class="hydrated">Deutsch</ukg-menu-item>
+        <!--/ko-->
+    <!---->
+        <!-- ko if: $data.Code=='zh-CN'--><!-- /ko --> 
+        <!-- ko ifnot: $data.Code=='zh-CN'-->
+        <ukg-menu-item data-automation="language-picker-link" data-bind="click: $parent.selected, attr: {value: $data.Code, selected: $parent.selectedLanguage() == $data, 'lang': $data.Code}, text: $data.Name" value="nl-NL" lang="nl-NL" data-tag-name="menu-item" class="hydrated">Dutch</ukg-menu-item>
+        <!--/ko-->
+    <!---->
+        <!-- ko if: $data.Code=='zh-CN'--><!-- /ko --> 
+        <!-- ko ifnot: $data.Code=='zh-CN'-->
+        <ukg-menu-item data-automation="language-picker-link" data-bind="click: $parent.selected, attr: {value: $data.Code, selected: $parent.selectedLanguage() == $data, 'lang': $data.Code}, text: $data.Name" value="es-ES" lang="es-ES" data-tag-name="menu-item" class="hydrated">Español</ukg-menu-item>
+        <!--/ko-->
+    <!---->
+        <!-- ko if: $data.Code=='zh-CN'--><!-- /ko --> 
+        <!-- ko ifnot: $data.Code=='zh-CN'-->
+        <ukg-menu-item data-automation="language-picker-link" data-bind="click: $parent.selected, attr: {value: $data.Code, selected: $parent.selectedLanguage() == $data, 'lang': $data.Code}, text: $data.Name" value="fr-FR" lang="fr-FR" data-tag-name="menu-item" class="hydrated">FR French</ukg-menu-item>
+        <!--/ko-->
+    <!---->
+        <!-- ko if: $data.Code=='zh-CN'--><!-- /ko --> 
+        <!-- ko ifnot: $data.Code=='zh-CN'-->
+        <ukg-menu-item data-automation="language-picker-link" data-bind="click: $parent.selected, attr: {value: $data.Code, selected: $parent.selectedLanguage() == $data, 'lang': $data.Code}, text: $data.Name" value="fr-CA" lang="fr-CA" data-tag-name="menu-item" class="hydrated">Français Canadien</ukg-menu-item>
+        <!--/ko-->
+    <!---->
+        <!-- ko if: $data.Code=='zh-CN'--><!-- /ko --> 
+        <!-- ko ifnot: $data.Code=='zh-CN'-->
+        <ukg-menu-item data-automation="language-picker-link" data-bind="click: $parent.selected, attr: {value: $data.Code, selected: $parent.selectedLanguage() == $data, 'lang': $data.Code}, text: $data.Name" value="it-IT" lang="it-IT" data-tag-name="menu-item" class="hydrated">Italian</ukg-menu-item>
+        <!--/ko-->
+    <!---->
+        <!-- ko if: $data.Code=='zh-CN'--><!-- /ko --> 
+        <!-- ko ifnot: $data.Code=='zh-CN'-->
+        <ukg-menu-item data-automation="language-picker-link" data-bind="click: $parent.selected, attr: {value: $data.Code, selected: $parent.selectedLanguage() == $data, 'lang': $data.Code}, text: $data.Name" value="pt-BR" lang="pt-BR" data-tag-name="menu-item" class="hydrated">Português do Brasil</ukg-menu-item>
+        <!--/ko-->
+    <!---->
+        <!-- ko if: $data.Code=='zh-CN'--><!-- /ko --> 
+        <!-- ko ifnot: $data.Code=='zh-CN'-->
+        <ukg-menu-item data-automation="language-picker-link" data-bind="click: $parent.selected, attr: {value: $data.Code, selected: $parent.selectedLanguage() == $data, 'lang': $data.Code}, text: $data.Name" value="sv-SE" lang="sv-SE" data-tag-name="menu-item" class="hydrated">Swedish</ukg-menu-item>
+        <!--/ko-->
+    <!---->
+        <!-- ko if: $data.Code=='zh-CN'--><!-- /ko --> 
+        <!-- ko ifnot: $data.Code=='zh-CN'-->
+        <ukg-menu-item data-automation="language-picker-link" data-bind="click: $parent.selected, attr: {value: $data.Code, selected: $parent.selectedLanguage() == $data, 'lang': $data.Code}, text: $data.Name" value="en-US" selected="true" lang="en-US" data-tag-name="menu-item" class="hydrated">U.S. English</ukg-menu-item>
+        <!--/ko-->
+    <!---->
+        <!-- ko if: $data.Code=='zh-CN'-->
+        <ukg-menu-item data-automation="language-picker-link" data-bind="click: $parent.selected, attr: { value: $data.Code, selected: $parent.selectedLanguage() == $data, 'lang': $data.Code, 'aria-label': $.t('Layout.Menu.ChineseLabel')}, text: $data.Name" value="zh-CN" lang="zh-CN" aria-label="Simplified Chinese" data-tag-name="menu-item" class="hydrated">简体中文</ukg-menu-item>
+        <!-- /ko --> 
+        <!-- ko ifnot: $data.Code=='zh-CN'--><!--/ko-->
+    </ukg-menu> 
+</li>
+
+<script>
+    $(function () {
+        var languageSelectionViewModel = new US.Common.LanguageSelectionViewModel({
+            languages: [{"Id":"34e329e5-6e83-4e59-8879-c3e39f6229c9","Code":"en-GB","Name":"British English"},{"Id":"af699467-de1c-4eab-9e4c-50c426dc961e","Code":"en-CA","Name":"CA English"},{"Id":"4472ce4a-c88e-4f40-a36b-6df8b7daa5df","Code":"da-DK","Name":"Danish"},{"Id":"841f2814-4f6e-4a37-8a07-75c5af9d0bd7","Code":"de-DE","Name":"Deutsch"},{"Id":"941d6a52-139f-4baa-b558-0428b5059917","Code":"nl-NL","Name":"Dutch"},{"Id":"748993d4-7fd4-4146-ab17-f35423768200","Code":"es-ES","Name":"Español"},{"Id":"5266ab6b-200e-4152-bebd-40923f952d6d","Code":"fr-FR","Name":"FR French"},{"Id":"fba4253d-2c6e-4836-81e6-0a2d25e951a5","Code":"fr-CA","Name":"Français Canadien"},{"Id":"03863089-9c60-4a70-b6e4-fd9d43d66ad4","Code":"it-IT","Name":"Italian"},{"Id":"e8d5efd6-13ed-45a7-878b-e126688640ef","Code":"pt-BR","Name":"Português do Brasil"},{"Id":"33563062-7a8b-4c15-baab-9aa319ce3fa6","Code":"sv-SE","Name":"Swedish"},{"Id":"18a64832-04e6-4a1c-a9fd-770bb7beeec8","Code":"en-US","Name":"U.S. English"},{"Id":"a9a1fec2-e7f4-4795-981a-6150938b570e","Code":"zh-CN","Name":"简体中文"}],
+            selectedLanguageCode: "en-US",
+            changeUserLanguageUrl: "/HOM1007HSUC/JobBoard/04366c17-7ee4-499a-a9e9-38ae46d03ef6/Layout/ChangeUserLanguage"
+        });
+
+        ko.applyBindings(languageSelectionViewModel, $("#LanguagePicker")[0]);
+    });
+</script>
+                    <li>
+                        <ukg-button manual-color="true" class="brandingbutton ukg-color ukg-button-medium ukg-button-low-emphasis ukg-on-light ukg-no-min-width hydrated" id="SignInButton" onclick="window.location='/HOM1007HSUC/JobBoard/04366c17-7ee4-499a-a9e9-38ae46d03ef6/Account/Login?cancelUrl=http%3A%2F%2Frecruiting.ultipro.com%2FHOM1007HSUC%2FJobBoard%2F04366c17-7ee4-499a-a9e9-38ae46d03ef6%2FOpportunityDetail%3FopportunityId%3Dee7df30c-30b9-4d95-9244-b3a0c9411fd7%26source%3DLinkedIn%26utm_source%3DLINKEDIN'" emphasis="low" data-i18n="Layout.Menu.LogIn" data-bind="attr: {'aria-label': $.t('Layout.Menu.LogIn') }" data-tag-name="button" size="medium" data-ukg-focus-visible="">Sign In</ukg-button>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+                </header>
+                <main>
+                    <div class="index-action">
+                        <div id="PageContainer" class="container">
+                            <div id="GlobalNotificationContainer">
+                                <global-notification><div role="alert" class="alert alert-success" data-bind="visible: visible, css: level" data-automation="global-notification" style="display: none;"><span data-bind="html: message"></span> <span data-bind="visible: errors().length == 1, text: errors()[0]" style="display: none;"></span><ul data-bind="visible: errors().length &gt; 1, foreach: errors()" style="display: none;"></ul></div></global-notification>
+                            </div>
+                            
+
+<script>
+    $(function () {
+        var opportunity = new US.Opportunity.CandidateOpportunityDetail({"Id":"ee7df30c-30b9-4d95-9244-b3a0c9411fd7","Title":"AI / ML Engineer","Featured":false,"FullTime":true,"HoursPerWeek":null,"JobCategoryName":"Non-Union Non-Contact Center","Locations":[{"Id":"b7133c04-fb01-484b-8238-83a432721eee","LocalizedName":"Chattanooga, TN","LocalizedLocationId":null,"LocalizedDescription":null,"Address":{"Line1":null,"Line2":null,"City":"Chattanooga","State":{"Name":"Tennessee","Code":"TN"},"PostalCode":null,"Country":{"Id":"31d42b6d-12c6-41a9-a82f-8821ad66625c","Name":"United States","Code":"USA"}},"DisplayName":true,"DisplayLocationId":false,"DisplayDescription":false,"DisplayAddress":true,"DisplayStreetAddress":false,"Coordinates":{"Longitude":-85.30946624047145,"Latitude":35.04672415337356},"Shapes":null,"SourceOfTruth":0,"IsAvailableForOpportunities":true},{"Id":"69c94695-f19b-4b67-9ab5-c7b778f80a63","LocalizedName":"Norwalk, CT","LocalizedLocationId":"Norwalk (45 Glover Ave)","LocalizedDescription":null,"Address":{"Line1":"45 Glover Ave","Line2":null,"City":"Norwalk","State":{"Name":"Connecticut","Code":"CT"},"PostalCode":"06850","Country":{"Id":"31d42b6d-12c6-41a9-a82f-8821ad66625c","Name":"United States","Code":"USA"}},"DisplayName":false,"DisplayLocationId":false,"DisplayDescription":false,"DisplayAddress":true,"DisplayStreetAddress":true,"Coordinates":{"Longitude":-73.42985002018,"Latitude":41.14465099347},"Shapes":null,"SourceOfTruth":0,"IsAvailableForOpportunities":true}],"PostedDate":"2026-02-06T22:38:33.402Z","UpdatedDate":"2026-02-10T17:59:43.072Z","RequisitionNumber":"AIMLE008459","Description":"\u003cp\u003e\u003cstrong\u003ePosition Overview:\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eIn this critical role, you will play a pivotal role in identifying, incubating, and scaling new capabilities, with a particular focus on generative AI technologies. You will be responsible for the entire lifecycle of bringing new capabilities to life, from ideation to implementation and scaling. You will work closely with cross-functional teams across the organization to identify potential opportunities for generative AI, assess their feasibility, and develop strategies for successful incubation and integration.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eResponsibilities:\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eIdentify cutting-edge generative AI technologies with the potential to transform HomeServe USA\u0027s business.\u0026nbsp;\u003c/li\u003e\n\u003cli\u003eConduct market research and competitive analysis to understand the landscape of generative AI applications.\u0026nbsp;\u003c/li\u003e\n\u003cli\u003eDevelop and present compelling business cases for the adoption of new generative AI capabilities.\u0026nbsp;\u003c/li\u003e\n\u003cli\u003eLead pilot projects to test and validate the effectiveness of new generative AI solutions.\u0026nbsp;\u003c/li\u003e\n\u003cli\u003eCollaborate with engineering and product teams to develop and implement new generative AI features and functionalities.\u0026nbsp;\u003c/li\u003e\n\u003cli\u003eMonitor and measure the impact of new generative AI capabilities on key business metrics.\u0026nbsp;\u003c/li\u003e\n\u003cli\u003eStay abreast of the latest advancements in generative AI and identify opportunities for continuous improvement.\u0026nbsp;\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u0026nbsp;\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eEssential Functions:\u003c/strong\u003e\u003c/p\u003e\n\u003ctable\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003e\n\u003cp\u003e\u003cstrong\u003eEssential Job Function\u003c/strong\u003e\u003c/p\u003e\n\u003c/td\u003e\n\u003ctd\u003e\n\u003cp\u003e\u003cstrong\u003e% of Time on Function\u003c/strong\u003e\u003c/p\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\n\u003cp\u003eConduct comprehensive investigations into cutting-edge advancements in Generative AI technologies, synthesizing insights to foster a culture of innovation within the organization.\u003c/p\u003e\n\u003c/td\u003e\n\u003ctd\u003e\n\u003cp\u003e\u0026nbsp;10%\u003c/p\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\n\u003cp\u003eCollaborate with cross-functional business units to identify high-impact generative AI use cases.\u003c/p\u003e\n\u003c/td\u003e\n\u003ctd\u003e\n\u003cp\u003e\u0026nbsp;5%\u003c/p\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\n\u003cp\u003e\u0026nbsp;Lead the piloting of proof-of-concept (POC) implementations of the identified use cases.\u003c/p\u003e\n\u003c/td\u003e\n\u003ctd\u003e\n\u003cp\u003e\u0026nbsp;40%\u003c/p\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\n\u003cp\u003eCollaborate with system architects and developers to transform the POC into a production-ready application. Utilize Cloud Services, including Cloud Functions and APIs, to facilitate scalable and efficient deployment.\u003c/p\u003e\n\u003c/td\u003e\n\u003ctd\u003e\n\u003cp\u003e\u0026nbsp;30%\u003c/p\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\n\u003cp\u003eCraft and continuously refine advanced prompts to enhance the efficacy and relevance of generative AI outputs, leveraging iterative feedback and analytics to optimize performance.\u003c/p\u003e\n\u003c/td\u003e\n\u003ctd\u003e\n\u003cp\u003e\u0026nbsp;5%\u003c/p\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\n\u003cp\u003eWrite high-quality code in programming languages such as Python, Node.js, or Java to support the creation, testing, and optimization of generative AI applications.\u003c/p\u003e\n\u003c/td\u003e\n\u003ctd\u003e\n\u003cp\u003e10%\u003c/p\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\n\u003cp\u003e\u003cstrong\u003eTotal \u003c/strong\u003e\u003c/p\u003e\n\u003c/td\u003e\n\u003ctd\u003e\n\u003cp\u003e\u003cstrong\u003e100%\u003c/strong\u003e\u003c/p\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003e\u0026nbsp;\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eJob Requirements:\u003c/strong\u003e\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eBachelor\u0027s degree in Computer Science or related field preferred.\u003c/li\u003e\n\u003cli\u003eMinimum of 3-5 years of experience in innovation management, emerging technology incubation, or a related field.\u003c/li\u003e\n\u003cli\u003eProven track record of identifying and evaluating new technologies.\u0026nbsp;\u003c/li\u003e\n\u003cli\u003eStrong understanding of business strategy and the ability to translate technology trends into actionable insights.\u0026nbsp;\u003c/li\u003e\n\u003cli\u003eExcellent analytical and problem-solving skills.\u0026nbsp;\u003c/li\u003e\n\u003cli\u003eExperience in project management and the ability to manage multiple projects simultaneously.\u0026nbsp;\u003c/li\u003e\n\u003cli\u003eExcellent communication and presentation skills.\u0026nbsp;\u003c/li\u003e\n\u003cli\u003eProficiency in generative AI concepts and applications (a plus).\u0026nbsp;\u003c/li\u003e\n\u003cli\u003ePassion for innovation and a strong desire to make a positive impact on the business.\u0026nbsp;\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u0026nbsp;\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eMinimum Physical Requirements:\u003c/strong\u003e\u003cstrong\u003e\u0026nbsp;\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eThe physical demands described represent those that must be met by an employee to successfully perform the essential functions of this position. Reasonable accommodations may be made to enable individuals with disabilities to perform the functions of the position for which they work. While performing the duties of this position, the employee is regularly required to listen, talk and hear. The employee frequently is required to use hands or fingers, handle or feel objects, tools, or controls while executing tasks like working on a computer or talking on the telephone.\u0026nbsp; The employee is occasionally required to stand; walk; sit; and reach with hands and arms. The employee must occasionally lift and/or move up to 15 pounds. Specific vision abilities required by this position include close vision, distance vision, and the ability to adjust focus. The noise level in the work environment is usually moderate to low.\u003c/p\u003e\n\u003cp\u003e\u0026nbsp;\u003c/p\u003e\n\u003cp\u003eThis job description is intended to provide guidelines for job expectations and the employee\u0027s ability to perform the position described. It is not intended to be construed as an exhaustive list of all functions, responsibilities, skills and abilities. Additional functions and requirements may be assigned by supervisors as deemed appropriate.\u0026nbsp;\u003c/p\u003e\n\u003cp\u003eSalary Range (Norwalk, CT): $125,932.60 - $167,910.14\u003c/p\u003e\n\u003cp\u003eSalary Range (Chattanooga, TN): $103,035.76 - $137,381.02\u003c/p\u003e\n\u003cp\u003eAnnual Bonus Potential: 10%\u003c/p\u003e\n\u003cp style=\u0022text-align: center;\u0022\u003eHomeServe USA is an equal opportunity employer.\u003c/p\u003e\n\u003cp style=\u0022text-align: center;\u0022\u003e\u003cspan style=\u0022color: #ffffff;\u0022\u003e#HUSA #LI-NM1 #LI-ONSITE\u003c/span\u003e\u003c/p\u003e","EqualOpportunityEmployerDescription":"Equal Opportunity Employer\u003cbr\u003e \r\nThis employer is required to notify all applicants of their rights pursuant to federal employment laws. \r\nFor further information, please review the \u003ca href=\u0027https://www.eeoc.gov/poster\u0027 target=\u0027_blank\u0027\u003eKnow Your Rights\u003c/a\u003e notice from the Department of Labor.","PayTransparencyPolicyStatement":null,"MatchScore":1.0,"HasApplied":false,"ApplicationJobBoardName":null,"ApplicationJobBoardId":null,"DateApplied":null,"Salaried":true,"CompensationAmount":null,"PublishingStatus":1,"Links":[],"BehaviorCriteria":[],"MotivationCriteria":[],"EducationCriteria":[],"LicenseAndCertificationCriteria":[],"SkillCriteria":[],"WorkExperienceCriteria":[],"JobBoardMemberships":[{"JobBoardId":"04366c17-7ee4-499a-a9e9-38ae46d03ef6","PublishedInternal":true,"PublishedExternal":true,"ExternalPostedDate":"2026-02-10T17:59:49.458Z","InternalPostedDate":"2026-02-10T17:59:49.458Z"}],"AssessmentUri":null,"AssessmentStatus":null,"OpportunityIsClosed":false,"TravelRequired":null,"TravelDescription":null,"SupervisorName":null,"Assessments":[],"ApplicationId":null,"CompensationAnnualMinimum":null,"CompensationAnnualMaximum":null,"CompensationHourlyMinimum":null,"CompensationHourlyMaximum":null,"CompensationCurrencyCode":null,"CompensationCurrency":null,"JobLocationType":1,"PayRangeVisible":false,"PayRange":{"PayRangeMinimum":null,"PayRangeMaximum":null},"PayRangeCurrencyCode":"USD","OpportunityType":0});
+        var applicantSourceId = null;
+        if (applicantSourceId) {
+            US.utils.sessionStorage.setItem("applicantSourceId", applicantSourceId);
+        }
+
+        var renderer = new US.Opportunity.OpportunityRenderViewModel({
+            opportunity: opportunity,
+            currentJobBoardId: "04366c17-7ee4-499a-a9e9-38ae46d03ef6",
+            isViewingInternal: false,
+            salaryRangeStatementType: null,
+            salaryRangeStatement: null,
+            isSalaryRangeFieldsEnabled: false
+                                                });
+
+        US.CurrentOpportunityDetailViewModel = new US.Opportunity.OpportunityDetailViewModel({
+            currentJobBoardId: "04366c17-7ee4-499a-a9e9-38ae46d03ef6",
+            opportunity: opportunity,
+            renderer: renderer,
+            candidatePresenceState: null,
+            opportunityApplyRedirectUrl: "/HOM1007HSUC/JobBoard/04366c17-7ee4-499a-a9e9-38ae46d03ef6/Account/Register?redirectUrl=%2FHOM1007HSUC%2FJobBoard%2F04366c17-7ee4-499a-a9e9-38ae46d03ef6%2FOpportunityApply%3FopportunityId%3Dee7df30c-30b9-4d95-9244-b3a0c9411fd7\u0026cancelUrl=http%3A%2F%2Frecruiting.ultipro.com%2FHOM1007HSUC%2FJobBoard%2F04366c17-7ee4-499a-a9e9-38ae46d03ef6%2FOpportunityDetail%3FopportunityId%3Dee7df30c-30b9-4d95-9244-b3a0c9411fd7%26source%3DLinkedIn%26utm_source%3DLINKEDIN",
+            opportunityApplyOnBehalfRedirectUrl: "/HOM1007HSUC/JobBoard/04366c17-7ee4-499a-a9e9-38ae46d03ef6/Recruiter/Candidates",
+            opportunitiesUrl: "/HOM1007HSUC/JobBoard/04366c17-7ee4-499a-a9e9-38ae46d03ef6",
+            tenantAlias: "HOM1007HSUC",
+            featureConfigurationGroups: [{"Id":"409d5a88-9e50-ad8a-43d5-98842ab9f524","Name":"Recruitment.OpportunityManagement.PublishingAndJobBoards","Features":[{"Name":"FeaturedOpportunities","Enabled":true,"HelpTooltipMessageKey":null,"TurnOffWarningMessageKey":null,"ConsentMessageKey":null,"ConsentTitleKey":null,"ToggleableFeature":null},{"Name":"Approvals","Enabled":true,"HelpTooltipMessageKey":null,"TurnOffWarningMessageKey":null,"ConsentMessageKey":null,"ConsentTitleKey":null,"ToggleableFeature":null},{"Name":"Parallel","Enabled":false,"HelpTooltipMessageKey":null,"TurnOffWarningMessageKey":null,"ConsentMessageKey":null,"ConsentTitleKey":null,"ToggleableFeature":null},{"Name":"Evergreen","Enabled":true,"HelpTooltipMessageKey":"RecruitmentAdministrator.FieldConfigurationManager.FeatureConfiguration.Recruitment.OpportunityManagement.PublishingAndJobBoards.EvergreenHelpTooltip","TurnOffWarningMessageKey":null,"ConsentMessageKey":null,"ConsentTitleKey":null,"ToggleableFeature":null},{"Name":"FTE","Enabled":true,"HelpTooltipMessageKey":"RecruitmentAdministrator.FieldConfigurationManager.FeatureConfiguration.Recruitment.OpportunityManagement.PublishingAndJobBoards.FTEHelpTooltip","TurnOffWarningMessageKey":"RecruitmentAdministrator.FieldConfigurationManager.FeatureConfiguration.Recruitment.OpportunityManagement.PublishingAndJobBoards.FTEDisableWarningMessage","ConsentMessageKey":null,"ConsentTitleKey":null,"ToggleableFeature":null},{"Name":"IncludeHiringManagersInOnboardingOwnerField","Enabled":true,"HelpTooltipMessageKey":null,"TurnOffWarningMessageKey":null,"ConsentMessageKey":null,"ConsentTitleKey":null,"ToggleableFeature":null},{"Name":"IncludeHiringManagersInRecruiterField","Enabled":false,"HelpTooltipMessageKey":null,"TurnOffWarningMessageKey":null,"ConsentMessageKey":null,"ConsentTitleKey":null,"ToggleableFeature":null}]},{"Id":"b8405917-552a-1cb0-7044-883db42acfa1","Name":"Recruitment.OpportunityManagement.PageFeatures","Features":[{"Name":"PersonalizedJobSearch","Enabled":false,"HelpTooltipMessageKey":"RecruitmentAdministrator.FieldConfigurationManager.FeatureConfiguration.Recruitment.OpportunityManagement.PageFeatures.PersonalizedJobSearchTooltip","TurnOffWarningMessageKey":null,"ConsentMessageKey":null,"ConsentTitleKey":null,"ToggleableFeature":null},{"Name":"JobSearchAgent","Enabled":true,"HelpTooltipMessageKey":"RecruitmentAdministrator.FieldConfigurationManager.FeatureConfiguration.Recruitment.OpportunityManagement.PageFeatures.JobSearchAgentTooltip","TurnOffWarningMessageKey":null,"ConsentMessageKey":"RecruitmentAdministrator.FieldConfigurationManager.FeatureConfiguration.Recruitment.OpportunityManagement.PageFeatures.JobSearchAgentConsentMessage","ConsentTitleKey":"RecruitmentAdministrator.FieldConfigurationManager.FeatureConfiguration.Recruitment.OpportunityManagement.PageFeatures.JobSearchAgentConsentTitle","ToggleableFeature":null},{"Name":"ShareOnTwitter","Enabled":true,"HelpTooltipMessageKey":"RecruitmentAdministrator.FieldConfigurationManager.FeatureConfiguration.Recruitment.OpportunityManagement.PageFeatures.ShareOnTwitterTooltip","TurnOffWarningMessageKey":null,"ConsentMessageKey":null,"ConsentTitleKey":null,"ToggleableFeature":"TwitterSwitch"}]}],
+            linkedInRedirectUrl: "https://recruiting.ultipro.com/HOM1007HSUC/Opportunity/ApplyWithLinkedIn?jobBoardId=04366c17-7ee4-499a-a9e9-38ae46d03ef6\u0026opportunityId=ee7df30c-30b9-4d95-9244-b3a0c9411fd7",
+            currentUserRequiresReconsent: false,
+            userIsRecOrHM: false,
+            loggedInPersonName: "",
+            assessmentsUrl: "/HOM1007HSUC/JobBoard/04366c17-7ee4-499a-a9e9-38ae46d03ef6/ApplicationAssessments",
+            twitterUrl: "https://twitter.com/intent/tweet?original_referer={originalReferer}\u0026text={text}\u0026url={url}",
+            quickApplyUrl: "/HOM1007HSUC/JobBoard/04366c17-7ee4-499a-a9e9-38ae46d03ef6/QuickApply",
+                                                });
+    });
+</script>
+
+<div class="opportunity-render-view" id="opportunityDetailView">
+    <react-ko-bridge params="component:'Recruiting.Rct.Containers.Candidate.CandidateConsentBanner',
+                         props:{
+                            'showAlert': false,
+                            'consentUrl': '/HOM1007HSUC/JobBoard/04366c17-7ee4-499a-a9e9-38ae46d03ef6/CandidateConsent'
+                         }"><div data-automation="candidate-consent-banner-container"></div></react-ko-bridge>
+    <div class="row">
+        <div class="opportunity" data-bind="with: opportunity">
+            <div class="col-md-24">
+                <div class="row">
+                    <div class="col-sm-18">
+                        <div class="pull-left" data-bind="if: $parent.showSearchResultsButton()"></div>
+                    </div>
+                    <div class="col-sm-6 text-right" data-automation="twitter-button">
+                        <span class="twitter-button ">
+                            <ukg-button id="twitterShare" data-bind="click: $parent.postOnTwitter.bind($data),
+                                        attr: {'aria-label': 'X ' + $.t('Common.Post') + ' ' + $.t('Layout.FooterLinkLabel')}" no-min-width="true" data-automation="twitter-share-button" data-count="none" data-i18n-options-opportunity-title="AI / ML Engineer" class="twitter-share-button ukg-color ukg-button-medium ukg-button-high-emphasis ukg-on-light ukg-no-min-width hydrated" data-i18n="[data-text]Opportunity.OpportunityDetail.TweetText" data-text="Check out this AI / ML Engineer opportunity" data-lang="en-us" data-tag-name="button" emphasis="high" size="medium" data-ukg-focus-visible="">
+                                <i slot="parent-icon" aria-hidden="true"></i>
+                                <span data-bind="text: $.t('Common.Post')">Post</span>
+                                <ukg-icon name="new-window" data-tag-name="icon" role="img" aria-label="new-window" class="ukg-icon-m hydrated"></ukg-icon>
+                            </ukg-button>
+                        </span>
+                    </div>
+                </div>
+                <hr class="no-margin-bottom">
+                <div class="row header">
+                    <div class="col-md-15">
+                        <h1 class="heading-with-subtitle">
+                            <span data-bind="text: formattedTitle" data-automation="opportunity-title">AI / ML Engineer</span>
+                            <!-- ko if: $parent.shouldShowFeaturedLabel() --><!-- /ko -->
+                        </h1>
+                        <div class="label-with-icon-group paragraph">
+                            <span class="label-with-icon">
+                                <strong data-bind="text: $.t('Opportunity.Opportunities.JobCategory')">Job Category</strong><strong>:</strong> <span data-bind="text: JobCategoryName()" data-automation="job-category">Non-Union Non-Contact Center</span>
+                            </span>
+                        </div>
+                        <!-- ko if: SupervisorName() !== null --><!-- /ko -->
+                        <div class="label-with-icon-group paragraph">
+                            <span class="label-with-icon">
+                                <strong data-bind="text: $.t('Opportunity.Opportunities.RequisitionNumber')">Requisition Number</strong><strong>:</strong> <span data-bind="text: RequisitionNumber()" data-automation="requisition-number">AIMLE008459</span>
+                            </span>
+                        </div>
+                        <div class="paragraph">
+                            <!-- ko if: $parent.IsMatchForCandidate($data) --><!-- /ko -->
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <!-- ko if: $parent.opportunity.isPublished() -->
+                        <div class="job-banner-right text-right">
+<div class="mt-4 apply-btns-container">
+        <div class="w-sm-100">
+            <!-- ko if: $parent.currentUserRequiresReconsent --><!-- /ko -->
+            <!-- ko ifnot: $parent.currentUserRequiresReconsent -->
+            <!-- ko if: $parent.showQuickApply() --><!-- /ko -->
+            <!-- ko ifnot: $parent.showQuickApply() -->
+            <ukg-button data-bind="click: function(){ window.location= $parent.opportunityApplyRedirectUrl }" data-automation="apply-now-button" data-i18n="Opportunity.OpportunityDetail.Apply" data-tag-name="button" class="ukg-color ukg-button-medium ukg-button-high-emphasis ukg-on-light hydrated" emphasis="high" size="medium" data-ukg-focus-visible="">Apply now</ukg-button>
+            <!-- /ko -->
+            <!-- /ko -->
+        </div>
+
+        <div class="ml-2" data-automation="awli-widget-container">
+            <script type="text/javascript" src="//www.linkedin.com/mjobs/awli/awliWidget">
+            </script>
+            <span class="IN-widget" data-lnkd-debug="&lt;script type=&quot;IN/AwliWidget+init&quot; data-company-job-code=&quot;ee7df30c-30b9-4d95-9244-b3a0c9411fd7&quot; data-integration-context=&quot;urn:li:organization:1857984&quot; data-mode=&quot;BUTTON_DATA&quot; data-callback-method=&quot;US.CurrentOpportunityDetailViewModel.applyWithLinkedInWidget&quot; data-api-key=&quot;77tess1p9kdrep&quot; data-allow-sign-in=&quot;true&quot; data-color=&quot;blue&quot; data-size=&quot;medium&quot;&gt;
+            &lt;/script&gt;" style="display: inline-block; line-height: 1; vertical-align: bottom; padding: 0px; margin: 0px; text-indent: 0px;"><iframe id="{&quot;xdOrigin&quot;:&quot;https://recruiting.ultipro.com&quot;,&quot;xdChannel&quot;:&quot;c1e2cad1-ca5f-460b-893d-a02d529b7813&quot;,&quot;framework&quot;:&quot;@linkedin/xdoor-sdk&quot;,&quot;version&quot;:&quot;0.2.23&quot;,&quot;debug&quot;:false}" name="{&quot;xdOrigin&quot;:&quot;https://recruiting.ultipro.com&quot;,&quot;xdChannel&quot;:&quot;c1e2cad1-ca5f-460b-893d-a02d529b7813&quot;,&quot;framework&quot;:&quot;@linkedin/xdoor-sdk&quot;,&quot;version&quot;:&quot;0.2.23&quot;,&quot;debug&quot;:false}" src="about:blank" class="IN-widget IN-widget--iframe" scrolling="no" allowtransparency="true" frameborder="0" border="0" width="188" height="0" title="LinkedIn Embedded Content" style="vertical-align: bottom; width: 210px; height: 48px;"></iframe></span>
+        </div>
+</div>                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-24">
+            <div data-bind="with: renderer">
+<div class="row" data-bind="with: opportunity">
+    <div class="col-md-6">
+        <h2 class="sr-only" data-bind="text: $.t('Opportunity.Create.Publishing.ThirdPartyJobBoards.MoreInfoModal.Title')">Posting Details</h2>
+        <ul class="opportunity-sidebar list-unstyled">
+            <li>
+                <ul class="list-unstyled">
+                    <!-- ko if: PostedDate() -->
+                    <li>
+                        <span data-bind="text: $.t('Opportunity.OpportunityDetail.PostedLabel')">Posted</span>:
+                        <span data-automation="job-posted-date" data-bind="text: moment.utc($parent.jobBoardSpecificPostedDate()).local().format('LL')">February 10, 2026</span>
+                    </li>
+                    <!-- /ko -->
+                    <!-- ko if: !isPublished() --><!-- /ko -->
+                </ul>
+            </li>
+            
+            <li>
+                <span id="JobFullTime" data-automation="JobFullTime" data-bind="text: $.t('Opportunity.OpportunityDetail.FullTime', {context:FullTime().toString()})">Full-Time</span>
+            </li>
+
+            <!-- ko if: JobLocationType() !== null && $parent.JobLocationTypeLabel() -->
+            <li>
+                <span id="JobLocationType" data-automation="JobLocationType" data-bind="text: $parent.JobLocationTypeLabel()">On-site</span>
+            </li>
+            <!-- /ko -->
+
+            <!-- ko if: $parent.CompensationMinLabel() && $parent.CompensationMaxLabel() --><!-- /ko -->
+            
+            <!-- ko if: CompensationAmount != null &&  CompensationAmount.Value() != null --><!-- /ko -->
+
+            <!-- ko if: Locations().length > 0 -->
+            <li>
+                <div data-automation="opportunity-physical-locations"> 
+                    <h3 class="sr-only" data-bind="text: $.t('OpportunityDetail.CompanyInformation.Locations')">Locations</h3>
+                    <div aria-live="polite" class="sr-only">
+                        <span data-bind="if: showAllLocations() == false" data-i18n="OpportunityDetail.CompanyInformation.LessLocations">Showing 1 location</span>
+                        <span data-bind="if: showAllLocations() == true" data-i18n="OpportunityDetail.CompanyInformation.MoreLocations"></span>
+                    </div>
+                    <!-- ko foreach: Locations() -->
+                    <div data-bind="visible: $index() == 0 &amp;&amp; $parent.showAllLocations() == false">
+                        <candidate-physical-location params="{bindingContext: $data}" data-automation="physical-location-item"><address class="custom-address" data-automation="physical-location"><span data-bind="visible: (LocalizedDescription() &amp;&amp; DisplayDescription() &amp;&amp; SourceOfTruth() == Recruiting.RecruitmentAdministrator.LocationSourceOfTruth.Ultipro)" style="display: none;"><span data-automation="location-description" data-bind="text: LocalizedDescription()"></span><br></span><span data-bind="visible: (LocalizedName() &amp;&amp; DisplayName()) || (LocalizedLocationId() &amp;&amp; DisplayLocationId())"><span data-automation="name-and-location-id-label" data-bind="text: localizedNameAndLocationId()">Chattanooga, TN</span><br></span><span data-automation="address-line1-label" data-bind="visible: Address().Line1() &amp;&amp; DisplayStreetAddress()" style="display: none;"><span data-bind="text: Address().Line1"></span><br></span><span data-automation="address-line2-label" data-bind="visible: Address().Line2() &amp;&amp; DisplayStreetAddress()" style="display: none;"><span data-bind="text: Address().Line2"></span><br></span><span data-bind="visible: Address().CityStatePostalCodeAndCountry() &amp;&amp; DisplayAddress()"><span data-automation="city-state-zip-country-label" data-bind="text: Address().CityStatePostalCodeAndCountry()">Chattanooga, TN, USA</span><br></span></address></candidate-physical-location>
+                    </div>
+                    <div data-bind="visible: $parent.showAllLocations" style="display: none;">
+                        <candidate-physical-location params="{bindingContext: $data}" data-automation="physical-location-item"><address class="custom-address" data-automation="physical-location"><span data-bind="visible: (LocalizedDescription() &amp;&amp; DisplayDescription() &amp;&amp; SourceOfTruth() == Recruiting.RecruitmentAdministrator.LocationSourceOfTruth.Ultipro)" style="display: none;"><span data-automation="location-description" data-bind="text: LocalizedDescription()"></span><br></span><span data-bind="visible: (LocalizedName() &amp;&amp; DisplayName()) || (LocalizedLocationId() &amp;&amp; DisplayLocationId())"><span data-automation="name-and-location-id-label" data-bind="text: localizedNameAndLocationId()">Chattanooga, TN</span><br></span><span data-automation="address-line1-label" data-bind="visible: Address().Line1() &amp;&amp; DisplayStreetAddress()" style="display: none;"><span data-bind="text: Address().Line1"></span><br></span><span data-automation="address-line2-label" data-bind="visible: Address().Line2() &amp;&amp; DisplayStreetAddress()" style="display: none;"><span data-bind="text: Address().Line2"></span><br></span><span data-bind="visible: Address().CityStatePostalCodeAndCountry() &amp;&amp; DisplayAddress()"><span data-automation="city-state-zip-country-label" data-bind="text: Address().CityStatePostalCodeAndCountry()">Chattanooga, TN, USA</span><br></span></address></candidate-physical-location>
+                    </div>
+                    
+                    <div data-bind="visible: $index() == 0 &amp;&amp; $parent.showAllLocations() == false" style="display: none;">
+                        <candidate-physical-location params="{bindingContext: $data}" data-automation="physical-location-item"><address class="custom-address" data-automation="physical-location"><span data-bind="visible: (LocalizedDescription() &amp;&amp; DisplayDescription() &amp;&amp; SourceOfTruth() == Recruiting.RecruitmentAdministrator.LocationSourceOfTruth.Ultipro)" style="display: none;"><span data-automation="location-description" data-bind="text: LocalizedDescription()"></span><br></span><span data-bind="visible: (LocalizedName() &amp;&amp; DisplayName()) || (LocalizedLocationId() &amp;&amp; DisplayLocationId())" style="display: none;"><span data-automation="name-and-location-id-label" data-bind="text: localizedNameAndLocationId()"></span><br></span><span data-automation="address-line1-label" data-bind="visible: Address().Line1() &amp;&amp; DisplayStreetAddress()"><span data-bind="text: Address().Line1">45 Glover Ave</span><br></span><span data-automation="address-line2-label" data-bind="visible: Address().Line2() &amp;&amp; DisplayStreetAddress()" style="display: none;"><span data-bind="text: Address().Line2"></span><br></span><span data-bind="visible: Address().CityStatePostalCodeAndCountry() &amp;&amp; DisplayAddress()"><span data-automation="city-state-zip-country-label" data-bind="text: Address().CityStatePostalCodeAndCountry()">Norwalk, CT 06850, USA</span><br></span></address></candidate-physical-location>
+                    </div>
+                    <div data-bind="visible: $parent.showAllLocations" style="display: none;">
+                        <candidate-physical-location params="{bindingContext: $data}" data-automation="physical-location-item"><address class="custom-address" data-automation="physical-location"><span data-bind="visible: (LocalizedDescription() &amp;&amp; DisplayDescription() &amp;&amp; SourceOfTruth() == Recruiting.RecruitmentAdministrator.LocationSourceOfTruth.Ultipro)" style="display: none;"><span data-automation="location-description" data-bind="text: LocalizedDescription()"></span><br></span><span data-bind="visible: (LocalizedName() &amp;&amp; DisplayName()) || (LocalizedLocationId() &amp;&amp; DisplayLocationId())" style="display: none;"><span data-automation="name-and-location-id-label" data-bind="text: localizedNameAndLocationId()"></span><br></span><span data-automation="address-line1-label" data-bind="visible: Address().Line1() &amp;&amp; DisplayStreetAddress()"><span data-bind="text: Address().Line1">45 Glover Ave</span><br></span><span data-automation="address-line2-label" data-bind="visible: Address().Line2() &amp;&amp; DisplayStreetAddress()" style="display: none;"><span data-bind="text: Address().Line2"></span><br></span><span data-bind="visible: Address().CityStatePostalCodeAndCountry() &amp;&amp; DisplayAddress()"><span data-automation="city-state-zip-country-label" data-bind="text: Address().CityStatePostalCodeAndCountry()">Norwalk, CT 06850, USA</span><br></span></address></candidate-physical-location>
+                    </div>
+                    <!-- /ko -->
+                    <a role="button" tabindex="0" data-automation="job-location-more" data-bind="visible: Locations().length &gt; 1 &amp;&amp; showAllLocations() == false, text: $.t('Opportunity.Opportunities.MoreJobLocations', { count : Locations().length - 1 }), click: function(){showAllLocations(true)}, event: {keypress: function(data, e){if(e.keyCode === 13 || e.keyCode === 32){return true} else{return false}} ? function(){showAllLocations(true)} : null}">+1 more locations</a>
+                    <a role="button" tabindex="0" data-automation="job-location-less" data-bind="visible: Locations().length &gt; 1 &amp;&amp; showAllLocations() == true, text: $.t('Opportunity.Opportunities.LessJobLocations'), click: function(){showAllLocations(false)}, event: {keypress: function(data, e){if(e.keyCode === 13 || e.keyCode === 32){return true} else{return false}} ? function(){showAllLocations(false)} : null}" style="display: none;">less locations</a>
+                </div>
+            </li>
+            <!-- /ko -->
+
+            <!-- ko if: $parent.IsSalaryRangeFieldsEnabled() && PayRangeVisible --><!-- /ko -->
+
+            <!-- ko if: TravelRequired() !== null --><!-- /ko -->
+            <!-- ko if: Links().length --><!-- /ko -->
+        </ul>
+    </div>
+    <div class="col-md-18">
+        <div class="row">
+            <div class="col-md-24">
+                <h2 class="my-0" data-automation="jog-details-title" data-bind="text: $.t('Opportunity.OpportunityDetail.JobDetails')">Job Details</h2>
+            </div>
+            <div class="col-md-24">
+                <h3 data-automation="descriptions-title" data-bind="text: $.t('Opportunity.OpportunityDetail.Description')">Description</h3>
+            </div>
+            <div class="col-md-24">
+                <p class="opportunity-description" data-automation="job-description" data-bind="html: Description"><p><strong>Position Overview:</strong></p>
+<p>In this critical role, you will play a pivotal role in identifying, incubating, and scaling new capabilities, with a particular focus on generative AI technologies. You will be responsible for the entire lifecycle of bringing new capabilities to life, from ideation to implementation and scaling. You will work closely with cross-functional teams across the organization to identify potential opportunities for generative AI, assess their feasibility, and develop strategies for successful incubation and integration.</p>
+<p><strong>Responsibilities:</strong></p>
+<ul>
+<li>Identify cutting-edge generative AI technologies with the potential to transform HomeServe USA's business.&nbsp;</li>
+<li>Conduct market research and competitive analysis to understand the landscape of generative AI applications.&nbsp;</li>
+<li>Develop and present compelling business cases for the adoption of new generative AI capabilities.&nbsp;</li>
+<li>Lead pilot projects to test and validate the effectiveness of new generative AI solutions.&nbsp;</li>
+<li>Collaborate with engineering and product teams to develop and implement new generative AI features and functionalities.&nbsp;</li>
+<li>Monitor and measure the impact of new generative AI capabilities on key business metrics.&nbsp;</li>
+<li>Stay abreast of the latest advancements in generative AI and identify opportunities for continuous improvement.&nbsp;</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Essential Functions:</strong></p>
+<table>
+<tbody>
+<tr>
+<td>
+<p><strong>Essential Job Function</strong></p>
+</td>
+<td>
+<p><strong>% of Time on Function</strong></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Conduct comprehensive investigations into cutting-edge advancements in Generative AI technologies, synthesizing insights to foster a culture of innovation within the organization.</p>
+</td>
+<td>
+<p>&nbsp;10%</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Collaborate with cross-functional business units to identify high-impact generative AI use cases.</p>
+</td>
+<td>
+<p>&nbsp;5%</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>&nbsp;Lead the piloting of proof-of-concept (POC) implementations of the identified use cases.</p>
+</td>
+<td>
+<p>&nbsp;40%</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Collaborate with system architects and developers to transform the POC into a production-ready application. Utilize Cloud Services, including Cloud Functions and APIs, to facilitate scalable and efficient deployment.</p>
+</td>
+<td>
+<p>&nbsp;30%</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Craft and continuously refine advanced prompts to enhance the efficacy and relevance of generative AI outputs, leveraging iterative feedback and analytics to optimize performance.</p>
+</td>
+<td>
+<p>&nbsp;5%</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Write high-quality code in programming languages such as Python, Node.js, or Java to support the creation, testing, and optimization of generative AI applications.</p>
+</td>
+<td>
+<p>10%</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><strong>Total </strong></p>
+</td>
+<td>
+<p><strong>100%</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><strong>Job Requirements:</strong></p>
+<ul>
+<li>Bachelor's degree in Computer Science or related field preferred.</li>
+<li>Minimum of 3-5 years of experience in innovation management, emerging technology incubation, or a related field.</li>
+<li>Proven track record of identifying and evaluating new technologies.&nbsp;</li>
+<li>Strong understanding of business strategy and the ability to translate technology trends into actionable insights.&nbsp;</li>
+<li>Excellent analytical and problem-solving skills.&nbsp;</li>
+<li>Experience in project management and the ability to manage multiple projects simultaneously.&nbsp;</li>
+<li>Excellent communication and presentation skills.&nbsp;</li>
+<li>Proficiency in generative AI concepts and applications (a plus).&nbsp;</li>
+<li>Passion for innovation and a strong desire to make a positive impact on the business.&nbsp;</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Minimum Physical Requirements:</strong><strong>&nbsp;</strong></p>
+<p>The physical demands described represent those that must be met by an employee to successfully perform the essential functions of this position. Reasonable accommodations may be made to enable individuals with disabilities to perform the functions of the position for which they work. While performing the duties of this position, the employee is regularly required to listen, talk and hear. The employee frequently is required to use hands or fingers, handle or feel objects, tools, or controls while executing tasks like working on a computer or talking on the telephone.&nbsp; The employee is occasionally required to stand; walk; sit; and reach with hands and arms. The employee must occasionally lift and/or move up to 15 pounds. Specific vision abilities required by this position include close vision, distance vision, and the ability to adjust focus. The noise level in the work environment is usually moderate to low.</p>
+<p>&nbsp;</p>
+<p>This job description is intended to provide guidelines for job expectations and the employee's ability to perform the position described. It is not intended to be construed as an exhaustive list of all functions, responsibilities, skills and abilities. Additional functions and requirements may be assigned by supervisors as deemed appropriate.&nbsp;</p>
+<p>Salary Range (Norwalk, CT): $125,932.60 - $167,910.14</p>
+<p>Salary Range (Chattanooga, TN): $103,035.76 - $137,381.02</p>
+<p>Annual Bonus Potential: 10%</p>
+<p style="text-align: center;">HomeServe USA is an equal opportunity employer.</p>
+<p style="text-align: center;"><span style="color: #ffffff;">#HUSA #LI-NM1 #LI-ONSITE</span></p></p>
+            </div>
+        </div>
+
+        <!-- ko if: TravelDescription() !== null || TravelRequired() !== null --><!-- /ko -->
+
+        <div class="row">
+            <div class="col-md-24">
+                <h2 style="margin-bottom: 0px; display: none;" data-automation="requirements-title" data-bind="text: $.t('Opportunity.OpportunityDetail.Qualifications'), visible: $parent.shouldShowQualificationsHeading">Qualifications</h2>
+            </div>
+        </div>
+        <div class="row" data-bind="visible: SkillCriteria().length &gt; 0" style="display: none;">
+            <div class="col-md-24" id="Skills">
+                <div>
+                    <h3 data-automation="skills-title" data-bind="text: $.t('Opportunity.OpportunityDetail.Skills')">Skills</h3>
+                </div>
+                <div data-automation="required" data-bind="if: $parent.RequiredSkillCriteria().length &gt; 0"></div>
+                <div data-automation="preferred" data-bind="if: $parent.PreferredSkillCriteria().length &gt; 0"></div>
+            </div>
+        </div>
+
+        <div style="display: none" data-bind="stopBindings: true" id="skill-item-template">
+            <div data-automation="skill-item">
+                <div class="row">
+                    <h5 class="col-xs-14 col-sm-12">
+                        <strong data-automation="skills-name" data-bind="text: SkillName"></strong>
+                    </h5>
+                    <div class="col-xs-10 col-sm-12 clearfix" data-bind="if: MinimumScaleValueCode() &amp;&amp; MinimumScaleValueCode() !== 'NONE'">
+                        <div class="pull-right text-right">
+                            <em class="pull-left" data-automation="skills-scale" data-bind="text: MinimumScaleValueDescription"> </em>
+                            <div class="pull-right progress job-scale-bar">
+                                <div role="img" data-bind="attr: { class: 'progress-bar progress-bar-info job-scale-' + MinimumScaleValue(), 'aria-label': $.t('Opportunity.OpportunityDetail.SkillLevelWithNumber', { number: MinimumScaleValue() }) }"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" data-bind="visible: SkillDescription">
+                    <div class="col-xs-24 form-group">
+                        <p data-automation="skills-description" data-bind="text: SkillDescription"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="behaviors" data-bind="visible: BehaviorCriteria().length &gt; 0" style="display: none;">
+            <div class="col-xs-24">
+                <h3 data-automation="behaviors-title" data-bind="text: $.t('Opportunity.OpportunityDetail.Behaviors')">Behaviors</h3>
+            </div>
+            <div class="col-xs-24">
+                <div data-automation="required" data-bind="if: $parent.RequiredBehaviorCriteria().length &gt; 0"></div>
+                <div data-automation="preferred" data-bind="if: $parent.PreferredBehaviorCriteria().length &gt; 0"></div>
+            </div>
+        </div>
+
+        <div style="display: none" data-bind="stopBindings: true" id="behavior-item-template">
+            <div class="row">
+                <div class="col-xs-23 col-xs-offset-1">
+                    <div class="behavior-item-container" data-automation="behavior-item">
+                        <h5 class="behavior-item-name" data-automation="behaviors-name" data-bind="text: BehaviorName"></h5><strong data-bind="if: BehaviorDescription">:</strong> 
+                        <span data-automation="behaviors-description" data-bind="text: BehaviorDescription"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="motivations" data-bind="visible: MotivationCriteria().length &gt; 0" style="display: none;">
+            <div class="col-xs-24">
+                <h3 data-automation="motivations-title" data-bind="text: $.t('Opportunity.OpportunityDetail.Motivations')">Motivations</h3>
+            </div>
+            <div class="col-xs-24">
+                <div data-automation="required" data-bind="if: $parent.RequiredMotivationCriteria().length &gt; 0"></div>
+                <div data-automation="preferred" data-bind="if: $parent.PreferredMotivationCriteria().length &gt; 0"></div>
+            </div>
+        </div>
+
+        <div style="display: none" data-bind="stopBindings: true" id="motivation-item-template">
+            <div class="row">
+                <div class="col-xs-23 col-xs-offset-1">
+                    <div class="motivation-item-container" data-automation="motivation-item">
+                        <h5 class="motivation-item-name" data-bind="text: MotivationName" data-automation="motivations-name"></h5><strong data-bind="if: MotivationDescription">:</strong>
+                        <span data-bind="text: MotivationDescription" data-automation="motivations-description"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="education" data-bind="visible: EducationCriteria().length &gt; 0" style="display: none;">
+            <div class="col-xs-24">
+                <h3 data-automation="education-title" data-bind="text: $.t('Opportunity.OpportunityDetail.Education.Header')">Education</h3>
+            </div>
+            <div class="col-xs-24">
+                <div data-automation="required" data-bind="if: $parent.RequiredEducationCriteria().length &gt; 0"></div>
+                <div data-automation="preferred" data-bind="if: $parent.PreferredEducationCriteria().length &gt; 0"></div>
+            </div>
+        </div>
+
+        <div style="display: none" data-bind="stopBindings: true" id="education-item-template">
+            <div class="row">
+                <div class="col-xs-23 col-xs-offset-1 form-group">
+                    <p data-automation="education-item" data-bind="text: RequiredEducation"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="work-experience" data-bind="visible: WorkExperienceCriteria().length &gt; 0" style="display: none;">
+            <div class="col-xs-24">
+                <h3 data-automation="work-experience-title" data-bind="text: $.t('Opportunity.OpportunityDetail.Experience')">Experience</h3>
+            </div>
+            <div class="col-xs-24">
+                <div data-automation="required" data-bind="if: $parent.RequiredWorkExperienceCriteria().length &gt; 0"></div>
+                <div data-automation="preferred" data-bind="if: $parent.PreferredWorkExperienceCriteria().length &gt; 0"></div>
+            </div>
+        </div>
+
+        <div style="display: none" data-bind="stopBindings: true" id="work-experience-item-template">
+            <div class="row">
+                <div class="col-xs-23 col-xs-offset-1">
+                    <div class="work-experience-item-container" data-automation="work-experience-item">
+                        <h5 class="work-experience-item-name" data-bind="text: $parents[1].WorkExperienceYearsText($data), visible: MinimumRequiredYears() != null || MaximumRequiredYears() != null" data-automation="work-experience-years"></h5>
+                        <span data-bind="text: Description" data-automation="work-experience-description"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="licensesAndCertifications" data-bind="visible: LicenseAndCertificationCriteria().length &gt; 0" style="display: none;">
+            <div class="col-xs-24">
+                <h3 data-automation="licenses-title" data-bind="text: $.t('Opportunity.OpportunityDetail.LicensesAndCerts')">Licenses &amp; Certifications</h3>
+            </div>
+            <div class="col-xs-24">
+                <div data-automation="required" data-bind="if: $parent.RequiredLicenseAndCertificationCriteria().length &gt; 0"></div>
+                <div data-automation="preferred" data-bind="if: $parent.PreferredLicenseAndCertificationCriteria().length &gt; 0"></div>
+            </div>
+        </div>
+
+        <div style="display: none" data-bind="stopBindings: true" id="license-item-template">
+            <div class="row">
+                <p class="col-xs-23 col-xs-offset-1" data-automation="licenses-item" data-bind="text: LicenseAndCertificationName"></p>
+            </div>
+        </div>
+
+        <div class="row" data-bind="if: $parent.shouldShowEqualOpportunityEmployerDescription">
+            <div class="col-md-24">
+                <hr>
+                <p class="opportunity-equal-opportunity-employer-description" data-automation="job-equal-opportunity-employer-description" data-bind="html: EqualOpportunityEmployerDescription">Equal Opportunity Employer<br> 
+This employer is required to notify all applicants of their rights pursuant to federal employment laws. 
+For further information, please review the <a href="https://www.eeoc.gov/poster" target="_blank">Know Your Rights</a> notice from the Department of Labor.</p>
+                <p class="opportunity-equal-opportunity-employer-description" data-automation="job-pay-transparency-policy-statement" data-bind="visible: $parent.shouldShowPayTransparencyStatemet, text: PayTransparencyPolicyStatement" style="display: none;"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $(".twitter-share-button").attr("data-lang", US.CurrentLocale.locale);
+        ko.applyBindings(US.CurrentOpportunityDetailViewModel, $("#opportunityDetailView")[0]);
+    });
+</script>
+
+
+<script>
+    !function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    }(document, "script", "twitter-wjs");</script>
+                            <script type="text/html" id="ErrorModal">
+    <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div data-automation="error-modal" class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-automation="close-error-modal" aria-hidden="true" data-dismiss="modal">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <h3 id="ErrorReferenceDialogHeader" data-bind="text: $.t('Common.ErrorModal.Header')"></h3>
+                </div>
+                <div class="modal-body">
+                    <p data-bind="text: $.t('Common.ErrorModal.Body')"></p>
+                    <div data-bind="visible: shouldShowCorrelationId()">
+                        <p for="error-id" data-bind="text: $.t('Common.ErrorModal.ErrorIdDescription')"></p>
+                        <p id="error-id" data-bind="text: correlationId" class="text-bold"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+                            <script type="text/html" id="PermissionDeniedModal">
+    <div id="PermissionDeniedModalContainer" class="modal fade" data-automation="permission-denied-modal" tabindex="-1" role="dialog" aria-labelledby="PermissionDeniedModalHeader" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div data-automation="modal-header" class="modal-header">
+                    <h3 class="modal-title" data-bind="text: $.t('Common.PermissionDenied.Header')"></h3>
+                </div>
+                <div class="modal-body">
+                    <p data-bind="text: message" data-automation="permission-denied-message"></p>
+                    <ul data-bind="if:hasDeniedPermission" data-automation="permission-denied-list">
+                        <li><strong data-bind="text:deniedPermission"></strong></li>
+                    </ul>  
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal"
+                            data-bind="text: $.t('Common.Close'), click:closeHandler" data-automation="close-button"></button>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+                            <script type="text/html" id="MessageModal">
+    <div id="MessageModalContainer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="MessageModalHeader" aria-describedby="MessageModalBody" data-automation="confirmation-modal" data-bind = "event: { keyup: function(data, e) { if(e.key == 'Escape') { $('#MessageModalContainer .close').click()}}}">
+        <div class="modal-dialog" data-automation="confirmation-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" data-bind="click: close, attr: { 'aria-label': $.t('Common.Close') }" data-automation="modal-close"><i class="fa fa-times"></i></button>
+                    <h1 class="modal-title h3" data-bind="html: header" id="MessageModalHeader" data-automation="modal-title"></h1>
+                </div>
+                <div id="MessageModalBody" class="modal-body">
+                    <p data-automation="modal-text" data-bind="html: message"></p>
+                    <span data-bind="visible: errors.length == 1, text: errors[0]"></span>
+                    <ul data-bind="visible: errors.length > 1, foreach: errors">
+                        <li data-bind="text: $data"></li>
+                    </ul>
+                    <p data-automation="modal-question" data-bind="html: $data.question, visible: $data.question"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-automation="modal-accept" data-dismiss="modal" data-bind="text: $data.confirmButton || $.t('Common.OK'), click: confirm"></button>
+                    <button type="button" class="btn btn-link" data-automation="modal-reject" data-dismiss="modal" data-bind="text: $data.cancelButton || $.t('Common.Cancel'), visible: $data.question, click: close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+                        </div>
+                    </div>
+                </main>
+            </div>
+<footer id="PageFooter" style="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-24 text-muted">
+                <div class="copyright">
+                        <span data-i18n="Layout.DefaultFooterText" data-automation="footer-text">Powered by UKG</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+    
+<script>
+    (function () {
+        i18init('en-US',
+            '/Content/locales/__lng__/__ns__.json?v=1cbdbf60f1c7f9bcf0fc96e3489a22e3f025f3d6',
+            '1cbdbf60f1c7f9bcf0fc96e3489a22e3f025f3d6');
+    }());
+</script>
+
+    
+<div id="unsupported-browsers" style="display: none">
+    <h2>You are using an unsupported browser.</h2>
+    <div>To use this site, please use a supported browser.</div>
+
+
+    <div class="browser-list">
+        <strong class="download-browser download-mozilla-firefox">
+            <a href="https://www.mozilla.org/en-US/firefox/new/">
+                <img src="/Content/images/browsers/firefox.png" alt="Firefox logo">
+                Download Firefox
+            </a>
+        </strong>
+        <strong class="download-browser download-google-chrome">
+            <a href="https://www.google.com/chrome/browser/">
+                <img src="/Content/images/browsers/chrome.png" alt="Chrome logo">
+                Download Chrome
+            </a>
+        </strong>
+        <strong class="download-browser download-internet-explorer">
+            <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                <img src="/Content/images/browsers/internet-explorer.png" alt="Internet Explorer logo">
+                Download Internet Explorer
+            </a>
+        </strong>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // test for basic functionality, if not supported, then display unsupported browser element
+        if (Array.prototype.forEach // used extensively
+            && Function.prototype.bind
+            && Modernizr.sessionstorage
+            && Modernizr.localstorage) {
+
+            window.renderUi = true;
+            return;
+        }
+
+
+            document.getElementById("PageContent").style.display = "none";
+            
+            document.getElementById("PageFooter").style.display = "none";
+            
+        document.getElementById("unsupported-browsers").style.display = "block";
+        window.renderUi = false;
+    }());
+</script>
+
+    
+<script>
+    $(function () {
+        var setupUserDisplayName = function() {
+            var tenantAlias = "HOM1007HSUC";
+            var displayNameKey = "recruitment/user_display_name/" + tenantAlias;
+            
+            // Clears out display name session data
+            $("#LogOutButton").click(function() {
+                US.utils.localStorage.removeItem(displayNameKey);
+            });
+            
+            var setUserDisplayName = function(userDisplayName) {
+                if (userDisplayName) {
+                    $("#UserDisplayName").text(userDisplayName);
+                }
+            };
+            
+            $(document).on('PersonNameUpdated', function (event, personName) {
+                setUserDisplayName(personName.firstLast());
+            });
+
+
+            US.utils.localStorage.removeItem(displayNameKey);
+                        };
+        setupUserDisplayName();
+    });
+ </script>
+
+    <script>
+    $(function() {
+        var viewModel = {
+            title: function() {
+                var params = {"opportunityTitle":"AI / ML Engineer","jobBoardName":"HomeServe"};
+                var alias = "OpportunityDetail.Index.PageTitle";
+
+                return $.t(alias, params || {});
+            }
+        };
+
+        ko.applyBindings(viewModel, $("head")[0]);
+    });
+</script>
+
+    
+
+    <script>
+            $.cookie.json = true;
+        </script>
+
+    
+<script>
+    $(function() {
+        if (!window.renderUi) {
+            return;
+        }
+
+        // Hide page until scripts have been executed to prevent flickering until bindings have been applied
+        document.getElementById("unsupported-browsers").style.display = "none";
+        let unhidePageEl = null;
+
+
+                unhidePageEl = document.getElementById("PageContent")
+                if (unhidePageEl && unhidePageEl.style) {    
+                    unhidePageEl.style.visibility = "";
+                }
+            
+                unhidePageEl = document.getElementById("PageFooter")
+                if (unhidePageEl && unhidePageEl.style) {    
+                    unhidePageEl.style.visibility = "";
+                }
+            
+        // This allows us to focus an item without the use of
+        // setTimeout. Using setTimeout can cause undeterministic
+        // behavior with autofill and with tests.
+        if (window.focusItem) {
+            window.focusItem.focus();
+        }
+    });
+</script>
+
+
+    <script>
+            $(function () {
+                Recruiting.User.refreshSessionFromCookie();
+            })
+        </script>
+
+    <script>
+            ko.applyBindings({}, $("#GlobalNotificationContainer")[0]);
+            ko.applyBindings({}, $("#PageFooter")[0]);
+            var accessbilityBanner = $("#AccessibilityBannerWrapper")[0];
+            if (accessbilityBanner) {
+                ko.applyBindings({
+                    accessibilityUrl: "/HOM1007HSUC/JobBoard/04366c17-7ee4-499a-a9e9-38ae46d03ef6/Accessibility",
+                    resetCookie: false,
+                    isModernStyleEnabled: false
+                                                                                                                                                    }, accessbilityBanner);
+            }
+        </script>
+    <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.get('showBanner') === 'true') {
+                    const banner = document.getElementById('Successbanner');
+                    const bannerMessage = $.t("Common.QuickApply.SuccessBannerMessage");
+                    const bannerAction = $.t("Layout.AccessibilityBanner.DismissMessage");
+                    if (banner) {
+                        banner.innerHTML = `
+                <ukg-banner style="" inline type="success">
+${bannerMessage}
+                    <div slot="end">
+                        <ukg-button aria-label="banner-action" emphasis="low" onclick="dismissBanner()">${bannerAction}
+</ukg-button>
+                    </div>
+                </ukg-banner>
+            `;
+                        banner.style.display = 'block';
+                    }
+                }
+            });
+        function dismissBanner() {
+            const banner = document.getElementById('Successbanner');
+            if (banner) {
+                banner.style.display = 'none';
+            }
+        }
+        </script>
+    <script>
+            $(function () {
+                // Clears out Matchinator session data
+                $("#LogOutButton").click(function () {
+                    US.utils.localStorage.removeItem('personalizedSearchProfile');
+                    return true;
+                });
+
+                $("#skipLink").click(function () {
+                    SkipToMainContent();
+
+                });
+
+                $("#skipLink").keyup(function (e) {
+                    if (e.keyCode == 13) {
+                        SkipToMainContent();
+                    }
+                });
+
+                function SkipToMainContent() {
+                    var ele = $("#PageContainer");
+                    if (ele.length > 0) {
+                        $('html, body').animate({
+                            scrollTop: ele.offset().top
+                        });
+
+                        var headingEle = ele.find('h1:first, h2:first').eq(0);
+                        var focusableElement;
+                        if (headingEle.length > 0) {
+                            focusableElement = headingEle;
+                        } else {
+                            focusableElement = ele;
+                        }
+                        focusableElement.attr("tabindex", "-1").css("outline", "none").focus();
+
+                        return false;
+                    }
+                }
+
+                $(window).resize(function () {
+                    if ($(window).width() <= 767) {
+                        $(".nav-pills.nav-responsive").addClass("nav-stacked");
+                    } else {
+                        $(".nav-pills.nav-responsive").removeClass("nav-stacked");
+                    }
+                });
+                $(window).resize();
+            });
+        </script>
+
+</ukg-ignite-shell>
+
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8O4ZvE4Tv89MjzNHVkcaDLLTKWNuEwlFRDPOE4jDpN848ZVAJMohgZGp0ODidZ8LctVzW483f8XVx_-zSUZDuDmrnjHLjTFXvnAhKPK2m9_JHqb8zB-0ccw75KCVZWIclJzDmcPu02pymzGdyo52Tyg"><iframe scrolling="no" frameborder="0" allowtransparency="true" src="https://platform.twitter.com/widgets/widget_iframe.2f70fb173b9000da126c79afe2098f02.html?origin=https%3A%2F%2Frecruiting.ultipro.com" title="Twitter settings iframe" style="display: none;"></iframe><audio class="audio-output" style="display: none;"></audio><div id="volume-booster-visusalizer">
+                    <div class="sound">
+                        <div class="sound-icon"></div>
+                        <div class="sound-wave sound-wave_one"></div>
+                        <div class="sound-wave sound-wave_two"></div>
+                        <div class="sound-wave sound-wave_three"></div>
+                    </div>
+                    <div class="segments-box">
+                        <div data-range="1-20" class="segment"><span></span></div>
+                        <div data-range="21-40" class="segment"><span></span></div>
+                        <div data-range="41-60" class="segment"><span></span></div>
+                        <div data-range="61-80" class="segment"><span></span></div>
+                        <div data-range="81-100" class="segment"><span></span></div>
+                    </div>
+                </div><div></div><div id="compose-ai-general-snackbar-root"></div><div id="Chat-Plugin-Root" class="compose-root-component"></div><script src="https://platform.linkedin.com/in.js" defer="">api_key:77tess1p9kdrep</script><script src="https://www.linkedin.com/talentwidgets/extensions/apply-with-linkedin-widget-script?apiKey=77tess1p9kdrep&amp;renderV3=null&amp;applyUrl=https%3A%2F%2Frecruiting.ultipro.com%2FHOM1007HSUC%2FJobBoard%2F04366c17-7ee4-499a-a9e9-38ae46d03ef6%2FOpportunityDetail%3FopportunityId%3Dee7df30c-30b9-4d95-9244-b3a0c9411fd7%26source%3DLinkedIn%26utm_source%3DLINKEDIN" defer=""></script><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe"></iframe><div id="89d640b1-5e9b-409a-bfde-3bd61a6371e7" class="IN-staging" style="display: none;"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
