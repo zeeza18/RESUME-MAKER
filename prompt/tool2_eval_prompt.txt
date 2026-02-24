@@ -50,7 +50,9 @@ BAD INSERTIONS (skip these — they score worse than missing):
   ✗ Summary fragment: "Cross-functional teams integration, technical publications."
 
 If no clean insertion exists → add to Skills row + weave into a Summary sentence with a verb.
-Soft skills (mentorship, code reviews, collaboration) → Summary only. NEVER create a new experience bullet for a soft skill. NEVER replace an existing accomplishment bullet.
+Soft skills (mentorship, code reviews, collaboration) → Summary only.
+
+SUMMARY WORD LIMIT: 3–4 sentences, maximum 80 words. If already over 80 words, trim it first before adding anything. Do NOT add to Summary if it would push over 80 words — use Skills row instead. NEVER create a new experience bullet for a soft skill. NEVER replace an existing accomplishment bullet.
 If a soft skill is already expressed via paraphrase in the resume (e.g. "proactively tracks research" = "self-motivated"), treat it as present — do not insert again.
 
 NEVER FABRICATE: Do not invent metrics or outcomes. Do not add to Summary any information already present in another section (e.g. degrees already appear in Education).

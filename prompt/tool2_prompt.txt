@@ -50,8 +50,11 @@ SKILLS SECTION:
 - Do NOT create a new row for a single item, and never create a row where the only item rephrases the row header.
 
 SUMMARY:
+- Hard limit: 3–4 sentences, maximum 80 words total. Count before outputting.
+- If the existing summary already exceeds 80 words, trim it — remove filler sentences, redundant adjectives, and repeated ideas until it is under 80 words.
 - Every keyword in Summary must live inside a proper sentence with a verb.
 - Summary is last resort for technical keywords — bullets and Skills come first.
+- Do NOT add a new sentence to Summary if it would push the word count over 80.
 
 SOFT SKILLS (mentorship, collaboration, code reviews, communication, self-motivation):
 These go in Summary only. They do not belong inside technical experience bullets.
