@@ -22,7 +22,7 @@ class ResumeTailor:
         self.client = Anthropic(
             api_key=os.getenv('CLAUDE_API_KEY')
         )
-        self.model = "claude-opus-4-6"  # Best Claude model for resume tailoring
+        self.model = "claude-sonnet-4-6"  # Claude Sonnet for resume tailoring
 
         self.prompts = {
             'round1': self._load_prompt('tool2_prompt.txt'),
@@ -56,7 +56,7 @@ class ResumeTailor:
             dict: Contains tailored resume and change log
         """
         
-        print("🎨 Tailoring Resume with Claude Opus...")
+        print("🎨 Tailoring Resume with Claude Sonnet...")
 
         # --- Personal info from config.json ---
         config = self._load_config()
