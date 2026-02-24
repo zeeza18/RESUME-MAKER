@@ -4,7 +4,9 @@ Tool 1: Keyword Extractor
 Uses OpenAI API to extract keywords, needs, and results from Job Description
 """
 
+import json
 import os
+import re
 from pathlib import Path
 from openai import OpenAI
 from dotenv import load_dotenv
@@ -79,109 +81,186 @@ class KeywordExtractor:
             }
     
     def _parse_openai_response(self, analysis):
-        """
-        Parse OpenAI response into structured format
-        
-        Args:
-            analysis (str): Raw response from OpenAI
-            
-        Returns:
-            dict: Structured keywords, needs, and results
-        """
-        
-        # Initialize default structure
+        """Parse OpenAI response into structured format."""
         result = {
-            "company_name": "UNKNOWN_COMPANY",  # Default
+            "company_name": "UNKNOWN_COMPANY",
+            "job_title": "",
             "keywords": [],
             "needs": [],
             "results": [],
-            "raw_analysis": analysis
+            "raw_analysis": analysis,
         }
 
         try:
-            # Split response into sections
-            lines = analysis.split('\n')
+            _INVALID_NAMES = {'', 'N_A', 'NA', 'NONE', 'UNKNOWN', 'UNKNOWN_COMPANY',
+                               'UNNAMED', 'UNNAMED_COMPANY', 'NOT_MENTIONED', 'NOT_PROVIDED',
+                               'NOT_SPECIFIED', 'COMPANY_NAME', 'EXACT_COMPANY_NAME'}
+
+            # --- Extract JSON block (handles single-line and multi-line output) ---
+            json_block_match = re.search(r'\{.*?\}', analysis, re.DOTALL)
+            raw_json_str = json_block_match.group(0) if json_block_match else ''
+            print(f"[TOOL1 DEBUG] Raw JSON block from GPT-4o: {raw_json_str!r}")
+
+            # Try json.loads first (most robust), fall back to regex
+            meta = {}
+            if raw_json_str:
+                try:
+                    meta = json.loads(raw_json_str)
+                except json.JSONDecodeError:
+                    # Fallback: simple key-value regex directly on full response
+                    cn = re.search(r'"company_name"\s*:\s*"([^"]*)"', analysis)
+                    jt = re.search(r'"job_title"\s*:\s*"([^"]*)"', analysis)
+                    if cn:
+                        meta['company_name'] = cn.group(1)
+                    if jt:
+                        meta['job_title'] = jt.group(1)
+
+            raw_name = meta.get('company_name', '').strip()
+            print(f"[TOOL1 DEBUG] Extracted company_name = {raw_name!r}")
+            normalized = re.sub(r'[^A-Z0-9]', '_', raw_name.upper()).strip('_')
+            if normalized and normalized not in _INVALID_NAMES:
+                result['company_name'] = normalized
+
+            raw_title = meta.get('job_title', '').strip()
+            if raw_title:
+                result['job_title'] = raw_title
+
+            # --- Strip code fences and JSON block from body ---
+            # Remove ```json ... ``` or ``` ... ``` fences
+            clean_analysis = re.sub(r'```[a-z]*\s*', '', analysis, flags=re.IGNORECASE)
+            clean_analysis = clean_analysis.replace('```', '')
+            # Remove the JSON object itself (anywhere in the text, not just at start)
+            clean_analysis = re.sub(r'\{[^{}]*"company_name"[^{}]*\}', '', clean_analysis, flags=re.DOTALL)
+            # Strip markdown bold markers (**text** or __text__)
+            clean_analysis = re.sub(r'\*{1,2}([^*]+)\*{1,2}', r'\1', clean_analysis)
+            clean_analysis = re.sub(r'_{1,2}([^_]+)_{1,2}', r'\1', clean_analysis)
+            body = clean_analysis.strip()
+
+            # --- Normalize: if sections appear inline on one line, split them onto separate lines ---
+            # e.g. "Keywords: a - b - c Needs: d - e Results: f - g"
+            for section_header in ('Keywords:', 'Needs:', 'Results:'):
+                body = re.sub(
+                    r'(?<!\n)(' + re.escape(section_header) + r')',
+                    r'\n\1',
+                    body,
+                    flags=re.IGNORECASE,
+                )
+
+            # --- Parse keyword / needs / results sections ---
+            # Section header pattern: optional whitespace, optional *, then the word, then colon
+            section_re = re.compile(
+                r'^\s*\*{0,2}(keywords|needs|results)\*{0,2}\s*:(.*)$',
+                re.IGNORECASE,
+            )
             current_section = None
-
-            for line in lines:
+            for line in body.split('\n'):
                 line = line.strip()
-
-                # Extract company name
-                if line.lower().startswith('company name:') or '**company name:**' in line.lower():
-                    # Next line or same line should have company name
-                    company_match = line.split(':', 1)
-                    if len(company_match) > 1:
-                        company_name = company_match[1].strip().strip('*').strip()
-                        if company_name:
-                            result['company_name'] = company_name.upper().replace(' ', '_').replace('.', '').replace(',', '')
+                if not line:
                     continue
 
-                # Detect section headers
-                if line.lower().startswith('keywords:') or 'keywords' in line.lower():
-                    current_section = 'keywords'
-                    continue
-                elif line.lower().startswith('needs:') or 'needs' in line.lower():
-                    current_section = 'needs'
-                    continue
-                elif line.lower().startswith('results:') or 'results' in line.lower():
-                    current_section = 'results'
+                header_match = section_re.match(line)
+                if header_match:
+                    current_section = header_match.group(1).lower()
+                    inline = header_match.group(2).strip()
+                    if inline:
+                        # inline may be "- item1 - item2" or "item1, item2"
+                        self._parse_inline_items(inline, result[current_section])
                     continue
 
-                # Add content to current section
-                if line and current_section and not line.startswith('#'):
-                    # Remove bullet points and clean up
-                    clean_line = line.replace('•', '').replace('-', '').replace('*', '').strip()
-                    if clean_line:
-                        result[current_section].append(clean_line)
-            
-            # If parsing didn't work well, fall back to simple split
-            if not any(result[key] for key in ['keywords', 'needs', 'results']):
-                # Just split by sentences as keywords
+                # Skip markdown fence artifacts and bare JSON lines
+                if re.match(r'^`{1,3}', line) or re.match(r'^\s*[{}\[\]]', line):
+                    continue
+
+                if current_section and current_section in result:
+                    clean = line.lstrip('•-– ').strip()
+                    if clean:
+                        # If this line contains an embedded next-section header inline,
+                        # split it and process the remainder as a new section
+                        sub_match = re.search(
+                            r'\*{0,2}(keywords|needs|results)\*{0,2}\s*:',
+                            clean, re.IGNORECASE,
+                        )
+                        if sub_match:
+                            before = clean[:sub_match.start()].strip().lstrip('•-– ').strip()
+                            if before:
+                                result[current_section].append(before)
+                            current_section = sub_match.group(1).lower()
+                            after = clean[sub_match.end():].strip()
+                            if after:
+                                self._parse_inline_items(after, result[current_section])
+                        else:
+                            result[current_section].append(clean)
+
+            # Fallback if nothing parsed
+            if not any(result[k] for k in ['keywords', 'needs', 'results']):
                 sentences = [s.strip() for s in analysis.split('.') if s.strip()]
-                result['keywords'] = sentences[:10]  # Take first 10 as keywords
-                result['needs'] = ["Manual parsing needed"]
-                result['results'] = ["Manual parsing needed"]
-            
+                result['keywords'] = sentences[:10]
+
         except Exception as e:
-            print(f"⚠️  Warning: Could not parse Claude response - {e}")
-            # Fallback: use the raw response as keywords
-            result['keywords'] = [analysis[:200]]  # First 200 chars as single keyword
-            result['needs'] = ["Parsing error occurred"]
-            result['results'] = ["Please check raw_analysis"]
-        
+            print(f"⚠️  Warning: Could not parse OpenAI response - {e}")
+            result['keywords'] = [analysis[:200]]
+
         return result
     
+    def _parse_inline_items(self, text: str, target: list) -> None:
+        """
+        Parse a string that may contain items separated by ' - ', ',' or newlines
+        and append cleaned items to target list.
+        Examples handled:
+          "- item1 - item2 - item3"
+          "item1, item2, item3"
+          "item1"
+        """
+        # Try dash-separated first (most common from GPT-4o inline output)
+        if ' - ' in text or text.startswith('- '):
+            parts = re.split(r'\s+-\s+', text.lstrip('- '))
+        else:
+            # Fall back to comma-separated
+            parts = text.split(',')
+        for part in parts:
+            clean = part.strip().lstrip('•-– ').strip()
+            if clean and not re.match(r'^`{1,3}', clean):
+                target.append(clean)
+
     def save_analysis(self, analysis, filename="keyword_analysis.txt"):
-        """Save the keyword analysis to file"""
+        """Save the keyword analysis to text file and keyword_analysis.json."""
         try:
-            os.makedirs('output', exist_ok=True)
-            filepath = os.path.join('output', filename)
-            
+            output_dir = Path(__file__).resolve().parent.parent / 'output'
+            output_dir.mkdir(parents=True, exist_ok=True)
+
+            # --- human-readable text file ---
+            filepath = output_dir / filename
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write("KEYWORD EXTRACTION ANALYSIS\n")
                 f.write("=" * 50 + "\n\n")
-
                 f.write(f"COMPANY NAME: {analysis.get('company_name', 'UNKNOWN_COMPANY')}\n")
                 f.write("=" * 50 + "\n\n")
-
                 f.write("KEYWORDS:\n")
                 for keyword in analysis.get('keywords', []):
                     f.write(f"• {keyword}\n")
-
                 f.write("\nNEEDS:\n")
                 for need in analysis.get('needs', []):
                     f.write(f"• {need}\n")
-
                 f.write("\nRESULTS:\n")
                 for result in analysis.get('results', []):
                     f.write(f"• {result}\n")
-
                 f.write("\n" + "=" * 50 + "\n")
                 f.write("RAW ANALYSIS:\n")
                 f.write(analysis.get('raw_analysis', ''))
-            
             print(f"📁 Analysis saved to {filepath}")
-            
+
+            # --- machine-readable JSON (used by download endpoint for filename) ---
+            json_path = output_dir / 'keyword_analysis.json'
+            with open(json_path, 'w', encoding='utf-8') as f:
+                json.dump({
+                    "company_name": analysis.get('company_name', 'UNKNOWN_COMPANY'),
+                    "job_title": analysis.get('job_title', ''),
+                    "keywords": analysis.get('keywords', []),
+                    "needs": analysis.get('needs', []),
+                    "results": analysis.get('results', []),
+                }, f, indent=2)
+            print(f"📁 Analysis JSON saved to {json_path}")
+
         except Exception as e:
             print(f"⚠️  Warning: Could not save analysis - {e}")
 

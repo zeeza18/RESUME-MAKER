@@ -70,7 +70,7 @@ class ResumeCrew:
         2. Iterate 3 times: Tool 2 (tailor) → Tool 3 (evaluate) → feedback → repeat
         """
         
-        print("🎯 PHASE 1: Keyword Extraction with Claude Opus 4.5 (Tool 1)")
+        print("🎯 PHASE 1: Keyword Extraction with GPT-4o (Tool 1)")
         print("=" * 60)
         
         # TOOL 1: Extract keywords from job description (run once)

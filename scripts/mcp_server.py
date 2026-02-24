@@ -5,6 +5,7 @@ from __future__ import annotations
 import asyncio
 import contextlib
 import json
+import re
 import logging
 import sys
 from pathlib import Path
@@ -53,6 +54,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["Content-Disposition"],
 )
 
 
@@ -89,6 +91,7 @@ class TailorRequest(JobDescriptionRequest):
 
 class TailorStepRequest(BaseModel):
     original_resume: str = Field(..., alias="originalResume")
+    job_description: str = Field(..., alias="jobDescription")
     keywords: Dict[str, Any]
     feedback: Optional[str] = None
 
@@ -96,6 +99,12 @@ class TailorStepRequest(BaseModel):
     def validate_original(cls, value: str) -> str:
         if _word_count(value) < 50:
             raise ValueError("Resume must be at least 50 words.")
+        return value
+
+    @validator("job_description")
+    def validate_jd(cls, value: str) -> str:
+        if _word_count(value) < 50:
+            raise ValueError("Job description must be at least 50 words.")
         return value
 
     class Config:
@@ -149,6 +158,7 @@ async def tailor_step(payload: TailorStepRequest) -> Dict[str, Any]:
             tailor.tailor_resume,
             payload.original_resume,
             payload.keywords,
+            payload.job_description,
             payload.feedback,
         )
         return result
@@ -321,31 +331,30 @@ async def download_pdf():
     if not tex_file.exists():
         raise HTTPException(status_code=404, detail="LaTeX file not found. Run tailoring first.")
 
-    # Extract company name from keyword analysis - SIMPLIFIED
-    company_name = "UNKNOWN_COMPANY"
-    keyword_analysis_path = BASE_DIR / "output" / "keyword_analysis.txt"
-    if keyword_analysis_path.exists():
+    # Read company name from keyword_analysis.json written by Tool 1
+    company_name = "RESUME"
+    json_path = BASE_DIR / "output" / "keyword_analysis.json"
+    logger.info(f"[PDF DEBUG] BASE_DIR = {BASE_DIR}")
+    logger.info(f"[PDF DEBUG] keyword_analysis.json path = {json_path}")
+    logger.info(f"[PDF DEBUG] keyword_analysis.json exists = {json_path.exists()}")
+    if json_path.exists():
         try:
-            with open(keyword_analysis_path, 'r', encoding='utf-8') as f:
-                lines = f.readlines()
-                # Simple approach: find line with "COMPANY NAME" and get next non-empty line
-                for i, line in enumerate(lines):
-                    if 'COMPANY NAME' in line.upper():
-                        # Look at next few lines for the actual company name
-                        for j in range(i+1, min(i+5, len(lines))):
-                            candidate = lines[j].strip()
-                            # Company name should be UPPERCASE with underscores, not start with special chars
-                            if (candidate and
-                                not candidate.startswith(('#', '-', '=', '*', '(')) and
-                                ('_' in candidate or candidate.isupper()) and
-                                len(candidate) > 2):
-                                company_name = candidate.replace('*', '').strip()
-                                logger.info(f"Extracted company name: {company_name}")
-                                break
-                        break
+            with open(json_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            logger.info(f"[PDF DEBUG] JSON contents = {data}")
+            raw = data.get("company_name", "").strip()
+            logger.info(f"[PDF DEBUG] raw company_name = '{raw}'")
+            _invalid = {'', 'RESUME', 'UNKNOWN_COMPANY', 'UNNAMED_COMPANY', 'UNKNOWN',
+                        'UNNAMED', 'N_A', 'NA', 'NONE', 'NOT_MENTIONED', 'COMPANY_NAME'}
+            if raw and raw.upper() not in _invalid:
+                company_name = raw
+                logger.info(f"[PDF DEBUG] Using company_name = '{company_name}'")
+            else:
+                logger.warning(f"[PDF DEBUG] company_name '{raw}' invalid, falling back to RESUME")
         except Exception as e:
-            logger.warning(f"Could not extract company name: {e}")
-            pass  # Use default if extraction fails
+            logger.warning(f"[PDF DEBUG] Could not read keyword_analysis.json: {e}")
+    else:
+        logger.warning(f"[PDF DEBUG] keyword_analysis.json NOT FOUND at {json_path} — run the tailoring pipeline first")
 
     try:
         result = subprocess.run(
@@ -361,8 +370,20 @@ async def download_pdf():
             logger.error(f"pdflatex output: {result.stdout}\n{result.stderr}")
             raise HTTPException(status_code=500, detail="PDF generation failed. Check LaTeX syntax.")
 
-        # Format filename as MOHAMMED_AZEEZULLA_COMPANYNAME.pdf
-        pdf_filename = f"MOHAMMED_AZEEZULLA_{company_name}.pdf"
+        # Build filename from config.json name + company name
+        candidate_name = "CANDIDATE"
+        config_path = BASE_DIR / "config.json"
+        if config_path.exists():
+            try:
+                with open(config_path, 'r', encoding='utf-8') as cf:
+                    cfg = json.load(cf)
+                raw_name = cfg.get("name", "").strip()
+                if raw_name:
+                    candidate_name = re.sub(r'[^A-Z0-9]', '_', raw_name.upper()).strip('_')
+            except Exception:
+                pass
+        pdf_filename = f"{candidate_name}_({company_name}).pdf"
+        logger.info(f"[PDF DEBUG] Final PDF filename = '{pdf_filename}'")
 
         return FileResponse(
             path=str(pdf_file),

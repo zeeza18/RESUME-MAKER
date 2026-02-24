@@ -8,22 +8,22 @@ from pathlib import Path
 import re
 from typing import Dict, List
 
-from openai import OpenAI
+from anthropic import Anthropic
 from dotenv import load_dotenv
 
 load_dotenv()
 
 
 class ResumeEvaluator:
-    """Evaluate tailored resume against JD requirements using OpenAI"""
+    """Evaluate tailored resume against JD requirements using Anthropic Claude"""
 
     def __init__(self) -> None:
-        api_key = os.getenv("OPENAI_API_KEY")
+        api_key = os.getenv("CLAUDE_API_KEY")
         if not api_key:
-            raise ValueError("OPENAI_API_KEY environment variable is not set")
+            raise ValueError("CLAUDE_API_KEY environment variable is not set")
 
-        self.client = OpenAI(api_key=api_key)
-        self.model = "gpt-4o"  # Best OpenAI model
+        self.client = Anthropic(api_key=api_key)
+        self.model = "claude-sonnet-4-6"  # Claude Sonnet for evaluation
 
         self.system_prompt = self._load_prompt('tool3_prompt.txt')
 
@@ -44,7 +44,7 @@ class ResumeEvaluator:
     ) -> Dict[str, object]:
         """Call OpenAI to evaluate the resume and return structured result"""
 
-        print("Evaluating resume with GPT-4o...")
+        print("Evaluating resume with Claude Sonnet...")
 
         user_message = f"""Please evaluate this tailored resume against the job description:
 
@@ -62,21 +62,21 @@ Results: {', '.join(keywords.get('results', []))}
 Please provide a comprehensive evaluation with specific feedback for improvement."""
 
         try:
-            response = self.client.chat.completions.create(
+            response = self.client.messages.create(
                 model=self.model,
-                max_tokens=2500,
+                max_tokens=1000,
+                system=self.system_prompt,
                 messages=[
-                    {"role": "system", "content": self.system_prompt},
                     {"role": "user", "content": user_message},
                 ],
             )
 
-            evaluation_content = response.choices[0].message.content
+            evaluation_content = response.content[0].text
             print("Resume evaluation complete.")
             return self._parse_evaluation_response(evaluation_content)
 
         except Exception as exc:
-            print(f"Error calling OpenAI for resume evaluation: {exc}")
+            print(f"Error calling Claude for resume evaluation: {exc}")
             return {
                 "score": 0,
                 "keyword_analysis": {"found": [], "missing": [], "weak": []},
@@ -89,154 +89,74 @@ Please provide a comprehensive evaluation with specific feedback for improvement
             }
 
     def _parse_evaluation_response(self, response: str) -> Dict[str, object]:
-        """Parse OpenAI evaluation response into structured format"""
-        
+        """Parse the compact evaluation format produced by tool3_prompt.txt."""
         try:
             result = {
                 "score": 0,
                 "keyword_analysis": {"found": [], "missing": [], "weak": []},
-                "experience_evaluation": "",
-                "ats_optimization": "",
-                "requirements_check": {"met": [], "missing": [], "partial": []},
                 "feedback": "",
                 "recommendations": [],
-                "raw_evaluation": response
+                "raw_evaluation": response,
             }
-            
-            # Extract score
-            lines = response.split('\n')
-            for line in lines:
-                if 'SCORE:' in line.upper() or '/100' in line:
-                    score_match = re.search(r'(\d+)(?:/100)?', line)
-                    if score_match:
-                        result["score"] = int(score_match.group(1))
-                    break
-            
-            # Extract sections
-            current_section = None
-            section_content = []
-            
-            for line in lines:
-                line = line.strip()
-                
-                if 'KEYWORD ANALYSIS' in line.upper():
-                    if current_section:
-                        result[current_section] = '\n'.join(section_content)
-                    current_section = 'keyword_analysis_text'
-                    section_content = []
-                elif 'EXPERIENCE EVALUATION' in line.upper():
-                    if current_section:
-                        result[current_section] = '\n'.join(section_content)
-                    current_section = 'experience_evaluation'
-                    section_content = []
-                elif 'ATS OPTIMIZATION' in line.upper():
-                    if current_section:
-                        result[current_section] = '\n'.join(section_content)
-                    current_section = 'ats_optimization'
-                    section_content = []
-                elif 'REQUIREMENTS CHECK' in line.upper():
-                    if current_section:
-                        result[current_section] = '\n'.join(section_content)
-                    current_section = 'requirements_text'
-                    section_content = []
-                elif 'IMPROVEMENT FEEDBACK' in line.upper() or 'FEEDBACK' in line.upper():
-                    if current_section:
-                        result[current_section] = '\n'.join(section_content)
-                    current_section = 'feedback'
-                    section_content = []
-                elif 'RECOMMENDATIONS' in line.upper():
-                    if current_section:
-                        result[current_section] = '\n'.join(section_content)
-                    current_section = 'recommendations_text'
-                    section_content = []
-                elif current_section and line:
-                    section_content.append(line)
-            
-            # Add final section
-            if current_section and section_content:
-                result[current_section] = '\n'.join(section_content)
-            
-            # Parse keyword analysis
-            if 'keyword_analysis_text' in result:
-                keyword_text = result['keyword_analysis_text']
-                
-                # Try bracket format first
-                found_match = re.search(r'Keywords Found:\s*\[(.*?)\]', keyword_text, re.IGNORECASE | re.DOTALL)
-                if found_match:
-                    found_keywords = [k.strip() for k in found_match.group(1).split(',') if k.strip() and k.strip().lower() != 'none']
-                    result["keyword_analysis"]["found"] = found_keywords
-                
-                missing_match = re.search(r'Missing Keywords:\s*\[(.*?)\]', keyword_text, re.IGNORECASE | re.DOTALL)
-                if missing_match:
-                    missing_keywords = [k.strip() for k in missing_match.group(1).split(',') if k.strip() and k.strip().lower() != 'none']
-                    result["keyword_analysis"]["missing"] = missing_keywords
-                
-                weak_match = re.search(r'Weak Keywords:\s*\[(.*?)\]', keyword_text, re.IGNORECASE | re.DOTALL)
-                if weak_match:
-                    weak_keywords = [k.strip() for k in weak_match.group(1).split(',') if k.strip() and k.strip().lower() != 'none']
-                    result["keyword_analysis"]["weak"] = weak_keywords
-                
-                # Alternative: colon-separated format
-                if not any([found_match, missing_match, weak_match]):
-                    for line in keyword_text.split('\n'):
-                        line = line.strip()
-                        if 'keywords found' in line.lower() and ':' in line:
-                            keywords_part = line.split(':', 1)[1].strip()
-                            keywords = [k.strip() for k in keywords_part.split(',') if k.strip() and k.strip().lower() != 'none']
-                            result["keyword_analysis"]["found"] = keywords
-                        elif 'missing keywords' in line.lower() and ':' in line:
-                            keywords_part = line.split(':', 1)[1].strip()
-                            keywords = [k.strip() for k in keywords_part.split(',') if k.strip() and k.strip().lower() != 'none']
-                            result["keyword_analysis"]["missing"] = keywords
-                        elif 'weak keywords' in line.lower() and ':' in line:
-                            keywords_part = line.split(':', 1)[1].strip()
-                            keywords = [k.strip() for k in keywords_part.split(',') if k.strip() and k.strip().lower() != 'none']
-                            result["keyword_analysis"]["weak"] = keywords
-            
-            # Parse requirements check
-            if 'requirements_text' in result:
-                req_text = result['requirements_text']
-                
-                met_match = re.search(r'Met Requirements:\s*\[(.*?)\]', req_text, re.IGNORECASE | re.DOTALL)
-                if met_match:
-                    met_reqs = [r.strip() for r in met_match.group(1).split(',') if r.strip() and r.strip().lower() != 'none']
-                    result["requirements_check"]["met"] = met_reqs
-                
-                missing_req_match = re.search(r'Missing Requirements:\s*\[(.*?)\]', req_text, re.IGNORECASE | re.DOTALL)
-                if missing_req_match:
-                    missing_reqs = [r.strip() for r in missing_req_match.group(1).split(',') if r.strip() and r.strip().lower() != 'none']
-                    result["requirements_check"]["missing"] = missing_reqs
-                
-                partial_match = re.search(r'Partially Met:\s*\[(.*?)\]', req_text, re.IGNORECASE | re.DOTALL)
-                if partial_match:
-                    partial_reqs = [r.strip() for r in partial_match.group(1).split(',') if r.strip() and r.strip().lower() != 'none']
-                    result["requirements_check"]["partial"] = partial_reqs
-            
-            # Parse recommendations
-            if 'recommendations_text' in result:
-                rec_text = result['recommendations_text']
-                recommendations = []
-                for line in rec_text.split('\n'):
+
+            # Score
+            score_match = re.search(r'SCORE:\s*(\d+)', response, re.IGNORECASE)
+            if score_match:
+                result["score"] = int(score_match.group(1))
+
+            # MISSING KEYWORDS section
+            missing_block = re.search(
+                r'MISSING KEYWORDS:\n(.*?)(?=\nWEAK KEYWORDS|\nGENUINE GAPS|\nACTION ITEMS|$)',
+                response, re.DOTALL | re.IGNORECASE,
+            )
+            if missing_block:
+                for line in missing_block.group(1).splitlines():
+                    line = line.strip().lstrip('- ')
+                    if line:
+                        result["keyword_analysis"]["missing"].append(line)
+
+            # WEAK KEYWORDS section
+            weak_block = re.search(
+                r'WEAK KEYWORDS:\n(.*?)(?=\nGENUINE GAPS|\nACTION ITEMS|$)',
+                response, re.DOTALL | re.IGNORECASE,
+            )
+            if weak_block:
+                for line in weak_block.group(1).splitlines():
+                    line = line.strip().lstrip('- ')
+                    if line:
+                        result["keyword_analysis"]["weak"].append(line)
+
+            # GENUINE GAPS → feedback field (passed to next round)
+            gaps_block = re.search(
+                r'GENUINE GAPS.*?:\n(.*?)(?=\nACTION ITEMS|$)',
+                response, re.DOTALL | re.IGNORECASE,
+            )
+            if gaps_block:
+                result["feedback"] = gaps_block.group(1).strip()
+
+            # ACTION ITEMS → recommendations field (also passed to next round)
+            actions_block = re.search(
+                r'ACTION ITEMS.*?:\n(.*?)$',
+                response, re.DOTALL | re.IGNORECASE,
+            )
+            if actions_block:
+                for line in actions_block.group(1).splitlines():
                     line = line.strip()
-                    if line and (line.startswith('-') or line.startswith('•') or line[0].isdigit()):
-                        clean_rec = re.sub(r'^[-•\d.]+\s*', '', line).strip()
-                        if clean_rec:
-                            recommendations.append(clean_rec)
-                result['recommendations'] = recommendations
-            
+                    if line:
+                        clean = re.sub(r'^\d+\.\s*', '', line).strip()
+                        if clean:
+                            result["recommendations"].append(clean)
+
             return result
-            
+
         except Exception as e:
             print(f"Warning: Could not parse evaluation response - {e}")
             return {
                 "score": 0,
                 "keyword_analysis": {"found": [], "missing": [], "weak": []},
-                "experience_evaluation": response,
-                "ats_optimization": "Parsing error occurred",
-                "requirements_check": {"met": [], "missing": [], "partial": []},
-                "feedback": "Could not parse structured feedback",
-                "recommendations": ["Please check raw evaluation for details"],
-                "raw_evaluation": response
+                "feedback": response,
+                "recommendations": [],
+                "raw_evaluation": response,
             }
 
     def save_evaluation(self, evaluation_data: Dict[str, object], filename: str = "resume_evaluation.txt") -> None:
@@ -244,43 +164,37 @@ Please provide a comprehensive evaluation with specific feedback for improvement
         try:
             os.makedirs('output', exist_ok=True)
             filepath = os.path.join('output', filename)
-            
+
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write("RESUME EVALUATION REPORT\n")
                 f.write("=" * 50 + "\n\n")
                 f.write(f"OVERALL SCORE: {evaluation_data.get('score', 0)}/100\n\n")
-                
-                f.write("KEYWORD ANALYSIS:\n")
-                f.write("-" * 30 + "\n")
+
                 ka = evaluation_data.get('keyword_analysis', {})
-                f.write(f"Found: {', '.join(ka.get('found', []))}\n")
-                f.write(f"Missing: {', '.join(ka.get('missing', []))}\n")
-                f.write(f"Weak: {', '.join(ka.get('weak', []))}\n\n")
-                
-                f.write("EXPERIENCE EVALUATION:\n")
+
+                f.write("MISSING KEYWORDS:\n")
                 f.write("-" * 30 + "\n")
-                f.write(evaluation_data.get('experience_evaluation', 'No experience evaluation available') + "\n\n")
-                
-                f.write("ATS OPTIMIZATION:\n")
+                for item in ka.get('missing', []):
+                    f.write(f"- {item}\n")
+                f.write("\n")
+
+                f.write("WEAK KEYWORDS:\n")
                 f.write("-" * 30 + "\n")
-                f.write(evaluation_data.get('ats_optimization', 'No ATS analysis available') + "\n\n")
-                
-                f.write("IMPROVEMENT FEEDBACK:\n")
+                for item in ka.get('weak', []):
+                    f.write(f"- {item}\n")
+                f.write("\n")
+
+                f.write("GENUINE GAPS:\n")
                 f.write("-" * 30 + "\n")
-                f.write(evaluation_data.get('feedback', 'No feedback available') + "\n\n")
-                
-                f.write("RECOMMENDATIONS:\n")
+                f.write(evaluation_data.get('feedback', 'None') + "\n\n")
+
+                f.write("ACTION ITEMS:\n")
                 f.write("-" * 30 + "\n")
                 for i, rec in enumerate(evaluation_data.get('recommendations', []), 1):
                     f.write(f"{i}. {rec}\n")
-                
-                f.write("\n" + "=" * 50 + "\n")
-                f.write("RAW EVALUATION:\n")
-                f.write("=" * 50 + "\n")
-                f.write(evaluation_data.get('raw_evaluation', ''))
-            
+
             print(f"Evaluation report saved to {filepath}")
-            
+
         except Exception as e:
             print(f"Warning: Could not save evaluation report - {e}")
 

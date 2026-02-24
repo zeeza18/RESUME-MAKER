@@ -6,6 +6,7 @@ Converts the finalized tailored resume into LaTeX using the reference template.
 
 from __future__ import annotations
 
+import json
 import os
 from pathlib import Path
 from typing import Optional, Dict
@@ -64,6 +65,30 @@ class LatexResumeFormatter:
                     continue
         return None
 
+    def _load_job_title(self) -> str:
+        """Load job_title from keyword_analysis.json produced by Tool 1."""
+        json_path = Path(__file__).resolve().parent.parent / "output" / "keyword_analysis.json"
+        try:
+            data = json.loads(json_path.read_text(encoding="utf-8"))
+            return data.get("job_title", "").strip()
+        except Exception:
+            return ""
+
+    def _load_contact_links(self) -> str:
+        """Load contact URLs from config.json and format them for the prompt."""
+        config_path = Path(__file__).resolve().parent.parent / "config.json"
+        try:
+            config = json.loads(config_path.read_text(encoding="utf-8"))
+            return (
+                "CANDIDATE CONTACT LINKS — use these exact URLs in \\href commands, never bare \\underline:\n"
+                f"  Email:     {config.get('email', '')}\n"
+                f"  LinkedIn:  {config.get('linkedin', '')}\n"
+                f"  Portfolio: {config.get('portfolio', '')}\n"
+                f"  GitHub:    {config.get('github', '')}\n\n"
+            )
+        except Exception:
+            return ""
+
     def format_to_latex(self, final_resume: str, template_hint: Optional[str] = None) -> Dict[str, str]:
         """
         Use OpenAI to convert the final tailored resume text into LaTeX.
@@ -79,8 +104,14 @@ class LatexResumeFormatter:
         if not final_resume or len(final_resume.strip()) < 50:
             raise ValueError("Final resume content is too short or empty for LaTeX conversion.")
 
+        job_title = self._load_job_title()
+        job_title_line = f"JOB_TITLE: {job_title}\n\n" if job_title else ""
+        contact_links = self._load_contact_links()
+
         user_template = template_hint or self.template_example or ""
         user_message = (
+            f"{job_title_line}"
+            f"{contact_links}"
             "FINAL_RESUME:\n"
             f"{final_resume.strip()}\n\n"
             "REFERENCE_TEMPLATE:\n"
