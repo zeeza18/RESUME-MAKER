@@ -93,7 +93,7 @@ Please provide a comprehensive evaluation with specific feedback for improvement
         try:
             result = {
                 "score": 0,
-                "keyword_analysis": {"found": [], "missing": [], "weak": []},
+                "keyword_analysis": {"found": [], "missing": [], "weak": [], "orphaned": []},
                 "feedback": "",
                 "recommendations": [],
                 "raw_evaluation": response,
@@ -106,7 +106,7 @@ Please provide a comprehensive evaluation with specific feedback for improvement
 
             # MISSING KEYWORDS section
             missing_block = re.search(
-                r'MISSING KEYWORDS:\n(.*?)(?=\nWEAK KEYWORDS|\nGENUINE GAPS|\nACTION ITEMS|$)',
+                r'MISSING KEYWORDS:\n(.*?)(?=\nWEAK KEYWORDS|\nORPHANED SKILLS|\nGENUINE GAPS|\nACTION ITEMS|$)',
                 response, re.DOTALL | re.IGNORECASE,
             )
             if missing_block:
@@ -117,7 +117,7 @@ Please provide a comprehensive evaluation with specific feedback for improvement
 
             # WEAK KEYWORDS section
             weak_block = re.search(
-                r'WEAK KEYWORDS:\n(.*?)(?=\nGENUINE GAPS|\nACTION ITEMS|$)',
+                r'WEAK KEYWORDS:\n(.*?)(?=\nORPHANED SKILLS|\nGENUINE GAPS|\nACTION ITEMS|$)',
                 response, re.DOTALL | re.IGNORECASE,
             )
             if weak_block:
@@ -125,6 +125,17 @@ Please provide a comprehensive evaluation with specific feedback for improvement
                     line = line.strip().lstrip('- ')
                     if line:
                         result["keyword_analysis"]["weak"].append(line)
+
+            # ORPHANED SKILLS section (skills in Skills but not in Experience/Projects)
+            orphaned_block = re.search(
+                r'ORPHANED SKILLS.*?:\n(.*?)(?=\nGENUINE GAPS|\nACTION ITEMS|$)',
+                response, re.DOTALL | re.IGNORECASE,
+            )
+            if orphaned_block:
+                for line in orphaned_block.group(1).splitlines():
+                    line = line.strip().lstrip('- ')
+                    if line:
+                        result["keyword_analysis"]["orphaned"].append(line)
 
             # GENUINE GAPS → feedback field (passed to next round)
             gaps_block = re.search(
@@ -136,7 +147,7 @@ Please provide a comprehensive evaluation with specific feedback for improvement
 
             # ACTION ITEMS → recommendations field (also passed to next round)
             actions_block = re.search(
-                r'ACTION ITEMS.*?:\n(.*?)$',
+                r'ACTION ITEMS.*?:\n(.*?)(?=\nIMPORTANT FOR NEXT|$)',
                 response, re.DOTALL | re.IGNORECASE,
             )
             if actions_block:
@@ -181,6 +192,12 @@ Please provide a comprehensive evaluation with specific feedback for improvement
                 f.write("WEAK KEYWORDS:\n")
                 f.write("-" * 30 + "\n")
                 for item in ka.get('weak', []):
+                    f.write(f"- {item}\n")
+                f.write("\n")
+
+                f.write("ORPHANED SKILLS (in Skills but not in Experience):\n")
+                f.write("-" * 30 + "\n")
+                for item in ka.get('orphaned', []):
                     f.write(f"- {item}\n")
                 f.write("\n")
 

@@ -10,7 +10,13 @@
       "Bash(npx vite build)",
       "Bash(python:*)",
       "Bash(findstr:*)",
-      "Bash(copy:*)"
+      "Bash(copy:*)",
+      "Bash(netstat:*)",
+      "Bash(where:*)",
+      "Bash(winget search:*)",
+      "Bash(winget install:*)",
+      "Bash(\"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Programs\\\\MiKTeX\\\\miktex\\\\bin\\\\x64\\\\pdflatex.exe\" -interaction=nonstopmode -output-directory docs/latex docs/latex/main.tex)",
+      "Bash(curl:*)"
     ]
   }
 }

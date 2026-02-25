@@ -356,9 +356,20 @@ async def download_pdf():
     else:
         logger.warning(f"[PDF DEBUG] keyword_analysis.json NOT FOUND at {json_path} — run the tailoring pipeline first")
 
+    # Try to find pdflatex - check common paths on Windows
+    pdflatex_cmd = "pdflatex"
+    miktex_paths = [
+        r"C:\Users\Owner\AppData\Local\Programs\MiKTeX\miktex\bin\x64\pdflatex.exe",
+        r"C:\Program Files\MiKTeX\miktex\bin\x64\pdflatex.exe",
+    ]
+    for path in miktex_paths:
+        if Path(path).exists():
+            pdflatex_cmd = path
+            break
+
     try:
         result = subprocess.run(
-            ["pdflatex", "-interaction=nonstopmode", "-output-directory", str(latex_dir), str(tex_file)],
+            [pdflatex_cmd, "-interaction=nonstopmode", "-output-directory", str(latex_dir), str(tex_file)],
             capture_output=True,
             text=True,
             timeout=60,
@@ -580,7 +591,7 @@ def start() -> None:
     uvicorn.run(
         "mcp_server:app",
         host="0.0.0.0",
-        port=8000,
+        port=8002,
         reload=False,
         log_level="info",
     )

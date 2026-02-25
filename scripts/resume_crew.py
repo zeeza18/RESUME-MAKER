@@ -34,7 +34,7 @@ class ResumeCrew:
             "data": data
         }
         self.process_log.append(log_entry)
-        print(f"🔄 {step}")
+        print(f"[STEP] {step}")
     
     def save_process_log(self):
         """Save the complete process log"""
@@ -70,7 +70,7 @@ class ResumeCrew:
         2. Iterate 3 times: Tool 2 (tailor) → Tool 3 (evaluate) → feedback → repeat
         """
         
-        print("🎯 PHASE 1: Keyword Extraction with GPT-4o (Tool 1)")
+        print("[PHASE 1] Keyword Extraction with GPT-4o (Tool 1)")
         print("=" * 60)
         
         # TOOL 1: Extract keywords from job description (run once)
@@ -88,12 +88,12 @@ class ResumeCrew:
                 "results_count": len(keyword_analysis.get('results', []))
             })
             
-            print(f"✅ Extracted {len(keyword_analysis.get('keywords', []))} keywords")
-            print(f"✅ Identified {len(keyword_analysis.get('needs', []))} needs")
-            print(f"✅ Found {len(keyword_analysis.get('results', []))} result patterns")
+            print(f"[OK] Extracted {len(keyword_analysis.get('keywords', []))} keywords")
+            print(f"[OK] Identified {len(keyword_analysis.get('needs', []))} needs")
+            print(f"[OK] Found {len(keyword_analysis.get('results', []))} result patterns")
             
         except Exception as e:
-            print(f"❌ Error in keyword extraction: {e}")
+            print(f"[ERROR] Error in keyword extraction: {e}")
             keyword_analysis = {
                 "keywords": [], 
                 "needs": [], 
@@ -110,7 +110,7 @@ class ResumeCrew:
                 "original_resume": current_resume
             })
 
-        print(f"\n🔄 PHASE 2: Iterative Tailoring Process (3 Rounds)")
+        print(f"\n[STEP] PHASE 2: Iterative Tailoring Process (3 Rounds)")
         print("=" * 60)
         print("Each round: Tool 2 (Tailor) → Tool 3 (Evaluate) → Feedback")
         
@@ -122,30 +122,71 @@ class ResumeCrew:
         best_evaluation = None
         all_evaluations = []
 
+        # === MEMORY: Track changes across rounds ===
+        locked_changes = []  # Changes that improved score (don't undo)
+        cumulative_keyword_status = {
+            "successfully_inserted": [],
+            "still_missing": list(keyword_analysis.get('keywords', [])),  # Start with all keywords as missing
+            "already_present": []
+        }
+        all_tailoring_results = []  # Store full Tool 2 results for analysis
+
         # Run 3 iterations of Tool2 → Tool3
         for round_num in range(1, 4):
             print(f"\n{'='*20} ROUND {round_num} {'='*20}")
-            
+
             # TOOL 2: Tailor Resume
             print(f"🎨 Round {round_num} - Tool 2: Tailoring Resume")
             print("-" * 40)
-            
+
             self.log_step(f"ROUND {round_num} - TOOL 2: Tailoring resume", {})
-            
-            # Get feedback from previous round (if any)
+
+            # Get feedback from ALL previous rounds (accumulate unfixed issues)
             feedback = None
             if round_num > 1 and all_evaluations:
+                feedback_parts = []
+
+                # Collect ALL orphaned skills from ALL previous rounds (they often get missed)
+                all_orphaned = set()
+                all_weak = set()
+                for prev_eval in all_evaluations:
+                    keyword_analysis_data = prev_eval.get('keyword_analysis', {})
+                    for item in keyword_analysis_data.get('orphaned', []):
+                        all_orphaned.add(item)
+                    for item in keyword_analysis_data.get('weak', []):
+                        all_weak.add(item)
+
+                # Add accumulated orphaned skills (CRITICAL - these keep getting missed)
+                if all_orphaned:
+                    feedback_parts.append("ORPHANED SKILLS FROM ALL ROUNDS (MUST FIX - add to Experience bullets):")
+                    feedback_parts.extend([f"- {item}" for item in all_orphaned])
+
+                # Add accumulated weak keywords
+                if all_weak:
+                    feedback_parts.append("WEAK KEYWORDS FROM ALL ROUNDS (fix these):")
+                    feedback_parts.extend([f"- {item}" for item in all_weak])
+
+                # Add latest round's recommendations (most relevant)
                 previous_eval = all_evaluations[-1]
-                feedback = previous_eval.get('feedback', '') + "\n" + "\n".join(previous_eval.get('recommendations', []))
-                print(f"📝 Using feedback from Round {round_num-1}")
-            
+                if previous_eval.get('feedback'):
+                    feedback_parts.append(f"GENUINE GAPS: {previous_eval.get('feedback', '')}")
+                feedback_parts.append("LATEST ACTION ITEMS:")
+                feedback_parts.extend(previous_eval.get('recommendations', []))
+
+                feedback = "\n".join(feedback_parts)
+                print(f"[INFO] Using accumulated feedback from Rounds 1-{round_num-1}")
+                print(f"[MEMORY] Locked changes from previous rounds: {len(locked_changes)}")
+                print(f"[MEMORY] Keywords already inserted: {len(cumulative_keyword_status['successfully_inserted'])}")
+
             try:
                 tailored_data = self.resume_tailor.tailor_resume(
                     original_resume=latest_resume,
                     keywords=keyword_analysis,
                     job_description=job_description,
                     feedback=feedback,
-                    round_number=round_num
+                    round_number=round_num,
+                    locked_changes=locked_changes if round_num > 1 else None,
+                    previous_keyword_status=cumulative_keyword_status if round_num > 1 else None
                 )
                 
                 # Save this version
@@ -155,24 +196,39 @@ class ResumeCrew:
                 # Update current best
                 latest_resume = tailored_data.get('tailored_resume', latest_resume)
                 
+                # Store full tailoring result for memory tracking
+                all_tailoring_results.append(tailored_data)
+
+                # Update cumulative keyword status from this round
+                round_keyword_status = tailored_data.get('keyword_status', {})
+                newly_inserted = round_keyword_status.get('successfully_inserted', [])
+                for kw in newly_inserted:
+                    if kw not in cumulative_keyword_status['successfully_inserted']:
+                        cumulative_keyword_status['successfully_inserted'].append(kw)
+                    if kw in cumulative_keyword_status['still_missing']:
+                        cumulative_keyword_status['still_missing'].remove(kw)
+
                 self.log_step(f"ROUND {round_num} - Resume tailored", {
                     "tailored_resume_length": len(latest_resume.split()),
                     "changes_made": len(tailored_data.get('change_log', [])),
+                    "keywords_inserted_this_round": len(newly_inserted),
+                    "total_keywords_inserted": len(cumulative_keyword_status['successfully_inserted']),
                     "has_feedback": feedback is not None
                 })
-                
-                print(f"✅ Round {round_num} tailoring complete!")
-                print(f"📝 Changes made: {len(tailored_data.get('change_log', []))}")
+
+                print(f"[OK] Round {round_num} tailoring complete!")
+                print(f"[INFO] Changes made: {len(tailored_data.get('change_log', []))}")
+                print(f"[MEMORY] Keywords inserted this round: {newly_inserted}")
                 
             except Exception as e:
-                print(f"❌ Error in Round {round_num} tailoring: {e}")
+                print(f"[ERROR] Error in Round {round_num} tailoring: {e}")
                 tailored_data = {
                     "tailored_resume": latest_resume, 
                     "change_log": [f"Error: {str(e)}"]
                 }
             
             # TOOL 3: Evaluate Resume
-            print(f"\n📊 Round {round_num} - Tool 3: Evaluating Resume")
+            print(f"\n[STATS] Round {round_num} - Tool 3: Evaluating Resume")
             print("-" * 40)
             
             self.log_step(f"ROUND {round_num} - TOOL 3: Evaluating resume", {})
@@ -195,15 +251,15 @@ class ResumeCrew:
                     "recommendations_count": len(evaluation.get('recommendations', []))
                 })
                 
-                print(f"📊 Round {round_num} Score: {evaluation.get('score', 0)}/100")
-                print(f"💡 Recommendations: {len(evaluation.get('recommendations', []))}")
+                print(f"[STATS] Round {round_num} Score: {evaluation.get('score', 0)}/100")
+                print(f"[TIP] Recommendations: {len(evaluation.get('recommendations', []))}")
                 
                 # Show top recommendations
                 for i, rec in enumerate(evaluation.get('recommendations', [])[:2], 1):
                     print(f"   {i}. {rec[:80]}...")
                 
             except Exception as e:
-                print(f"❌ Error in Round {round_num} evaluation: {e}")
+                print(f"[ERROR] Error in Round {round_num} evaluation: {e}")
                 evaluation = {
                     "score": 0, 
                     "feedback": f"Error: {str(e)}", 
@@ -217,11 +273,34 @@ class ResumeCrew:
             except (TypeError, ValueError):
                 score_value = 0
 
+            # === MEMORY: Lock in changes if score improved ===
             if score_value > best_score:
+                # Score improved! Lock in the changes from this round
+                if all_tailoring_results:
+                    current_tailoring = all_tailoring_results[-1]
+                    change_log = current_tailoring.get('change_log', [])
+
+                    for change in change_log:
+                        if isinstance(change, dict):
+                            desc = change.get('description', '')
+                        else:
+                            desc = str(change)
+
+                        locked_changes.append({
+                            "round": round_num,
+                            "description": desc,
+                            "score_before": best_score,
+                            "score_after": score_value
+                        })
+
+                    print(f"[MEMORY] Score improved {best_score} → {score_value}! Locking {len(change_log)} changes.")
+
                 best_score = score_value
                 best_resume = latest_resume
                 best_evaluation = evaluation
                 best_round = round_num
+            else:
+                print(f"[MEMORY] Score did not improve ({score_value} <= {best_score}). Changes NOT locked.")
 
             if progress_callback:
                 progress_callback({
@@ -300,7 +379,7 @@ class ResumeCrew:
         # Create summary report
         self._create_summary_report(keyword_analysis, all_evaluations, best_resume, best_round, best_score)
         
-        # Log final results
+        # Log final results with memory state
         self.log_step("Complete process finished", {
             "jd_length": len(job_description.split()),
             "original_resume_length": len(current_resume.split()),
@@ -310,8 +389,19 @@ class ResumeCrew:
             "total_rounds": 3,
             "keyword_analysis": keyword_analysis,
             "all_evaluations": all_evaluations,
-            "best_evaluation": best_evaluation
+            "best_evaluation": best_evaluation,
+            "memory_state": {
+                "locked_changes_count": len(locked_changes),
+                "keywords_inserted": cumulative_keyword_status['successfully_inserted'],
+                "keywords_still_missing": cumulative_keyword_status['still_missing']
+            }
         })
+
+        # Print memory summary
+        print(f"\n[MEMORY] Final Keyword Status:")
+        print(f"   Inserted: {len(cumulative_keyword_status['successfully_inserted'])} keywords")
+        print(f"   Missing:  {len(cumulative_keyword_status['still_missing'])} keywords")
+        print(f"   Locked:   {len(locked_changes)} changes preserved across rounds")
         
         # Save process log
         self.save_process_log()
@@ -319,7 +409,7 @@ class ResumeCrew:
         # Show final summary
         final_score = best_score
         print(f"🏆 Best Score: {best_score}/100 (Round {best_round or 1})")
-        print(f"📈 Score Progress: {' → '.join([str(eval.get('score', 0)) for eval in all_evaluations])}")
+        print(f"[PROGRESS] Score Progress: {' → '.join([str(eval.get('score', 0)) for eval in all_evaluations])}")
         print(f"📄 Final Resume: {len(best_resume.split())} words")
         
         print("\nOutput Files Created:")
@@ -351,7 +441,15 @@ class ResumeCrew:
             "best_round": best_round,
             "best_evaluation": best_evaluation,
             "status": "complete_3_tool_process_finished",
-            "latex_summary": latex_summary
+            "latex_summary": latex_summary,
+            "memory_state": {
+                "locked_changes": locked_changes,
+                "cumulative_keyword_status": cumulative_keyword_status,
+                "all_tailoring_results": [
+                    {k: v for k, v in r.items() if k != 'raw_response'}
+                    for r in all_tailoring_results
+                ]
+            }
         }
     
     def _create_summary_report(self, keyword_analysis, all_evaluations, final_resume, best_round, best_score):
@@ -367,19 +465,19 @@ class ResumeCrew:
                 # Process Overview
                 f.write("📋 PROCESS OVERVIEW\n")
                 f.write("-" * 30 + "\n")
-                f.write("✅ Tool 1: Keyword Extraction - COMPLETED\n")
-                f.write("✅ Tool 2: Resume Tailoring - 3 ROUNDS COMPLETED\n")
-                f.write("✅ Tool 3: Resume Evaluation - 3 ROUNDS COMPLETED\n\n")
+                f.write("[OK] Tool 1: Keyword Extraction - COMPLETED\n")
+                f.write("[OK] Tool 2: Resume Tailoring - 3 ROUNDS COMPLETED\n")
+                f.write("[OK] Tool 3: Resume Evaluation - 3 ROUNDS COMPLETED\n\n")
                 
                 # Keywords Summary
-                f.write("🎯 KEYWORDS EXTRACTED\n")
+                f.write("[TARGET] KEYWORDS EXTRACTED\n")
                 f.write("-" * 30 + "\n")
                 f.write(f"Keywords: {len(keyword_analysis.get('keywords', []))}\n")
                 f.write(f"Needs: {len(keyword_analysis.get('needs', []))}\n")
                 f.write(f"Results: {len(keyword_analysis.get('results', []))}\n\n")
                 
                 # Score Progress
-                f.write("📈 SCORE PROGRESSION\n")
+                f.write("[PROGRESS] SCORE PROGRESSION\n")
                 f.write("-" * 30 + "\n")
                 for i, eval_data in enumerate(all_evaluations, 1):
                     score = eval_data.get('score', 0)
@@ -411,7 +509,7 @@ class ResumeCrew:
                 f.write(f"\n🎉 Process completed successfully!\n")
                 f.write(f"Final resume ready for submission.\n")
             
-            print(f"📊 Summary report saved to {filepath}")
+            print(f"[STATS] Summary report saved to {filepath}")
             
         except Exception as e:
             print(f"⚠️  Warning: Could not create summary report - {e}")
